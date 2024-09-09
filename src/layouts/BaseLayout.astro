@@ -1,0 +1,35 @@
+---
+import MainHead from '../components/MainHead.astro';
+import Nav from '../components/Nav.astro';
+import '../styles/global.scss';
+
+interface Props {
+    title?: string | undefined;
+    description?: string | undefined;
+}
+
+const { title, description = "Wei-Hsin Chen, A Design Engineer Portfolio" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <MainHead title={title} description={description} />
+    </head>
+    <body>
+        <Nav />
+
+        <main>
+            <slot />
+        </main>
+
+        <footer>
+            <!-- Add your footer content here -->
+        </footer>
+        <script>
+            window.addEventListener('load', () => {
+                document.body.classList.add('loaded');
+            });
+        </script>
+    </body>
+</html>
