@@ -1,6 +1,7 @@
 ---
 import MainHead from '../components/MainHead.astro';
-import Nav from '../components/Nav.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 import '../styles/global.scss';
 
 interface Props {
@@ -16,16 +17,13 @@ const { title, description = "Wei-Hsin Chen, A Design Engineer Portfolio" } = As
     <head>
         <MainHead title={title} description={description} />
     </head>
-    <body>
-        <Nav />
-
+    <body class="base-layout">
+        <Header />
         <main>
             <slot />
         </main>
 
-        <footer>
-            <!-- Add your footer content here -->
-        </footer>
+        <Footer />
         <script>
             window.addEventListener('load', () => {
                 document.body.classList.add('loaded');

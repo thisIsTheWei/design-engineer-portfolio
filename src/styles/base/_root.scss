@@ -1,0 +1,87 @@
+@use "../abstracts" as *;
+
+:root {
+  --clr-background: #{$color-background-default};
+  --clr-logo: #{$color-neutral-black};
+
+  --border-radius-1: #{$border-radius-1};
+  --border-radius-2: #{$border-radius-2};
+
+  // Font Familiy
+  --clr-ff-body: #{$body-text-color};
+  --ff-body: #{$body-font-family};
+  --ff-weight-body: #{$body-font-weight};
+  --body-font-size: #{$body-font-size};
+  --body-font-size-large: #{$body-font-size-large};
+  --body-font-size-small: #{$body-font-size-small};
+  --body-font-size-tiny: #{$body-font-size-tiny};
+  --body-line-height: #{$body-line-height};
+  --clr-ff-headline: #{$heading-text-color};
+  --ff-headline: #{$heading-font-family};
+  --ff-weight-headline: #{$heading-font-weight};
+  --headline-line-height: #{$heading-line-height};
+
+  --letter-spacing-tight: #{$letter-spacing-tight};
+  --letter-spacing-loose: #{$letter-spacing-loose};
+  --display-line-height: #{$display-line-height};
+  --display-line-height-tight: #{$display-line-height-tight};
+
+  --border-default: #{$border-default};
+
+  // links
+  --clr-link: currentColor;
+  --clr-link-hover: #{$color-link-hover};
+
+  // buttons
+  --clr-button-background: #{$color-button-tertiary};
+  --clr-button-background-hover: #{$color-button-tertiary-hover};;
+  --clr-button-background-active: #{$color-button-tertiary-active};
+  --clr-button-text: #{$color-button-tertiary-text};
+  --clr-button-text-hover: #{$color-button-tertiary-text-hover};
+  --clr-button-text-active: #{$color-button-tertiary-text-active};
+
+  --clr-button-primary: #{$color-button-primary};
+  --clr-button-primary-text: #{$color-button-primary-text};
+  --clr-button-primary-border: #{$color-button-primary-border};
+  --clr-button-primary-hover: #{$color-button-primary-hover};
+  --clr-button-primary-text-hover: #{$color-button-primary-text-hover};
+  --clr-button-primary-border-hover: #{$color-button-primary-border-hover}; 
+  --clr-button-primary-active: #{$color-button-primary-active};
+  --clr-button-primary-text-active: #{$color-button-primary-text-active};
+  --clr-button-primary-border-active: #{$color-button-primary-border-active};
+  --clr-button-primary-text-active: #{$color-button-primary-text-active}; 
+
+  --clr-button-secondary: #{$color-button-secondary};
+  --clr-button-secondary-text: #{$color-button-secondary-text};
+  --clr-button-secondary-border: #{$color-button-secondary-border};
+  --clr-button-secondary-hover: #{$color-button-secondary-hover};
+  --clr-button-secondary-active: #{$color-button-secondary-active};
+  --clr-button-secondary-text-active: #{$color-button-secondary-text-active};
+ 
+  --button-font-size: #{$button-font-size};
+  --button-font-weight: #{$button-font-weight};
+  --button-padding: #{$button-padding};
+  --button-padding-large: #{$button-padding-large};
+  --button-border-radius: #{$button-border-radius};
+  --button-border: #{$button-border};
+  --button-gap: #{$button-gap};
+  --button-icon-size: #{$button-icon-size};
+  --flow-space: #{$size-6};
+  --grid-gap: #{$grid-gap};
+  --flex-group-gap: #{$flex-group-gap};
+  --section-spacing: #{$section-spacing};
+  
+  --clr-callout-background: #{$color-callout-background};
+
+  --clr-link-text: #{$color-link-text};
+  --clr-link-text-hover: #{$color-link-text-hover};
+  --clr-link-text-active: #{$color-link-text-active};
+
+  &.theme-dark {
+    --clr-background: #{$color-background-default-dark};
+    --clr-logo: #{$color-neutral-white};
+
+    --clr-ff-body: #{$body-text-color-reverse};
+    --clr-ff-headline: #{$heading-text-color-reverse};
+  } 
+}

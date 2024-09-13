@@ -1,0 +1,46 @@
+---
+import Cta from "./composable/Cta.astro";
+---
+<section>
+  <div class="contact">
+    <h2 class="h1 contact__headline">Thanks for the visit. Reach out and let's chat.</h2>
+    <div class="contact__buttons">
+      <Cta href="https://calendar.app.google/e7Vuknr4uMFS8J6z8" type="primary" icon="video-camera">Get in touch</Cta>
+      <Cta href="/assets/Resume_Wei_Hsin_Chen.pdf" type="secondary" icon="download" target="_blank">Download Resume</Cta>
+    </div>
+  </div> 
+</section>
+
+<style lang="scss">
+  @use '../styles/abstracts/' as *;
+  
+  section {
+    background-color: var(--clr-callout-background, $color-callout-background);
+    border-radius: var(--border-radius-2, $border-radius-2);
+    padding-block: clamp($size-6, 7.5vw - $size-4, $size-12);
+    padding-inline: clamp($size-6, 12.5vw - $size-4, $size-14);
+  }
+
+  .contact {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+
+    &__headline {
+      --clr-ff-headline: #{clr(primary, base)};
+      margin-block-end: $size-8;
+    }
+
+    &__buttons {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: $size-4;
+
+      @container (width > 500px) {
+        flex-direction: row;
+      }
+    }
+  }
+
+</style>

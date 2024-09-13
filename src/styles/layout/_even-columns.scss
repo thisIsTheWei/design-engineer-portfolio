@@ -1,0 +1,10 @@
+@use "../abstracts/" as *;
+
+.even-columns {
+  display: grid;
+  gap: var(--grid-gap, $grid-gap);
+
+  @include mq(m) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

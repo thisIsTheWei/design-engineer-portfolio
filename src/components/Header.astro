@@ -1,0 +1,103 @@
+---
+import { readFileSync } from 'fs';
+import { resolve } from 'path';
+import ThemeToggle from './ThemeToggle.astro';
+import Cta from './composable/Cta.astro';
+
+interface NavItem {
+    href: string;
+    text: string;
+}
+
+
+const logoPath = resolve('./src/assets/name-logo.svg');
+const logoSvg = readFileSync(logoPath, 'utf8');
+
+/** Main menu items */
+const navItems: NavItem[] = [
+	{ text: 'Featured Works', href: '#featured-works' },
+	{ text: 'About', href: '#about' },
+];
+
+---
+
+<header>
+  <a href="/" class="logo" set:html={logoSvg} />
+  <nav class="nav">
+    <ul>
+      {navItems.map(item => (
+        <li>
+          <a href={item.href}>{item.text}</a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+  <div class="footer">
+    <Cta href="#contact" type="primary">Get in touch</Cta>
+    <ThemeToggle />
+  </div>
+</header>
+
+
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navOverlay = document.querySelector('.nav-overlay');
+
+  menuToggle?.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    navOverlay?.classList.toggle('show');
+    document.body.classList.toggle('menu-open');
+  });
+</script>
+<style lang="scss">
+  @use '../styles/abstracts/sizes' as *;
+
+  header {
+    align-items: center;
+    border-bottom: var(--border-default);
+    display: flex;
+    justify-content: space-between;
+    padding-block: $size-4;
+    padding-inline: 0;
+    margin-inline: var(--_section-padding);
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+
+  .logo {
+    display: flex;
+    width: 281px;
+    height: 32px;
+  }
+
+  .logo svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  a {
+    text-decoration: none;
+    color: currentColor;
+    
+    &:hover,
+    &:focus-visible {
+      color: var(--clr-link-hover);
+      text-decoration: underline;
+    }
+  }
+
+</style>

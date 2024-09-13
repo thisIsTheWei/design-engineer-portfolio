@@ -1,0 +1,76 @@
+.button {
+  --_clr-button-background: var(--clr-button-background);
+  --_clr-button-text: var(--clr-button-text);
+  --_btn-border: var(--button-border);
+  --_btn-border-radius: var(--button-border-radius);
+  --_btn-padding: var(--button-padding);
+  --_btn-padding-large: var(--button-padding-large);
+  --_btn-font-size: var(--button-font-size);
+  --_btn-font-weight: var(--button-font-weight);
+  --_btn-gap: var(--button-gap);
+  --icon-size: var(--button-icon-size);
+
+  align-items: center;
+  background-color: var(--_clr-button-background);
+  border: var(--_btn-border);
+  border-radius: var(--_btn-border-radius);
+  color: var(--_clr-button-text);
+  cursor: pointer;
+  font-size: var(--_btn-font-size);
+  font-weight: var(--_btn-font-weight);
+  display: inline-flex;
+  gap: var(--_btn-gap);
+  justify-content: center;
+  line-height: 1;
+  padding: var(--_btn-padding);
+  text-decoration: none;
+  transition: 275ms ease;
+
+  &:hover, &:focus-visible {
+    --_clr-button-background: var(--clr-button-background-hover);
+    --_clr-button-text: var(--clr-button-text-hover);
+  }
+
+  &:active {
+    --_clr-button-background: var(--clr-button-background-active);
+    --_clr-button-text: var(--clr-button-text-active);
+  }
+
+  &[data-type="primary"] {
+    --_clr-button-background: var(--clr-button-primary);
+    --_clr-button-text: var(--clr-button-primary-text);
+
+    &:hover, &:focus-visible {
+      --_clr-button-background: var(--clr-button-primary-hover);
+      --_clr-button-text: var(--clr-button-primary-text-hover);
+      --_btn-border: 1px solid var(--clr-button-primary-border-hover);
+    }
+
+    &:active {
+      --_clr-button-background: var(--clr-button-primary-active);
+      --_clr-button-text: var(--clr-button-primary-text-active);
+      --_btn-border: 1px solid var(--clr-button-primary-border-active);
+    }
+  }
+
+  &[data-type="secondary"] {
+    --_clr-button-background: var(--clr-button-secondary);
+    --_clr-button-text: var(--clr-button-secondary-text);
+    --_btn-border: 1px solid var(--clr-button-secondary-border);
+
+    &:hover, &:focus-visible {
+      --_clr-button-background: var(--clr-button-secondary-hover);
+      --_clr-button-text: var(--clr-button-secondary-text-hover);
+      --_btn-border: 1px solid var(--clr-button-secondary-border);
+    }
+
+    &:active {
+      --_clr-button-background: var(--clr-button-secondary-active);
+    }
+  }
+
+  &[data-size="large"] {
+    --_btn-padding: var(--button-padding-large);
+    --_btn-font-size: var(--button-font-size-large);
+  }
+}

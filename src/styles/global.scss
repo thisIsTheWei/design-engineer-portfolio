@@ -1,2 +1,5 @@
 //Global styles here
-@import 'reset';
+@use "base";
+@use "composible";
+@use "layout";
+@use "utilities";

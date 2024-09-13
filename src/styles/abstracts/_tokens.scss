@@ -1,0 +1,99 @@
+@use "colors" as *;
+@use "typography" as *;
+@use "sizes" as *;
+@use "functions" as *;
+
+$border-default: 1px solid clr(neutral, light);
+
+$border-radius-1: $size-3;
+$border-radius-2: $size-6;
+
+$color-background-default: clr(neutral, lightest);
+$color-background-default-dark: clr(neutral, darker);
+$color-neutral-white: clr(neutral, white);
+$color-neutral-black: clr(neutral, black);
+$letter-spacing-tight: -0.02em;
+$letter-spacing-loose: 0.75px;
+
+// body
+$body-font-family: $font-family-base;
+$body-font-size: $font-size-default;
+$body-font-size-large: $font-size-large;
+$body-font-size-small: $font-size-small;
+$body-font-size-tiny: $font-size-tiny;
+$body-line-height: 1.5;
+$body-font-weight: $font-weight-default;
+$body-text-color: clr(neutral, dark);
+$body-text-color-reverse: clr(neutral, lighter);
+
+// heading
+$heading-font-family: $font-family-brand;
+$heading-text-color: clr(neutral, dark);
+$heading-text-color-reverse: clr(neutral, lightest);
+$heading-font-weight: $font-weight-default;
+$heading-line-height: 1.1;
+
+$display-line-height: 1.1;
+$display-line-height-tight: 0.9;
+
+
+$container-min-margin-inline: $size-4;
+$container-max-width: 64rem; // 1024px
+$container-max-width-narrow: 40rem; // 640px
+$container-max-width-wide: 75rem; // 1200px
+
+// eyebrow
+$eyebrow-font-size: $font-size-large;
+$eyebrow-font-weight: $font-weight-default;
+$eyebrow-line-height: 1.5;
+
+// layout
+$grid-gap: $size-6; // 24px
+$flex-group-gap: $size-4; // 16px
+$section-spacing: $size-11; // 64px
+
+// links
+$color-link-hover: clr(primary, base);
+
+// buttons
+$button-font-size: $font-size-default;
+$button-font-size-large: $font-size-large;
+$button-font-weight: $font-weight-medium;
+$button-padding: $size-2 $size-6;
+$button-padding-large: $size-3 $size-8;
+$button-border-radius: $border-radius-2;
+$button-border: 1px solid transparent;
+$button-gap: $size-2;
+$button-icon-size: $size-6;
+
+$color-button-primary: clr(primary, base);
+$color-button-primary-text: clr(neutral, white);
+$color-button-primary-border: transparent;
+$color-button-primary-hover: clr(primary, lighter);
+$color-button-primary-text-hover: clr(neutral, white);
+$color-button-primary-border-hover: transparent;
+$color-button-primary-active: clr(primary, dark);
+$color-button-primary-text-active: clr(neutral, white);
+$color-button-primary-border-active: transparent;
+
+
+$color-button-secondary: clr(neutral, white);
+$color-button-secondary-text: clr(primary, base);
+$color-button-secondary-border: clr(primary, base);
+$color-button-secondary-hover: clr(primary, lightest);
+$color-button-secondary-active: clr(primary, lighter);
+$color-button-secondary-text-active: clr(neutral, white);
+
+$color-button-tertiary: clr(neutral, white);
+$color-button-tertiary-text: clr(neutral, base);
+$color-button-tertiary-border: transparent;
+$color-button-tertiary-hover: clr(neutral, light);
+$color-button-tertiary-text-hover: clr(neutral, darker);
+$color-button-tertiary-active: clr(primary, light);
+$color-button-tertiary-text-active: clr(neutral, darker);
+
+$color-callout-background: clr(primary, lightest);
+
+$color-link-text: clr(neutral, dark);
+$color-link-text-hover: clr(primary, light);
+$color-link-text-active: clr(neutral, base);

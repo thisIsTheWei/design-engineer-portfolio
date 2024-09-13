@@ -1,0 +1,51 @@
+---
+import Icon from './Icon.astro';
+
+interface AnchorItem {
+    href: string;
+    text: string;
+    icon?: string | null;
+}
+
+interface Props {
+  items: AnchorItem[];
+}
+
+const { items } = Astro.props;
+
+---
+
+<ul>
+  {items.map((item) => {
+    const isExternal = item.href.startsWith('http') || item.href.startsWith('//');
+    const iconToUse = item.icon || (isExternal ? 'arrow-upper-right' : null);
+    return (
+      <li>
+        <a href={item.href}>{item.text} {iconToUse && <Icon icon={iconToUse as any} />}</a>
+      </li>
+    );
+  })}
+</ul>
+
+<style lang="scss">
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--clr-link-text);
+
+    &:hover {
+      color: var(--clr-link-text-hover);
+      text-decoration: underline;
+    }
+
+    &:active {
+      color: var(--clr-link-text-active);
+      text-decoration: underline;
+    }
+  }
+</style>

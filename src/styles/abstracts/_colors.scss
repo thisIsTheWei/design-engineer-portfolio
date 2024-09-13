@@ -1,0 +1,86 @@
+// Primary Colors
+$primary-900: #32274A;
+$primary-800: #3E2A62;
+$primary-700: #4A3379;
+$primary-600: #563D91;
+$primary-500: #6C55A9;
+$primary-400: #8B7CC1;
+$primary-300: #ABA7D9;
+$primary-200: #CDCCED;
+$primary-100: #E9E5F6;
+
+// Secondary Colors
+$secondary-900: #831A10;
+$secondary-800: #A72A1D;
+$secondary-700: #CB3A2A;
+$secondary-600: #EF5543;
+$secondary-500: #FF6E5E;
+$secondary-400: #FF9185;
+$secondary-300: #FFB4AC;
+$secondary-200: #FFD7D3;
+$secondary-100: #FFEBE9;
+
+// Tertiary Colors
+$tertiary-900: #FF6F00;
+$tertiary-800: #F57F17;
+$tertiary-700: #FAB51D;
+$tertiary-600: #FAB81D;
+$tertiary-500: #FFC228;
+$tertiary-400: #FFD54F;
+$tertiary-300: #FFE082;
+$tertiary-200: #FFECB3;
+$tertiary-100: #FFF8E1;
+
+// Quaternary Colors
+$quaternary-900: #883300;
+$quaternary-800: #E56600;
+$quaternary-700: #F77B0F;
+$quaternary-600: #FF9038;
+$quaternary-500: #FFA561;
+$quaternary-400: #FFBA84;
+$quaternary-300: #FFD0A7;
+$quaternary-200: #FFE6CA;
+$quaternary-100: #FFF5EB;
+
+// Neutral Colors
+$neutral-black: #000000;
+$neutral-white: #FFFFFF;
+$neutral-900: #212529;
+$neutral-800: #343A40;
+$neutral-700: #495057;
+$neutral-600: #6C757D;
+$neutral-500: #ADB5BD;
+$neutral-400: #CED4DA;
+$neutral-300: #DEE2E6;
+$neutral-200: #E9ECEF;
+$neutral-100: #F8F9FA;
+
+$colors: (
+    primary: (
+      base: $primary-700,
+      light: $primary-600,
+      lighter: $primary-400,
+      lightest: $primary-100,
+      dark: $primary-800,
+      darker: $primary-900,
+    ),
+    secondary: (
+      base: $secondary-700,
+    ),
+    tertiary: (
+      base: $tertiary-700,
+    ),
+    quaternary: (
+      base: $quaternary-700,
+    ),
+    neutral: (
+        black: $neutral-black,
+        white: $neutral-white,
+        base: $neutral-700,
+        dark: $neutral-800,
+        darker: $neutral-900,
+        light: $neutral-300,
+        lighter: $neutral-200,
+        lightest: $neutral-100,
+    )
+);

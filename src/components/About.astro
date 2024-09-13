@@ -1,0 +1,80 @@
+---
+import headshot from '../assets/profile-wei-hsin-chen.png';
+---
+
+<section class="about">
+  <div class="about__image">
+    <img src={headshot.src} alt="Wei-Hsin Chen Headshot" />
+  </div>
+  <div class="about__content grid-col">
+    <h2 class="display2 span-2 about__title">Designer, Developer, Problem Solver</h2>
+    <p class="span-2 about__description">With over a decade of experience, I blend design expertise with technical prowess to create exceptional digital experiences. My focus is on bridging the gap between aesthetics and functionality, delivering innovative solutions for industry leaders like Google.</p>
+    <h3 class="h6">My Approach</h3>
+    <p>I believe in user-centric design coupled with robust engineering. Each project is an opportunity to push boundaries and create something extraordinary. Whether it's developing a comprehensive design system or optimizing website performance, I'm committed to excellence and innovation. <br/>
+    Fluent in English and Chinese, I bring a global perspective to every project. Let's collaborate and transform your digital vision into reality.
+    </p>
+  </div>
+</section>
+
+<style lang="scss">
+  @use '../styles/abstracts/' as *;
+
+  .about {
+    display: grid;
+    gap: var(--grid-gap, $grid-gap);
+
+    &__image {
+      align-items: flex-end;
+      display: flex;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    &__content {
+      display: grid;
+      gap: var(--grid-gap, $grid-gap);
+    }
+
+    @container (width > 670px) {
+      grid-template-columns: 3fr 4fr;
+
+      &__image {
+        justify-content: flex-start;
+        max-width: 400px;
+        padding: 0;
+      }
+
+      &__content {
+        grid-template-columns: 1fr 4fr;
+        gap: $size-6;
+        padding-block: $size-13;
+      }
+
+      &__title {
+        margin-block-end: $size-6;
+      }
+
+      &__description {
+        margin-block-end: $size-8;
+      }
+
+      p {
+        max-width: 85%;
+      }
+    }
+    @container (width > 860px) {
+      &__content {
+        padding-block: $size-15;
+      }
+    }
+  }
+
+  img {
+    border-radius: var(--border-radius-2, $border-radius-2);
+  }
+
+  .content {
+    
+  }
+
+</style>

@@ -1,0 +1,84 @@
+---
+import { readFileSync } from 'fs';
+import { resolve } from 'path';
+import ThemeToggle from './ThemeToggle.astro';
+import Cta from './composable/Cta.astro';
+import AnchorLists from './composable/AnchorLists.astro';
+
+interface MenuItem {
+    href: string;
+    text: string;
+}
+
+
+const logoPath = resolve('./src/assets/w-logo.svg');
+const logoSvg = readFileSync(logoPath, 'utf8');
+
+/** Main menu items */
+const menuItems: MenuItem[] = [
+	{ text: 'Home', href: '/' },
+	{ text: 'Featured Works', href: '#featured-works' },
+	{ text: 'About', href: '#about' },
+];
+
+const contactItems: MenuItem[] = [
+	{ text: 'LinkedIn', href: 'https://www.linkedin.com/in/weihsin/' },
+	{ text: 'Resume', href: './Resume_Wei_Hsin_Chen.pdf' },
+	{ text: 'Schedule a call', href: 'https://calendar.app.google/e7Vuknr4uMFS8J6z8' },
+];
+
+---
+<footer>
+  <div>
+    <a href="/" class="logo" set:html={logoSvg} />
+  </div>
+  <div>
+    <h4 class="title">Menu</h4>
+    <AnchorLists items={menuItems} />
+  </div>
+  <div>
+    <h4 class="title">Contact</h4>
+    <AnchorLists items={contactItems} />
+  </div>
+  <div>
+    <ThemeToggle />
+    <p>Design & Develop by Wei-Hsin Chen <br/>
+      © 2024 All right reserved</p>
+  </div>
+</footer>
+
+<style lang="scss">
+  @use "../styles/abstracts/" as *;
+
+  footer {
+    align-items: flex-start;
+    border-top: var(--border-default, $border-default);
+    display: flex;
+    flex-direction: column;
+    gap: $size-4;
+    justify-content: start;
+    margin-inline: var(--_section-padding, $size-4);
+    padding-block-end: $size-11;
+    padding-block-start: $size-4;
+    padding-inline: 0;
+
+    @include mq(m) {
+      flex-direction: row;
+
+      & > * {
+        flex: 1;
+      }
+    }
+  }
+
+  .title {
+    font-size: $font-size-large;
+    font-weight: $font-weight-bold;
+  }
+
+  .logo {
+    display: flex;
+    width: 62px;
+  }
+
+</style>

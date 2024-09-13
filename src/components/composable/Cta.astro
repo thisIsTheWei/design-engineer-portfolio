@@ -1,0 +1,33 @@
+---
+import Icon from './Icon.astro';
+
+
+interface Props {
+  href: string;
+  type?: "primary" | "secondary" | "tertiary";
+  size?: "small" | "large";
+  icon?: string | null;
+  class?: string;
+  target?: "_blank" | "_self";
+}
+
+const { href, type = "tertiary", size = "small", class: className, icon = null, target = "_self" }: Props = Astro.props;
+
+const isExternal = href.startsWith('http') || href.startsWith('//');
+const iconToUse = icon || (isExternal ? 'external' : null);
+---
+
+<a 
+  href={href} 
+  class:list={['button', `button--${type}`, className, { 'button--with-icon': iconToUse }]}
+  data-type={type} 
+  data-size={size} 
+  target={isExternal ? '_blank' : target}
+  rel={isExternal ? 'noopener noreferrer' : undefined}
+  {...(iconToUse ? { 'data-icon': iconToUse } : {})}
+>
+  <span class="button__text"><slot /></span>
+  {iconToUse && (
+    <Icon icon={iconToUse as any} />
+  )}
+</a>
