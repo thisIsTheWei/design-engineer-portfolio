@@ -1,6 +1,7 @@
 @use "sass:map";
 @use "colors" as *;
 @use "sizes" as *;
+@use "z-index" as *;
 
 @function clr($base, $shade: base) {
   @if map.has-key($colors, $base, $shade) {
@@ -16,5 +17,13 @@
     @return map.get($sizes, $size);
   } @else {
     @error '$sizes does not have that size!';
+  }
+}
+
+@function z($layer) {
+  @if map.has-key($z-layers, $layer) {
+    @return map.get($z-layers, $layer);
+  } @else {
+    @error '$z-layers does not have that layer!';
   }
 }

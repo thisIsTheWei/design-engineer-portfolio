@@ -22,35 +22,53 @@ const navItems: NavItem[] = [
 ---
 
 <header>
+  <a href="#main-content" class="skip-to-main">Skip to main content</a>
   <a href="/" class="logo" set:html={logoSvg} />
-  <nav class="nav">
-    <ul>
-      {navItems.map(item => (
-        <li>
-          <a href={item.href}>{item.text}</a>
-        </li>
-      ))}
-    </ul>
-  </nav>
-  <div class="footer">
-    <Cta href="#contact" type="primary">Get in touch</Cta>
-    <ThemeToggle />
+  <button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false">
+    <span class="visually-hidden">Menu</span>
+    <span class="hamburger"></span>
+  </button>
+  <div class="nav-overlay" id="primary-nav">
+    <nav class="nav">
+      <ul>
+        {navItems.map(item => (
+          <li>
+            <a href={item.href}>{item.text}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <div class="footer-overlay">
+      <Cta href="#contact" type="primary">Get in touch</Cta>
+      <ThemeToggle />
+    </div>
   </div>
 </header>
 
 
 <script>
-  const menuToggle = document.querySelector('.menu-toggle');
+  const navToggle = document.querySelector('[aria-controls="primary-nav"]');
   const navOverlay = document.querySelector('.nav-overlay');
 
-  menuToggle?.addEventListener('click', () => {
-    menuToggle.classList.toggle('active');
+  navToggle?.addEventListener('click', () => {
+    const currentState = navToggle.getAttribute('aria-expanded');
+    navToggle.setAttribute('aria-expanded', currentState === 'false' ? 'true' : 'false');
     navOverlay?.classList.toggle('show');
     document.body.classList.toggle('menu-open');
   });
+
+   // Close menu when clicking on a link
+   const navLinks = document.querySelectorAll('.nav-overlay a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle?.setAttribute('aria-expanded', 'false');
+        navOverlay?.classList.remove('show');
+        document.body.classList.remove('menu-open');
+      });
+  });
 </script>
 <style lang="scss">
-  @use '../styles/abstracts/sizes' as *;
+  @use '../styles/abstracts/' as *;
 
   header {
     align-items: center;
@@ -60,6 +78,8 @@ const navItems: NavItem[] = [
     padding-block: $size-4;
     padding-inline: 0;
     margin-inline: var(--_section-padding);
+    position: relative;
+    z-index: 100;
   }
 
   ul {
@@ -80,8 +100,13 @@ const navItems: NavItem[] = [
 
   .logo {
     display: flex;
-    width: 281px;
-    height: 32px;
+    width: 245px;
+    height: 28px;
+    
+    @include mq(m) {
+      width: 281px;
+      height: 32px;
+    }
   }
 
   .logo svg {
@@ -100,4 +125,129 @@ const navItems: NavItem[] = [
     }
   }
 
+  .skip-to-main {
+    position: absolute;
+    translate: -200%;
+    background-color: var(--clr-button-primary);
+    color: var(--clr-button-primary-text);
+    padding: 0.5rem 1rem;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--clr-button-primary-text-hover);
+      background-color: var(--clr-button-primary-hover);
+      translate: 0;
+    }
+  }
+
+  .menu-toggle {
+    display: none;
+    @include mq-max(m) {
+      display: flex;
+      align-items: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: z(modal) + 1;
+    }
+  }
+
+  .hamburger {
+    --_hamburger-color: var(--clr-ff-body, $clr-ff-body);
+    width: 24px;
+    height: 2px;
+    background-color: var(--_hamburger-color);
+    position: relative;
+
+    &::before,
+    &::after {
+      content: '';
+      left: 0;
+      position: absolute;
+      width: 24px;
+      height: 2px;
+      background-color: var(--_hamburger-color);
+      transition: transform 0.3s ease;
+    }
+
+    &::before { top: -8px; }
+    &::after { bottom: -8px; }
+  }
+
+  .menu-toggle[aria-expanded="true"] .hamburger {
+    background-color: transparent;
+
+    &::before {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    &::after {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+  }
+
+  .nav-overlay {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 55%;
+
+    @include mq-max(m) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: z(modal);
+      background-color: var(--clr-background);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+
+      &.show {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  .footer-overlay {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+
+    @include mq-max(m) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .nav {
+    @include mq-max(m) {
+      margin-bottom: 2rem;
+    }
+
+    ul {
+      @include mq-max(m) {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+      }
+    }
+  }
+
+  :global(body.menu-open) {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
 </style>
