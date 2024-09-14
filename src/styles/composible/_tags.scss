@@ -1,0 +1,27 @@
+@use "../abstracts/sizes" as *;
+
+.tags {
+  --_clr-tag-background: var(--clr-tag-background);
+  --_clr-tag-text: var(--clr-tag-text);
+  --_tag-border-radius: var(--tag-border-radius);
+  --_tag-padding: var(--tag-padding);
+  --_tag-font-size: var(--tag-font-size);
+  --_tag-gap: var(--tag-gap);
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--_tag-gap);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  > li {
+    background-color: var(--_clr-tag-background);
+    border-radius: var(--_tag-border-radius);
+    color: var(--_clr-tag-text);
+    font-size: var(--_tag-font-size);
+    position: relative;
+    padding: var(--_tag-padding);
+    text-transform: lowercase;
+  }
+}

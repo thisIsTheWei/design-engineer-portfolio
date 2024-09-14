@@ -2,7 +2,7 @@
 import headshot from '../assets/profile-wei-hsin-chen.png';
 ---
 
-<section class="about">
+<section class="about" id="about-content">
   <div class="about__image">
     <img src={headshot.src} alt="Wei-Hsin Chen Headshot" />
   </div>
@@ -47,7 +47,7 @@ import headshot from '../assets/profile-wei-hsin-chen.png';
       &__content {
         grid-template-columns: 1fr 4fr;
         gap: $size-6;
-        padding-block: $size-13;
+        padding-block-end: $size-13;
       }
 
       &__title {
@@ -64,17 +64,13 @@ import headshot from '../assets/profile-wei-hsin-chen.png';
     }
     @container (width > 860px) {
       &__content {
-        padding-block: $size-15;
+        padding-block-end: $size-15;
       }
     }
   }
 
   img {
     border-radius: var(--border-radius-2, $border-radius-2);
-  }
-
-  .content {
-    
   }
 
 </style>

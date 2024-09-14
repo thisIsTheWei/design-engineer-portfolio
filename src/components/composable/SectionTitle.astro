@@ -1,0 +1,28 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className }: Props = Astro.props;
+---
+
+<h2 class:list={[className, "h5", "section-title"]}>
+  <slot />
+  <Icon icon="arrow-down-right" size="24px" display="inline-block" />
+</h2>
+
+<style lang="scss">
+  @use "../../styles/abstracts/" as *;
+
+  .section-title {
+    padding-block-end: var(--section-title-padding-block-end, $section-title-padding-block-end);
+    border-block-end: var(--section-title-border, $section-title-border);
+  }
+
+  .section-title > svg {
+    --icon-size: #{$size-4};
+    display: inline-block;
+  }
+</style>

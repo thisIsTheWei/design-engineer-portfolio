@@ -1,0 +1,23 @@
+.highlight-heading {
+  --_clr-highlight: var(--clr-highlight-primary);
+  
+  span {
+    color: var(--_clr-highlight);
+  }
+
+  &[data-type="primary"] span {
+    --_clr-highlight: var(--clr-highlight-primary);
+  }
+
+  &[data-type="secondary"] span {
+    --_clr-highlight: var(--clr-highlight-secondary);
+  }
+
+  &[data-type="tertiary"] span {
+    --_clr-highlight: var(--clr-highlight-tertiary);
+  }
+
+  &[data-type="quaternary"] span {
+    --_clr-highlight: var(--clr-highlight-quaternary);
+  }
+}

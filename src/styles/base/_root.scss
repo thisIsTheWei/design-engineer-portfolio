@@ -68,14 +68,27 @@
   --button-icon-size: #{$button-icon-size};
   --flow-space: #{$size-6};
   --grid-gap: #{$grid-gap};
-  --flex-group-gap: #{$flex-group-gap};
   --section-spacing: #{$section-spacing};
-  
+  --section-title-padding-block-end: #{$section-title-padding-block-end};
+  --section-title-border: #{$section-title-border};
   --clr-callout-background: #{$color-callout-background};
 
   --clr-link-text: #{$color-link-text};
   --clr-link-text-hover: #{$color-link-text-hover};
   --clr-link-text-active: #{$color-link-text-active};
+
+  --clr-tag-background: #{$color-tag-background};
+  --clr-tag-text: #{$color-tag-text}; 
+  --tag-border-radius: #{$tag-border-radius};
+  --tag-gap: #{$tag-gap};
+  --tag-padding: #{$tag-padding};
+  --tag-font-size: #{$tag-font-size};
+  --tag-padding: #{$tag-padding};
+
+  --clr-highlight-primary: #{$color-highlight-primary};
+  --clr-highlight-secondary: #{$color-highlight-secondary};
+  --clr-highlight-tertiary: #{$color-highlight-tertiary};
+  --clr-highlight-quaternary: #{$color-highlight-quaternary};
 
   &.theme-dark {
     --clr-background: #{$color-background-default-dark};
@@ -83,5 +96,13 @@
 
     --clr-ff-body: #{$body-text-color-reverse};
     --clr-ff-headline: #{$heading-text-color-reverse};
+
+    --section-title-border: #{$section-title-border-reverse};
+
+    --clr-highlight-primary: #{$color-highlight-primary-reverse};
+    
+    --clr-link-text: #{$color-link-text-reverse};
+    --clr-link-text-hover: #{$color-link-text-hover-reverse};
+    
   } 
 }

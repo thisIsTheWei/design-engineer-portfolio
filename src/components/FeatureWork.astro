@@ -1,31 +1,46 @@
 ---
 import Cta from './composable/Cta.astro';
+import HighlightHeading3 from './composable/HighlightHeading3.astro';
 
 interface Props {
   class?: string;
+  work: {
+    data: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      image: string;
+      url: string;
+      keywords: string[];
+      enable_case_study: boolean;
+      theme: string;
+    };
+    slug: string;
+  }
 }
 
-
-const { class: className }: Props = Astro.props;
-const tags = [ "Web", "Tooling", "2X Velocity", "3X Productivity" ];
+const { class: className, work }: Props = Astro.props;
+const { eyebrow, title, image, url, keywords = [], enable_case_study, theme } = work.data;
 ---
 <div class:list={[className, "featured-work-container"]}>
   <div class="featured-work">
     <div class="featured-work__image">
-      <img src="https://placehold.co/1280x560" alt="Featured Work" />
+      <img src={image} alt={title} />
     </div>
     <div class="featured-work__content">
-      <h4 class="eyebrow">Transforming Chrome Enterprise</h4>
-      <h3 class="h3">A Design-to-Development Revolution for Millions of Users</h3>
-      <ul class="featured-work__tags">
-        {tags.map(tag => (
-          <li>{tag}</li>
-        ))}
-      </ul>
+      <h4 class="eyebrow">{eyebrow}</h4>
+      <HighlightHeading3 title={title} type={theme as "primary" | "secondary" | "tertiary" | "quaternary"} />
+      {keywords.length > 0 && (
+        <ul class="tags featured-work__tags">
+          {keywords.map(keyword => (
+            <li>{keyword}</li>
+          ))}
+        </ul>
+      )}
     </div>
     <div class:list={[className, "featured-work__ctas"]}>
-      <Cta href="#" type="primary">View Case Study</Cta>
-      <Cta href="#" type="secondary">See Live</Cta>
+      {enable_case_study && <Cta href={`/case-study/${work.slug}`} type="primary">View Case Study</Cta>}
+      {url && <Cta href={url} type="secondary">See Live</Cta>}
     </div>
   </div>
 </div>
@@ -36,31 +51,31 @@ const tags = [ "Web", "Tooling", "2X Velocity", "3X Productivity" ];
     container-type: inline-size;
   }
 
+  .span-2 {
+    .featured-work__image {
+      aspect-ratio: 16 / 7;
+    }
+  }
+
   .featured-work {
     display: grid;
     gap: $size-8;
 
+    &__image {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border-radius: var(--border-radius-2, $border-radius-2);
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
 
     &__tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: $size-3;
-      list-style: none;
-      margin: 0;
       margin-block-start: $size-4;
-      padding: 0;
-
-      > li {
-        position: relative;
-        padding-inline-start: $size-2;
-
-        &::before {
-          color: currentColor;
-          content: "•";
-          left: 0;
-          position: absolute;
-        }
-      }
     }
 
     &__ctas {
@@ -79,7 +94,7 @@ const tags = [ "Web", "Tooling", "2X Velocity", "3X Productivity" ];
     }
 
     @container (width > 940px) {
-      grid-template-columns: 2fr 1fr;
+      grid-template-columns: 5fr 3fr;
 
       &__image {
         grid-column: span 2;

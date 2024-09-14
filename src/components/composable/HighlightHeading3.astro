@@ -1,0 +1,9 @@
+---
+interface Props {
+  title: string,
+  type: "primary" | "secondary" | "tertiary" | "quaternary"
+}
+
+const { title, type }: Props = Astro.props;
+---
+<h3 class="h3 highlight-heading" set:html={title} data-type={type}></h3>

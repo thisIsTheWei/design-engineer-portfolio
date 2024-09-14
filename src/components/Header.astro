@@ -15,8 +15,8 @@ const logoSvg = readFileSync(logoPath, 'utf8');
 
 /** Main menu items */
 const navItems: NavItem[] = [
-	{ text: 'Featured Works', href: '#featured-works' },
-	{ text: 'About', href: '#about' },
+	{ text: 'Featured Works', href: '#featured-works-content' },
+	{ text: 'About', href: '#about-content' },
 ];
 
 ---
@@ -120,14 +120,14 @@ const navItems: NavItem[] = [
     
     &:hover,
     &:focus-visible {
-      color: var(--clr-link-hover);
+      color: var(--clr-link-text-hover);
       text-decoration: underline;
     }
   }
 
   .skip-to-main {
     position: absolute;
-    translate: -200%;
+    translate: -400%;
     background-color: var(--clr-button-primary);
     color: var(--clr-button-primary-text);
     padding: 0.5rem 1rem;

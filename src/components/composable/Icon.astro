@@ -7,13 +7,15 @@ interface Props {
 	color?: string;
 	gradient?: boolean;
 	size?: string;
+  display?: 'inline-block' | 'block';
 }
 
-const { color = 'currentcolor', gradient, icon, size } = Astro.props;
+const { color = 'currentcolor', gradient, icon, size, display } = Astro.props;
 const iconPath = iconPaths[icon];
 
 const attrs: HTMLAttributes<'svg'> = {};
 if (size) attrs.style = { '--icon-size': size };
+if (display) attrs.style = { '--icon-display': display };
 
 const gradientId = 'icon-gradient-' + Math.round(Math.random() * 10e12).toString(36);
 ---
@@ -50,6 +52,8 @@ const gradientId = 'icon-gradient-' + Math.round(Math.random() * 10e12).toString
 <style>
 	svg {
     --_icon-size: var(--icon-size, 1em);
+    --_icon-display: var(--icon-display, inline-block);
+    display: var(--icon-display);
 		vertical-align: middle;
 		width: var(--_icon-size);
 		height: var(--_icon-size);

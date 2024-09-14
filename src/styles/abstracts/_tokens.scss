@@ -7,6 +7,7 @@ $border-default: 1px solid clr(neutral, light);
 
 $border-radius-1: $size-3;
 $border-radius-2: $size-6;
+$border-radius-3: $size-9;
 
 $color-background-default: clr(neutral, lightest);
 $color-background-default-dark: clr(neutral, darker);
@@ -49,7 +50,9 @@ $eyebrow-line-height: 1.5;
 
 // layout
 $grid-gap: $size-6; // 24px
-$flex-group-gap: $size-4; // 16px
+$section-title-padding-block-end: $size-4; // 16px
+$section-title-border: 1px solid clr(primary, light); 
+$section-title-border-reverse: 1px solid clr(primary, lightest);
 $section-spacing: $size-11; // 64px
 
 // links
@@ -95,5 +98,23 @@ $color-button-tertiary-text-active: clr(neutral, darker);
 $color-callout-background: clr(primary, lightest);
 
 $color-link-text: clr(neutral, dark);
+$color-link-text-reverse: clr(neutral, lightest);
 $color-link-text-hover: clr(primary, light);
+$color-link-text-hover-reverse: clr(primary, lighter);
 $color-link-text-active: clr(neutral, base);
+
+// tags
+$tag-border-radius: $border-radius-3;
+$tag-padding: $size-1 $size-4;
+$tag-font-size: $font-size-small;
+$tag-gap: $size-2;  
+
+$color-tag-background: clr(secondary, lightest);
+$color-tag-text: clr(neutral, dark);
+
+// highlights
+$color-highlight-primary: clr(primary, base);
+$color-highlight-primary-reverse: clr(primary, lighter);
+$color-highlight-secondary: clr(secondary, base);
+$color-highlight-tertiary: clr(tertiary, base);
+$color-highlight-quaternary: clr(quaternary, light);

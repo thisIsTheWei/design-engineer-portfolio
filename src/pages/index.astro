@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/global.scss';
 import IntroHero from '../components/IntroHero.astro';
-import FeaturedWork from '../components/FeatureWork.astro';
+import FeaturedWorkGroup from '../components/FeatureWorkGroup.astro';
 import About from '../components/About.astro';
 import Contact from '../components/Contact.astro';
 
@@ -11,15 +11,7 @@ const title = 'Design Engineer Portfolio';
 ---
 <BaseLayout>
   <IntroHero />
-  <section class="featured-works even-columns grid-col">
-    <h2 class="h2">Featured Works</h2>
-    <FeaturedWork class="span-2" />
-    <FeaturedWork />
-    <FeaturedWork />
-    <FeaturedWork class="span-2" />
-    <FeaturedWork />
-    <FeaturedWork />
-  </section>
+  <FeaturedWorkGroup />
   <About />
   <Contact />
 </BaseLayout>

@@ -21,7 +21,7 @@
   display: inline-flex;
   gap: var(--_btn-gap);
   justify-content: center;
-  line-height: 1;
+  line-height: 1.5;
   padding: var(--_btn-padding);
   text-decoration: none;
   transition: 275ms ease;
@@ -60,7 +60,6 @@
 
     &:hover, &:focus-visible {
       --_clr-button-background: var(--clr-button-secondary-hover);
-      --_clr-button-text: var(--clr-button-secondary-text-hover);
       --_btn-border: 1px solid var(--clr-button-secondary-border);
     }
 

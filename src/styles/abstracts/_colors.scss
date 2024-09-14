@@ -66,12 +66,15 @@ $colors: (
     ),
     secondary: (
       base: $secondary-700,
+      lightest: $secondary-100,
+      dark: $secondary-800,
     ),
     tertiary: (
       base: $tertiary-700,
     ),
     quaternary: (
       base: $quaternary-700,
+      light: $quaternary-600,
     ),
     neutral: (
         black: $neutral-black,

@@ -14,7 +14,7 @@ interface Props {
 const { href, type = "tertiary", size = "small", class: className, icon = null, target = "_self" }: Props = Astro.props;
 
 const isExternal = href.startsWith('http') || href.startsWith('//');
-const iconToUse = icon || (isExternal ? 'external' : null);
+const iconToUse = icon || (isExternal ? 'arrow-upper-right' : null);
 ---
 
 <a 
@@ -28,6 +28,6 @@ const iconToUse = icon || (isExternal ? 'external' : null);
 >
   <span class="button__text"><slot /></span>
   {iconToUse && (
-    <Icon icon={iconToUse as any} />
+    <Icon icon={iconToUse as any} display="inline-block" />
   )}
 </a>
