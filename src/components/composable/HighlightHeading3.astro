@@ -5,5 +5,9 @@ interface Props {
 }
 
 const { title, type }: Props = Astro.props;
+
+function removeSpanTags(text: string) {
+  return text.replace(/<\/?span[^>]*>/g, '');
+}
 ---
-<h3 class="h3 highlight-heading" set:html={title} data-type={type}></h3>
+<h3 class="h3 highlight-heading" set:html={title} data-type={type} aria-label={removeSpanTags(title)}></h3>
