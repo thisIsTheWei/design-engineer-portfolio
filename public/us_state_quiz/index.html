@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US States Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <h1>US States Quiz</h1>
+        <div id="map-container"></div>
+        <div id="quiz-container">
+            <div id="question"></div>
+            <input type="text" id="answer-name" placeholder="Enter state name">
+            <input type="text" id="answer-code" placeholder="Enter postal code">
+            <button id="submit">Submit</button>
+            <div id="result"></div>
+            <div id="score"></div>
+        </div>
+        <div id="quiz-results"></div>
+    </div>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/topojson.v3.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
