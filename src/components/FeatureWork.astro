@@ -1,7 +1,7 @@
 ---
 import Cta from './composable/Cta.astro';
 import HighlightHeading from './composable/HighlightHeading.astro';
-import { getImage, Image } from 'astro:assets';
+import { Image } from 'astro:assets';
 
 interface Props {
   class?: string;
@@ -25,14 +25,11 @@ interface Props {
 
 const { class: className, work }: Props = Astro.props;
 const { eyebrow, title, feature_image, url, keywords = [], enable_case_study, theme } = work.data;
-
-// Dynamically import the image
-const imageModule = await import(`../assets${feature_image.src}`);
 ---
 <div class:list={[className, "featured-work-container"]}>
   <div class="featured-work">
     <div class="featured-work__image">
-      <Image src={imageModule.default} alt={feature_image.alt} format='avif' quality={"mid"} />
+      <img src={`/assets${feature_image.src}`} alt={feature_image.alt} loading="lazy" decoding="async" />
     </div>
     <div class="featured-work__content">
       <h4 class="eyebrow">{eyebrow}</h4>
