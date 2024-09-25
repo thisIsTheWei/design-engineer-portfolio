@@ -1,31 +1,37 @@
 ---
-import SectionTitle from './composable/SectionTitle.astro';
-import FeaturedWork from './FeatureWork.astro';
-import { getCollection } from 'astro:content';
+import SectionTitle from "./composable/SectionTitle.astro";
+import FeaturedWork from "./FeatureWork.astro";
+import { getCollection } from "astro:content";
 
-const featuredWorks = (await getCollection('work', ({ data }) => data.featured === true))
-  .sort((a, b) => a.data.order - b.data.order);
+const featuredWorks = (
+  await getCollection("work", ({ data }) => data.featured === true)
+).sort((a, b) => a.data.order - b.data.order);
 ---
 
-<section class="featured-work-group even-columns grid-col" id="featured-works-content">
+<section class="featured-work-section" id="featured-works-content">
   <SectionTitle class="span-2">Featured Works</SectionTitle>
-  {featuredWorks.map((work: any, index: number) => (
-    <FeaturedWork 
-      work={work} 
-      class={index === 0 || index === 3 ? 'span-2' : ''}
-    />
-  ))}
+  <div class="featured-work-group even-columns grid-col">
+    {
+      featuredWorks.map((work: any, index: number) => (
+        <FeaturedWork
+          work={work}
+          class={index === 0 || index === 3 ? "span-2" : ""}
+        />
+      ))
+    }
+  </div>
 </section>
 
 <style lang="scss">
   @use "../styles/abstracts/" as *;
-  
+
   .featured-work-group {
     --_grid-row-gap: #{$size-9};
 
     grid-row-gap: var(--_grid-row-gap, #{$size-9});
-    
+
     @include mq(m) {
+      --_grid-gap: #{$size-10};
       --_grid-row-gap: #{$size-11};
     }
   }

@@ -1,10 +1,11 @@
 ---
+import { Image } from 'astro:assets';
 import headshot from '../assets/profile-wei-hsin-chen.png';
 ---
 
 <section class="about" id="about-content">
   <div class="about__image">
-    <img src={headshot.src} alt="Wei-Hsin Chen Headshot" />
+    <Image src={headshot} alt="Wei-Hsin Chen" width={400} height={532} format='avif' quality={"mid"} />
   </div>
   <div class="about__content grid-col">
     <h2 class="display2 span-2 about__title">Designer, Developer, Problem Solver</h2>
@@ -35,7 +36,7 @@ import headshot from '../assets/profile-wei-hsin-chen.png';
       gap: var(--grid-gap, $grid-gap);
     }
 
-    @container (width > 670px) {
+    @include mq(m) {
       grid-template-columns: 3fr 4fr;
 
       &__image {
@@ -45,7 +46,7 @@ import headshot from '../assets/profile-wei-hsin-chen.png';
       }
 
       &__content {
-        grid-template-columns: 1fr 4fr;
+        grid-template-columns: 2fr 7fr;
         gap: $size-6;
         padding-block-end: $size-13;
       }
@@ -71,6 +72,7 @@ import headshot from '../assets/profile-wei-hsin-chen.png';
 
   img {
     border-radius: var(--border-radius-2, $border-radius-2);
+    height: auto;
   }
 
 </style>

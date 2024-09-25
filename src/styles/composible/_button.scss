@@ -1,3 +1,7 @@
+@use "../abstracts" as *;
+
+$radius-size: 500px;
+
 .button {
   --_clr-button-background: var(--clr-button-background);
   --_clr-button-text: var(--clr-button-text);
@@ -24,11 +28,40 @@
   line-height: 1.5;
   padding: var(--_btn-padding);
   text-decoration: none;
-  transition: 275ms ease;
+  transition: all 275ms ease;
+  overflow: clip;
+  position: relative;
+
+  &__text, svg {
+    z-index: z(base) + 1;
+  }
+
+  &__text {
+    position: relative;
+    z-index: z(base) + 1;
+  }
+
+  &:before {
+    background-color: var(--_clr-button-background);
+    border-radius: 50%;
+    content: '';
+    left: 0;
+    top: 0;
+    height: 0px;
+    position: absolute;
+    transition: all .4s ease-in;
+    transform: translate(-50%, -50%);
+    width: 0px;
+  }
 
   &:hover, &:focus-visible {
-    --_clr-button-background: var(--clr-button-background-hover);
     --_clr-button-text: var(--clr-button-text-hover);
+
+    &:before {
+      --_clr-button-background: var(--clr-button-background-hover);
+      width: $radius-size;
+      height: $radius-size;
+    }
   }
 
   &:active {
@@ -41,9 +74,12 @@
     --_clr-button-text: var(--clr-button-primary-text);
 
     &:hover, &:focus-visible {
-      --_clr-button-background: var(--clr-button-primary-hover);
       --_clr-button-text: var(--clr-button-primary-text-hover);
       --_btn-border: 1px solid var(--clr-button-primary-border-hover);
+
+      &:before {
+        --_clr-button-background: var(--clr-button-primary-hover);
+      }
     }
 
     &:active {
@@ -59,8 +95,11 @@
     --_btn-border: 1px solid var(--clr-button-secondary-border);
 
     &:hover, &:focus-visible {
-      --_clr-button-background: var(--clr-button-secondary-hover);
       --_btn-border: 1px solid var(--clr-button-secondary-border);
+
+      &:before {
+        --_clr-button-background: var(--clr-button-secondary-hover);
+      }
     }
 
     &:active {

@@ -37,21 +37,21 @@ $heading-line-height: 1.1;
 $display-line-height: 1.1;
 $display-line-height-tight: 0.9;
 
-
 $container-min-margin-inline: $size-4;
 $container-max-width: 64rem; // 1024px
 $container-max-width-narrow: 40rem; // 640px
 $container-max-width-wide: 75rem; // 1200px
 
 // eyebrow
-$eyebrow-font-size: $font-size-large;
+$eyebrow-font-size: $font-size-default;
 $eyebrow-font-weight: $font-weight-default;
 $eyebrow-line-height: 1.5;
 
 // layout
 $grid-gap: $size-6; // 24px
 $section-title-padding-block-end: $size-4; // 16px
-$section-title-border: 1px solid clr(primary, light); 
+$section-title-margin-block-end: $size-10; // 48px
+$section-title-border: 1px solid clr(primary, light);
 $section-title-border-reverse: 1px solid clr(primary, lightest);
 $section-spacing: $size-11; // 64px
 
@@ -78,7 +78,6 @@ $color-button-primary-border-hover: transparent;
 $color-button-primary-active: clr(primary, dark);
 $color-button-primary-text-active: clr(neutral, white);
 $color-button-primary-border-active: transparent;
-
 
 $color-button-secondary: clr(neutral, white);
 $color-button-secondary-text: clr(primary, base);
@@ -107,7 +106,7 @@ $color-link-text-active: clr(neutral, base);
 $tag-border-radius: $border-radius-3;
 $tag-padding: $size-1 $size-4;
 $tag-font-size: $font-size-small;
-$tag-gap: $size-2;  
+$tag-gap: $size-2;
 
 $color-tag-background: clr(secondary, lightest);
 $color-tag-text: clr(neutral, dark);

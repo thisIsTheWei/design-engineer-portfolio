@@ -1,0 +1,16 @@
+---
+interface Props {
+  title: string,
+  type: "primary" | "secondary" | "tertiary" | "quaternary"
+  level: number,
+  class?: string
+}
+
+const { title, type, level, class: className }: Props = Astro.props;
+const Element = 'h' + level
+
+function removeSpanTags(text: string) {
+  return text.replace(/<\/?span[^>]*>/g, '');
+}
+---
+<Element class:list={[className, 'highlight-heading']} set:html={title} data-type={type} aria-label={removeSpanTags(title)}></Element>

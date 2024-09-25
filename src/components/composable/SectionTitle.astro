@@ -1,5 +1,5 @@
 ---
-import Icon from './Icon.astro';
+import Icon from "./Icon.astro";
 
 interface Props {
   class?: string;
@@ -17,8 +17,18 @@ const { class: className }: Props = Astro.props;
   @use "../../styles/abstracts/" as *;
 
   .section-title {
-    padding-block-end: var(--section-title-padding-block-end, $section-title-padding-block-end);
+    --_margin-block-end: var(
+      --section-title-margin-block-end,
+      #{$section-title-margin-block-end}
+    );
+    --_padding-block-end: var(
+      --section-title-padding-block-end,
+      #{$section-title-padding-block-end}
+    );
+
     border-block-end: var(--section-title-border, $section-title-border);
+    margin-block-end: var(--_margin-block-end);
+    padding-block-end: var(--_padding-block-end);
   }
 
   .section-title > svg {

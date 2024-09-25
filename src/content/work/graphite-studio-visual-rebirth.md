@@ -3,7 +3,9 @@ eyebrow: "Redefining Creative Identity"
 title: "Crafting a Creative Foundation: Graphite Studio's <span>Visual Rebirth</span>"
 description: "Developed a comprehensive brand identity for Graphite Studio, a new design studio branching out from Gopomo. The project encompassed logo design inspired by graphite's atomic structure, visual identity system creation, and website development, resulting in a cohesive brand that embodies the studio's innovative spirit and creative approach."
 featured: true
-image: "/assets/graphite-studio-visual-rebirth/graphite-studio-visual-rebirth-featured.png"
+feature_image: 
+  src: "/graphite-studio-visual-rebirth/graphite-studio-visual-rebirth-featured.jpg"
+  alt: "Two monitors showing Chrome Enterprise and ChromeOS website designs with minimalist layouts and blue accents on white backgrounds."
 url: "https://graphitestudio.xyz/"
 keywords:
   - Brand Strategy

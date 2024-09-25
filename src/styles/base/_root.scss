@@ -20,6 +20,9 @@
   --ff-headline: #{$heading-font-family};
   --ff-weight-headline: #{$heading-font-weight};
   --headline-line-height: #{$heading-line-height};
+  --eyebrow-font-size: #{$eyebrow-font-size};
+  --eyebrow-font-weight: #{$eyebrow-font-weight};
+  --eyebrow-line-height: #{$eyebrow-line-height};
 
   --letter-spacing-tight: #{$letter-spacing-tight};
   --letter-spacing-loose: #{$letter-spacing-loose};
@@ -34,7 +37,7 @@
 
   // buttons
   --clr-button-background: #{$color-button-tertiary};
-  --clr-button-background-hover: #{$color-button-tertiary-hover};;
+  --clr-button-background-hover: #{$color-button-tertiary-hover};
   --clr-button-background-active: #{$color-button-tertiary-active};
   --clr-button-text: #{$color-button-tertiary-text};
   --clr-button-text-hover: #{$color-button-tertiary-text-hover};
@@ -45,11 +48,11 @@
   --clr-button-primary-border: #{$color-button-primary-border};
   --clr-button-primary-hover: #{$color-button-primary-hover};
   --clr-button-primary-text-hover: #{$color-button-primary-text-hover};
-  --clr-button-primary-border-hover: #{$color-button-primary-border-hover}; 
+  --clr-button-primary-border-hover: #{$color-button-primary-border-hover};
   --clr-button-primary-active: #{$color-button-primary-active};
   --clr-button-primary-text-active: #{$color-button-primary-text-active};
   --clr-button-primary-border-active: #{$color-button-primary-border-active};
-  --clr-button-primary-text-active: #{$color-button-primary-text-active}; 
+  --clr-button-primary-text-active: #{$color-button-primary-text-active};
 
   --clr-button-secondary: #{$color-button-secondary};
   --clr-button-secondary-text: #{$color-button-secondary-text};
@@ -57,7 +60,7 @@
   --clr-button-secondary-hover: #{$color-button-secondary-hover};
   --clr-button-secondary-active: #{$color-button-secondary-active};
   --clr-button-secondary-text-active: #{$color-button-secondary-text-active};
- 
+
   --button-font-size: #{$button-font-size};
   --button-font-weight: #{$button-font-weight};
   --button-padding: #{$button-padding};
@@ -70,6 +73,7 @@
   --grid-gap: #{$grid-gap};
   --section-spacing: #{$section-spacing};
   --section-title-padding-block-end: #{$section-title-padding-block-end};
+  --section-title-margin-block-end: #{$section-title-margin-block-end};
   --section-title-border: #{$section-title-border};
   --clr-callout-background: #{$color-callout-background};
 
@@ -78,7 +82,7 @@
   --clr-link-text-active: #{$color-link-text-active};
 
   --clr-tag-background: #{$color-tag-background};
-  --clr-tag-text: #{$color-tag-text}; 
+  --clr-tag-text: #{$color-tag-text};
   --tag-border-radius: #{$tag-border-radius};
   --tag-gap: #{$tag-gap};
   --tag-padding: #{$tag-padding};
@@ -100,9 +104,8 @@
     --section-title-border: #{$section-title-border-reverse};
 
     --clr-highlight-primary: #{$color-highlight-primary-reverse};
-    
+
     --clr-link-text: #{$color-link-text-reverse};
     --clr-link-text-hover: #{$color-link-text-hover-reverse};
-    
-  } 
+  }
 }
