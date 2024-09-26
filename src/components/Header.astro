@@ -24,7 +24,7 @@ const navItems: NavItem[] = [
 
 <header>
   <a href="#main-content" class="skip-to-main">Skip to main content</a>
-  <a href="/" class="logo" set:html={logoSvg} />
+  <a href="/" class="logo" set:html={logoSvg} aria-label="Wei-Hsin Chen - Home"/>
   <button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false">
     <span>Menu</span>
   </button>
@@ -119,7 +119,7 @@ const navItems: NavItem[] = [
 
   .skip-to-main {
     position: absolute;
-    translate: -1000px;
+    translate: -2000px;
     background-color: var(--clr-button-primary);
     color: var(--clr-button-primary-text);
     padding: 0.5rem 1rem;
@@ -238,18 +238,16 @@ const navItems: NavItem[] = [
 
     @include mq-max(m) {
       align-items: center;
-      bottom: $size-10;
       display: flex;
       flex-direction: row;
       gap: 2rem;
       opacity: 0;
-      position: absolute;
     }
   }
 
   @include mq-max(m) {
     .nav {
-      margin-bottom: 2rem;
+      margin-bottom: $size-12;
     }
 
     ul {

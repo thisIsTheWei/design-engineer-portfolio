@@ -21,7 +21,7 @@ $secondary-200: #FFD7D3;
 $secondary-100: #FFEBE9;
 
 // Tertiary Colors
-$tertiary-900: #FF6F00;
+$tertiary-900: #EB6600;
 $tertiary-800: #F57F17;
 $tertiary-700: #FAB51D;
 $tertiary-600: #FAB81D;
@@ -66,15 +66,25 @@ $colors: (
     ),
     secondary: (
       base: $secondary-700,
+      light: $secondary-600,
+      lighter: $secondary-400,
       lightest: $secondary-100,
       dark: $secondary-800,
+      darker: $secondary-900,
     ),
     tertiary: (
       base: $tertiary-700,
+      light: $tertiary-600,
+      lighter: $tertiary-400,
+      dark: $tertiary-800,
+      darker: $tertiary-900,
     ),
     quaternary: (
       base: $quaternary-700,
       light: $quaternary-600,
+      lighter: $quaternary-400,
+      dark: $quaternary-800,
+      darker: $quaternary-900,
     ),
     neutral: (
         black: $neutral-black,

@@ -28,23 +28,23 @@ const { eyebrow, title, feature_image, url, keywords = [], enable_case_study, th
 ---
 <div class:list={[className, "featured-work-container"]}>
   <div class="featured-work">
-    <div class="featured-work__image">
-      <img src={`/assets${feature_image.src}`} alt={feature_image.alt} loading="lazy" decoding="async" />
-    </div>
-    <div class="featured-work__content">
-      <h4 class="eyebrow">{eyebrow}</h4>
-      <HighlightHeading title={title} type={theme} level={3} class="h4" />
-      {keywords.length > 0 && (
-        <ul class="tags featured-work__tags">
-          {keywords.map(keyword => (
-            <li>{keyword}</li>
-          ))}
-        </ul>
-      )}
-    </div>
-    <div class:list={[className, "featured-work__ctas"]}>
-      {enable_case_study && <Cta href={`/case-study/${work.slug}`} type="primary">View Case Study</Cta>}
-      {url && <Cta href={url} type="secondary">See Live</Cta>}
+  <div class="featured-work__image">
+    <img src={`/assets${feature_image.src}`} alt={feature_image.alt} loading="lazy" decoding="async" />
+  </div>
+  <div class="featured-work__content">
+    <p class="eyebrow">{eyebrow}</p>
+    <HighlightHeading title={title} type={theme} level={3} class="h3" />
+    {keywords.length > 0 && (
+      <ul class="tags featured-work__tags">
+        {keywords.map(keyword => (
+          <li>{keyword}</li>
+        ))}
+      </ul>
+    )}
+  </div>
+  <div class:list={[className, "featured-work__ctas"]}>
+    {enable_case_study && <Cta href={`/case-study/${work.slug}`} type="primary">View Case Study</Cta>}
+    {url && <Cta href={url} type="secondary">See Live</Cta>}
     </div>
   </div>
 </div>
@@ -59,9 +59,13 @@ const { eyebrow, title, feature_image, url, keywords = [], enable_case_study, th
     .featured-work__image {
       aspect-ratio: 16 / 7;
     }
+    @container (width > 940px) {
+      grid-template-columns: 5fr 3fr;
+    }
   }
 
   .featured-work {
+    container-type: inline-size;
     display: grid;
     gap: $size-8;
 
@@ -98,8 +102,6 @@ const { eyebrow, title, feature_image, url, keywords = [], enable_case_study, th
     }
 
     @container (width > 940px) {
-      grid-template-columns: 5fr 3fr;
-
       &__image {
         grid-column: span 2;
       }

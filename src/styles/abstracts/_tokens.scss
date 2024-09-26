@@ -99,8 +99,9 @@ $color-callout-background: clr(primary, lightest);
 $color-link-text: clr(neutral, dark);
 $color-link-text-reverse: clr(neutral, lightest);
 $color-link-text-hover: clr(primary, light);
-$color-link-text-hover-reverse: clr(primary, lighter);
+$color-link-text-hover-reverse: clr(neutral, lightest);
 $color-link-text-active: clr(neutral, base);
+$color-link-text-active-reverse: clr(neutral, lightest);
 
 $color-menu-toggle: clr(neutral, dark);
 $color-menu-toggle-reverse: clr(neutral, white);
@@ -117,6 +118,12 @@ $color-tag-text: clr(neutral, dark);
 // highlights
 $color-highlight-primary: clr(primary, base);
 $color-highlight-primary-reverse: clr(primary, lighter);
-$color-highlight-secondary: clr(secondary, base);
-$color-highlight-tertiary: clr(tertiary, base);
-$color-highlight-quaternary: clr(quaternary, light);
+$color-highlight-secondary: clr(secondary, dark);
+$color-highlight-secondary-reverse: clr(secondary, lighter);
+$color-highlight-tertiary: clr(tertiary, darker);
+$color-highlight-tertiary-reverse: clr(tertiary, lighter);
+$color-highlight-quaternary: clr(quaternary, dark);
+$color-highlight-quaternary-reverse: clr(quaternary, lighter);
+
+$color-background-theme-toggle: clr(neutral, lighter);
+$color-background-theme-toggle-reverse: clr(neutral, base);

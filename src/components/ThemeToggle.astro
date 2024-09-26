@@ -9,11 +9,15 @@
   </svg>
 </button>
 
-<style>
+<style lang="scss">
+  @use "../styles/abstracts/" as *;
   .theme-toggle {
+    --_background: var(--clr-background-theme-toggle, #{$color-background-theme-toggle});
     border: 0;
-    background: none;
+    border-radius: 50%;
+    background: var(--_background);
     cursor: pointer;
+    padding: 11px;
   }
   .sun { fill: black; }
   .moon { fill: transparent; }

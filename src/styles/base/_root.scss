@@ -95,6 +95,7 @@
   --clr-highlight-quaternary: #{$color-highlight-quaternary};
 
   --clr-menu-toggle: #{$color-menu-toggle};
+  --clr-background-theme-toggle: #{$color-background-theme-toggle};
 
   &.theme-dark {
     --clr-background: #{$color-background-default-dark};
@@ -105,11 +106,16 @@
 
     --section-title-border: #{$section-title-border-reverse};
 
-    --clr-highlight-primary: #{$color-highlight-primary-reverse};
-
     --clr-link-text: #{$color-link-text-reverse};
     --clr-link-text-hover: #{$color-link-text-hover-reverse};
+    --clr-link-text-active: #{$color-link-text-active-reverse};
 
     --clr-menu-toggle: #{$color-menu-toggle-reverse};
+
+    --clr-highlight-primary: #{$color-highlight-primary-reverse};
+    --clr-highlight-secondary: #{$color-highlight-secondary-reverse};
+    --clr-highlight-tertiary: #{$color-highlight-tertiary-reverse};
+    --clr-highlight-quaternary: #{$color-highlight-quaternary-reverse};
+    --clr-background-theme-toggle: #{$color-background-theme-toggle-reverse};
   }
 }
