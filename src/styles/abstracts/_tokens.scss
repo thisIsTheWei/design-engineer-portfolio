@@ -102,6 +102,9 @@ $color-link-text-hover: clr(primary, light);
 $color-link-text-hover-reverse: clr(primary, lighter);
 $color-link-text-active: clr(neutral, base);
 
+$color-menu-toggle: clr(neutral, dark);
+$color-menu-toggle-reverse: clr(neutral, white);
+
 // tags
 $tag-border-radius: $border-radius-3;
 $tag-padding: $size-1 $size-4;

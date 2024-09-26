@@ -5,6 +5,7 @@ interface AnchorItem {
     href: string;
     text: string;
     icon?: string | null;
+    target?: "_blank" | "_self";
 }
 
 interface Props {
@@ -21,7 +22,12 @@ const { items } = Astro.props;
     const iconToUse = item.icon || (isExternal ? 'arrow-upper-right' : null);
     return (
       <li>
-        <a href={item.href}>{item.text} {iconToUse && <Icon icon={iconToUse as any} />}</a>
+        <a 
+          href={item.href} 
+          class="lnk-effect lnk-effect--slide-right"
+          target={isExternal ? '_blank' : item.target}
+          rel={isExternal ? 'noopener noreferrer' : undefined}>
+          {item.text} {iconToUse && <Icon icon={iconToUse as any} />}</a>
       </li>
     );
   })}
@@ -32,20 +38,5 @@ const { items } = Astro.props;
     list-style: none;
     margin: 0;
     padding: 0;
-  }
-
-  a {
-    text-decoration: none;
-    color: var(--clr-link-text);
-
-    &:hover {
-      color: var(--clr-link-text-hover);
-      text-decoration: underline;
-    }
-
-    &:active {
-      color: var(--clr-link-text-active);
-      text-decoration: underline;
-    }
   }
 </style>

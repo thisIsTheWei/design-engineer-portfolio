@@ -1,0 +1,45 @@
+.lnk-effect {
+  --_clr-link-text: currentColor;
+  text-decoration: none;
+  color: var(--_clr-link-text);
+  position: relative;
+
+  &:before {
+    background-color: var(--_clr-link-text);
+    bottom: 0;
+    content: '';
+    height: 2px;
+    left: 0;
+    position: absolute;
+    transition: transform .3s ease;
+    width: 100%;
+  }
+
+  &:hover,
+  &:focus-visible {
+    --_clr-link-text: var(--clr-link-text-hover);
+  }
+  
+  &--expand {
+    &:before { 
+      transform:  scaleX(0);
+    }
+
+    &:hover:before {
+      transform:  scaleX(1);
+    }
+  }
+  
+  &--slide-right {
+    display: inline-block;
+    overflow: hidden;
+    
+    &:before {
+      transform:  translateX(-100%);
+    }
+
+    &:hover:before {
+      transform:  scaleX(1);
+    }
+  }
+}

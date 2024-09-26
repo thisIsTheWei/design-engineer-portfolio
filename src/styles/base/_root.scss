@@ -94,6 +94,8 @@
   --clr-highlight-tertiary: #{$color-highlight-tertiary};
   --clr-highlight-quaternary: #{$color-highlight-quaternary};
 
+  --clr-menu-toggle: #{$color-menu-toggle};
+
   &.theme-dark {
     --clr-background: #{$color-background-default-dark};
     --clr-logo: #{$color-neutral-white};
@@ -107,5 +109,7 @@
 
     --clr-link-text: #{$color-link-text-reverse};
     --clr-link-text-hover: #{$color-link-text-hover-reverse};
+
+    --clr-menu-toggle: #{$color-menu-toggle-reverse};
   }
 }

@@ -7,6 +7,7 @@ import AnchorLists from './composable/AnchorLists.astro';
 interface MenuItem {
     href: string;
     text: string;
+    target?: "_blank" | "_self";
 }
 
 
@@ -22,7 +23,7 @@ const menuItems: MenuItem[] = [
 
 const contactItems: MenuItem[] = [
 	{ text: 'LinkedIn', href: 'https://www.linkedin.com/in/weihsin/' },
-	{ text: 'Resume', href: './Resume_Wei_Hsin_Chen.pdf' },
+	{ text: 'Resume', href: '/assets/Resume_Wei_Hsin_Chen.pdf', target: '_blank' },
 	{ text: 'Schedule a call', href: 'https://calendar.app.google/e7Vuknr4uMFS8J6z8' },
 ];
 
