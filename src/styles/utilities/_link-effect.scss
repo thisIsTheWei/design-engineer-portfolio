@@ -16,7 +16,8 @@
   }
 
   &:hover,
-  &:focus-visible {
+  &:focus-visible,
+  &.active {
     --_clr-link-text: var(--clr-link-text-hover);
   }
   
@@ -26,6 +27,9 @@
     }
 
     &:hover:before {
+      transform:  scaleX(1);
+    }
+    &.active:before {
       transform:  scaleX(1);
     }
   }

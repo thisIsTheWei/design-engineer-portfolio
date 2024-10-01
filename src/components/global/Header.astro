@@ -17,7 +17,7 @@ const logoSvg = readFileSync(logoPath, 'utf8');
 const navItems: NavItem[] = [
   { text: 'Home', href: '/' },
 	{ text: 'Featured Works', href: '/#featured-works-content' },
-	{ text: 'About', href: '#about-content' },
+	{ text: 'About', href: '/#about-content' },
 ];
 
 ---
@@ -48,8 +48,12 @@ const navItems: NavItem[] = [
 
 <script>
   import { setupNavigation } from '../../utils/nav';
+import { initScrollNavHighlight } from '../../utils/scroll-nav-highlight';
 
-  document.addEventListener('astro:page-load', setupNavigation);
+  document.addEventListener('astro:page-load', ()=>{
+    setupNavigation();
+    initScrollNavHighlight();
+  });
 </script>
 <style lang="scss">
   @use '../../styles/abstracts/' as *;
