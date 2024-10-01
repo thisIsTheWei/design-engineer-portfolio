@@ -1,12 +1,17 @@
 ---
+import { CASE_STUDY_SPEC } from '../utils/constants';
+
+export type InfoTextColumnType = 'ROLE' | 'COMPANY' | 'TOOL' | 'YEAR';
+
 interface Props {
-  title: string,
-  content: string
+  type: InfoTextColumnType;
+  content: string;
 }
 
-const { title, content }: Props = Astro.props;
+const { type, content } = Astro.props;
 ---
-<div class="info-text">
-  <h3 class="h6">{title}</h3>
+
+<div class="info-text-column">
+  <h3 class="h6">{CASE_STUDY_SPEC[type]}</h3>
   <p>{content}</p>
 </div>

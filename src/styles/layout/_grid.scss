@@ -1,0 +1,13 @@
+@use "../abstracts/" as *;
+
+.grid {
+  --_grid-gap: var(--grid-gap, $grid-gap);
+  display: grid;
+  gap: var(--_grid-gap);
+
+  @include mq(m) {
+    > .span-2 {
+      grid-column: span 2;
+    }
+  }
+}

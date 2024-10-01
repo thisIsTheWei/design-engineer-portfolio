@@ -1,22 +1,25 @@
 ---
-// ContentSection.astro
+import { CASE_STUDY_NARRATIVE } from '../utils/constants';
+
+export type NarrativeType = 'CHALLENGE' | 'APPROACH' | 'FEATURES' | 'OUTCOME' | 'REFLECTION';
 interface Props {
-  sectionType: string; // e.g., "THE CHALLENGE", "THE PROCESS", "THE OUTCOME"
-  title: string;
+  class?: string;
+  type: NarrativeType;
   description: string;
   points: string[];
+  theme: "primary" | "secondary" | "tertiary" | "quaternary"
 }
 
-const { sectionType, title, description, points } = Astro.props;
+const { class: className, type, description, points, theme } = Astro.props;
 ---
 
-<section class="two-cols-content grid even-columns">
+<section class:list={[className, "two-cols-content grid even-columns"]}>
   <div class="two-cols-content__title">
-    <h2 class="eyebrow">{sectionType}</h2>
-    <h3 class="h5">{title}</h3>
+    <h2 class="eyebrow" data-theme={theme}>{CASE_STUDY_NARRATIVE[type].EYEBROW}</h2>
+    <h3 class="h5">{CASE_STUDY_NARRATIVE[type].TITLE}</h3>
   </div>
   <div class="two-cols-content__description">
-    <p>{description}</p>
+    { description && <p>{description}</p> }
     { points && (
         <ul>
           {points.map(point => (
@@ -31,5 +34,49 @@ const { sectionType, title, description, points } = Astro.props;
 <style lang="scss">
   @use "../styles/abstracts/" as *;
 
+  .two-cols-content {
+    --_padding-block: #{$size-4};
+    --_padding-inline: 0;
+
+    padding: var(--_padding-block, $size-4) var(--_padding-inline, 0);
+
+    @include mq(m) {
+      --_padding-block: 0;
+      --_padding-inline: #{$size-10};
+    }
+
+    @include mq(l) {
+      --_padding-inline: #{$size-12};
+    }
+
+    .eyebrow {
+      --_color: currentColor;
+      color: var(--_color);
+
+      &[data-theme="primary"] {
+        --_color: var(--clr-highlight-primary);
+      }
+
+      &[data-theme="secondary"] {
+        --_color: var(--clr-highlight-secondary);
+      }
+
+      &[data-theme="tertiary"] {
+        --_color: var(--clr-highlight-tertiary);
+      }
+
+      &[data-theme="quaternary"] {
+        --_color: var(--clr-highlight-quaternary);
+      }
+    }
+  }
+
+  ul {
+    padding-inline-start: #{$size-6};
+
+    @include mq(m){
+      padding-block-start: #{$size-4};
+    }
+  }
 
 </style>

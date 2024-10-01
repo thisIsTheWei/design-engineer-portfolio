@@ -1,8 +1,14 @@
 ---
 import Cta from "./composable/Cta.astro";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className }: Props = Astro.props;
 ---
 
-<section class="intro-hero-container">
+<section class:list={[className, "intro-hero-container"]}>
   <div class="intro-hero">
     <div class="intro-hero__headline margin-block-end-6">
       <h1 class="display1">Design Engineer</h1>
@@ -26,7 +32,7 @@ import Cta from "./composable/Cta.astro";
 </section>
 
 <style lang="scss">
-  @use "../styles/abstracts" as *;
+  @use "../styles/abstracts/index" as *;
 
   .intro-hero {
     display: grid;

@@ -1,0 +1,73 @@
+---
+interface Props {
+  src: string;
+  poster: string;
+  alt: string;
+  class?: string;
+}
+
+const { class: className, src, poster, alt } = Astro.props;
+---
+
+<section class:list={[className, "inline-demo-video border-radius-2"]} data-video-src={src} data-video-label={alt}>
+  <img src={poster} alt={alt} class="inline-demo-video__poster" />
+</section>
+
+<script>
+  const videoContainers = document.querySelectorAll('.inline-demo-video');
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      console.log(entry.isIntersecting);
+      if (entry.isIntersecting) {
+        const container = entry.target as HTMLElement;
+        const videoSrc = container.dataset.videoSrc;
+        const videoLabel = container.dataset.videoLabel;
+        if (videoSrc) {
+          const video = document.createElement('video');
+          video.src = videoSrc;
+          video.controls = false;
+          video.muted = true;
+          video.playsInline = true;
+          video.loop = true;
+          video.autoplay = true;
+          if(videoLabel) {
+            video.setAttribute('aria-label', videoLabel);
+          }
+          
+          const poster = container.querySelector('.inline-demo-video__poster');
+
+          if (poster) {
+            container.replaceChild(video, poster);
+          }
+        }
+        observer.unobserve(container);
+      }
+    });
+  }, observerOptions);
+
+  videoContainers.forEach(container => {
+    observer.observe(container);
+  });
+</script>
+<style>
+  .inline-demo-video {
+    --video-width: 100%;
+
+    width: 100%;
+    max-width: 100%;
+    overflow: clip;
+  }
+
+  .inline-demo-video__poster {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+</style>

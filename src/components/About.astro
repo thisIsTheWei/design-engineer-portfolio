@@ -1,13 +1,19 @@
 ---
 import { Image } from 'astro:assets';
 import headshot from '../assets/profile-wei-hsin-chen.png';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className }: Props = Astro.props;
 ---
 
-<section class="about" id="about-content">
+<section class:list={[className, "about grid"]} id="about-content">
   <div class="about__image">
     <Image src={headshot} alt="Wei-Hsin Chen" width={400} height={532} format='avif' quality={"mid"} />
   </div>
-  <div class="about__content grid-col">
+  <div class="about__content grid">
     <h2 class="display2 span-2 about__title">Designer, Developer, Problem Solver</h2>
     <p class="span-2 about__description">With over a decade of experience, I blend design expertise with technical prowess to create exceptional digital experiences. My focus is on bridging the gap between aesthetics and functionality, delivering innovative solutions for industry leaders like Google.</p>
     <h3 class="h6">My Approach</h3>
@@ -21,19 +27,11 @@ import headshot from '../assets/profile-wei-hsin-chen.png';
   @use '../styles/abstracts/' as *;
 
   .about {
-    display: grid;
-    gap: var(--grid-gap, $grid-gap);
-
     &__image {
       align-items: flex-end;
       display: flex;
       justify-content: center;
       padding: 2rem;
-    }
-
-    &__content {
-      display: grid;
-      gap: var(--grid-gap, $grid-gap);
     }
 
     @include mq(m) {

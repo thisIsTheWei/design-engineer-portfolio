@@ -1,3 +1,40 @@
 ---
-$END$
+import InfoTextColumn from "./InfoTextColumn.astro";
+interface Info {
+  content: {}
+}
+
+interface Props {
+  class?: string,
+  data: Record<InfoTextColumnType, string>;
+}
+type InfoTextColumnType = 'ROLE' | 'COMPANY' | 'TOOL' | 'YEAR';
+const { class: className, data } = Astro.props;
 ---
+
+<section class:list={[className, "info-text-columns-container", "grid"]}>
+  <div class="info-text-columns grid even-columns">
+    {Object.entries(data).map(([key, value]) => (
+      <InfoTextColumn 
+        type={key as InfoTextColumnType} 
+        content={value} 
+      />
+    ))}
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../styles/abstracts/" as *;
+
+  .info-text-columns-container {
+
+    @include mq(l) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .info-text-columns {
+    --_grid-column-gap: $size-9;
+    --_grid-row-gap: $size-9;
+  }
+</style>

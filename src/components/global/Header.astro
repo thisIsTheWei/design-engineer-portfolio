@@ -1,8 +1,8 @@
 ---
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
-import ThemeToggle from './ThemeToggle.astro';
-import Cta from './composable/Cta.astro';
+import ThemeToggle from '../composable/ThemeToggle.astro';
+import Cta from '../composable/Cta.astro';
 
 interface NavItem {
     href: string;
@@ -68,7 +68,7 @@ const navItems: NavItem[] = [
   });
 </script>
 <style lang="scss">
-  @use '../styles/abstracts/' as *;
+  @use '../../styles/abstracts/' as *;
 
   header {
     align-items: center;

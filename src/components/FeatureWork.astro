@@ -18,32 +18,33 @@ interface Props {
       keywords: string[];
       enable_case_study: boolean;
       theme: "primary" | "secondary" | "tertiary" | "quaternary";
+      order: number;
     };
     slug: string;
   }
 }
 
 const { class: className, work }: Props = Astro.props;
-const { eyebrow, title, feature_image, url, keywords = [], enable_case_study, theme } = work.data;
+const { eyebrow, title, feature_image, url, keywords = [], enable_case_study, theme, order } = work.data;
 ---
 <div class:list={[className, "featured-work-container"]}>
   <div class="featured-work">
   <div class="featured-work__image">
-    <img src={`/assets${feature_image.src}`} alt={feature_image.alt} loading="lazy" decoding="async" />
+    <img src={feature_image.src} alt={feature_image.alt} loading="lazy" decoding="async" transition:name={`case-study-${order}-feature-image`}/>
   </div>
   <div class="featured-work__content">
-    <p class="eyebrow">{eyebrow}</p>
-    <HighlightHeading title={title} type={theme} level={3} class="h3" />
+    <p class="eyebrow" transition:name={`case-study-${order}-eyebrow`}>{eyebrow}</p>
+    <HighlightHeading title={title} theme={theme} level={3} class="h3" transitionName={`case-study-${order}-heading`} />
     {keywords.length > 0 && (
-      <ul class="tags featured-work__tags">
+      <ul class="tags featured-work__tags" transition:name={`case-study-${order}-keywords`}>
         {keywords.map(keyword => (
           <li>{keyword}</li>
         ))}
       </ul>
     )}
   </div>
-  <div class:list={[className, "featured-work__ctas"]}>
-    {enable_case_study && <Cta href={`/case-study/${work.slug}`} type="primary">View Case Study</Cta>}
+  <div class="featured-work__ctas">
+    {enable_case_study && <Cta href={`/work/${work.slug}`} type="primary">View Case Study</Cta>}
     {url && <Cta href={url} type="secondary">See Live</Cta>}
     </div>
   </div>
@@ -57,10 +58,12 @@ const { eyebrow, title, feature_image, url, keywords = [], enable_case_study, th
 
   .span-2 {
     .featured-work__image {
-      aspect-ratio: 16 / 7;
+      @include mq(m) {
+        aspect-ratio: 16 / 7;
+      }
     }
-    @container (width > 940px) {
-      grid-template-columns: 5fr 3fr;
+    .featured-work {
+      grid-column-gap: $size-10;
     }
   }
 
@@ -68,11 +71,12 @@ const { eyebrow, title, feature_image, url, keywords = [], enable_case_study, th
     container-type: inline-size;
     display: grid;
     gap: $size-8;
+    grid-template-columns: 1fr;
 
     &__image {
       aspect-ratio: 4 / 3;
-      overflow: hidden;
       border-radius: var(--border-radius-2, $border-radius-2);
+      overflow: hidden;
 
       img {
         width: 100%;

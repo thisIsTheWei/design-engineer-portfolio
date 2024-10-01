@@ -5,19 +5,19 @@
     color: var(--_clr-highlight);
   }
 
-  &[data-type="primary"] span {
+  &[data-theme="primary"] span {
     --_clr-highlight: var(--clr-highlight-primary);
   }
 
-  &[data-type="secondary"] span {
+  &[data-theme="secondary"] span {
     --_clr-highlight: var(--clr-highlight-secondary);
   }
 
-  &[data-type="tertiary"] span {
+  &[data-theme="tertiary"] span {
     --_clr-highlight: var(--clr-highlight-tertiary);
   }
 
-  &[data-type="quaternary"] span {
+  &[data-theme="quaternary"] span {
     --_clr-highlight: var(--clr-highlight-quaternary);
   }
 }

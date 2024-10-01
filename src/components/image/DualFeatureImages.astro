@@ -1,20 +1,66 @@
 ---
-const { src, alt } = Astro.props;
+interface Props {
+  class?: string,
+  leftSrc?: string,
+  leftAlt?: string,
+  rightSrc?: string,
+  rightAlt?: string,
+  type?: string,
+}
+const { class: className, leftSrc, leftAlt, rightSrc, rightAlt, type } = Astro.props;
 ---
 
-<section class="image-full">
-  <img src={src} alt={alt} class="" />
+<section class:list={[className, "dual-feature-images grid"]} datatype={type}>
+  <div class="dual-feature-image dual-feature-image__left border-radius-2">
+    <img src={leftSrc} alt={leftAlt} loading="lazy" decoding="async" />
+  </div>
+  <div class="dual-feature-image dual-feature-image__right border-radius-2">
+    <img src={rightSrc} alt={rightAlt}  loading="lazy" decoding="async" />
+  </div>
 </section>
 
 <style lang="scss">
   @use "../../styles/abstracts/" as *;
 
-  .image-full {
-    border-radius: var(--border-radius-2, $border-radius-2);
-    overflow: clip;
+  .dual-feature-images {
+    grid-template-columns: 1fr 1fr;
 
-    @include mq(m) {
-      aspect-ratio: 16 / 7;
+
+    &[datatype="right"] {
+      grid-template-columns: 2fr 3fr;
     }
+
+    &[datatype="left"] {
+      grid-template-columns: 3fr 2fr;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  [datatype="right"] {
+    .dual-feature-image__left {
+      aspect-ratio: 7/7.14;
+    }
+    .dual-feature-image__right {
+      aspect-ratio: 7/5;
+    }
+  }
+
+  [datatype="left"] {
+    .dual-feature-image__left {
+      aspect-ratio: 7/5
+    }
+    .dual-feature-image__right {
+      aspect-ratio: 7/7.14;
+    }
+  }
+
+  .dual-feature-image {
+    overflow: clip;
   }
 </style>

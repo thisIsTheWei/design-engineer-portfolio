@@ -3,19 +3,25 @@ import SectionTitle from "./composable/SectionTitle.astro";
 import FeaturedWork from "./FeatureWork.astro";
 import { getCollection } from "astro:content";
 
+interface Props {
+  class?: string;
+}
+
 const featuredWorks = (
   await getCollection("work", ({ data }) => data.featured === true)
 ).sort((a, b) => a.data.order - b.data.order);
+
+const { class: className }: Props = Astro.props;
 ---
 
-<section class="featured-work-section" id="featured-works-content">
+<section class:list={[className, "featured-work-section"]} id="featured-works-content">
   <SectionTitle class="span-2">Featured Works</SectionTitle>
-  <div class="featured-work-group even-columns grid-col">
+  <div class="featured-work-group grid even-columns">
     {
       featuredWorks.map((work: any, index: number) => (
         <FeaturedWork
           work={work}
-          class={index === 0 || index === 3 ? "span-2" : ""}
+          class={index === 0 || index === 3 ? "span-2 fade-in" : "fade-in"}
         />
       ))
     }

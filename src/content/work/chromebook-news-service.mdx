@@ -4,7 +4,7 @@ title: "Transforming Chromebook's News Service: <span>A Scalable Solution</span>
 description: "Led the development of innovative tools and a comprehensive design system, transforming web development workflows for projects like Chrome Enterprise and Chrome OS. This initiative significantly improved efficiency, consistency, and collaboration between designers and developers."
 featured: true
 feature_image:
-  src: "/chromebook-news-service/featured-hero.jpg"
+  src: "/assets/chromebook-news-service/featured-hero.jpg"
   alt: "Two monitors showing Chrome Enterprise and ChromeOS website designs with minimalist layouts and blue accents on white backgrounds."
 url: "https://www.google.com/chromebook/whatsnew/"
 keywords:
@@ -17,18 +17,89 @@ enable_case_study: True
 order: 3
 theme: tertiary
 ---
-import InfoTextColumns from '../components/InfoTextColumns.astro';
 
-<InfoTextColumns
-role="Tech Lead and Solution Architect"
-techStack={[
-"Webpack",
-"Figma Plugin Development",
-"TypeScript",
-"SASS/CSS, HTML, Python",
-"CSS Custom Properties"
-]}
-agency="Huge"
-client="Google"
-year="Q2 2023 - Q1 2024"
+<InfoTextColumns data={{
+    ROLE: "Tech Lead" ,
+    COMPANY: "Huge / Google" ,
+    TOOL: "HTML5, CSS3, JavaScript, Python, Google Cloud Platform (GCP), Internal CMS, Google Analytics",
+    YEAR: "2020-2022",
+  }}
+/>
+
+
+<FullSizeFeatureImage
+  src="/assets/chromebook-news-service/featured-hero.jpg"
+  alt="Two monitors showing Chrome Enterprise and ChromeOS website designs with minimalist layouts and blue accents on white backgrounds."
+  transitionName={`case-study-${frontmatter.order}-feature-image`}
+/>
+
+<TwoColsTextContent
+  type="CHALLENGE"
+  description="The existing product news system was outdated, lacking scalability and flexibility. It struggled to manage content across multiple locales and platforms, leading to inconsistencies and inefficiencies in the update process."
+  class="fade-in"
+  theme={frontmatter.theme}
+/>
+
+<TwoColsTextContent
+  type="APPROACH"
+  points={[
+    "Automated design-to-code translation tool: Seamlessly converted Figma designs into developer-friendly code",
+    "Lightweight UI framework: Provided core UI building blocks for rapid prototyping",
+    "Website composition engine: Streamlined the process of website creation",
+    "Comprehensive design system: Established a flexible, theme-adaptable component library",
+  ]}
+  class="fade-in"
+  theme={frontmatter.theme}
+/>
+
+<TwoColsTextContent
+  type="FEATURES"
+  points={[
+    "Scalable microservice architecture",
+    "Centralized Content Management System",
+    "On-demand localized JSON output generation",
+    "Seamless integration with marketing sites and on-device platforms",
+    "Flexible, on-demand update capabilities",
+    ]}
+  class="fade-in"
+  theme={frontmatter.theme}
+/>
+
+<DualFeatureImages
+  leftSrc="/assets/chromebook-news-service/featured-hero.jpg"
+  leftAlt="Two monitors showing Chrome Enterprise and ChromeOS website designs with minimalist layouts and blue accents on white backgrounds."
+  rightSrc="/assets/chromebook-news-service/featured-hero.jpg"
+  rightAlt="Two monitors showing Chrome Enterprise and ChromeOS website designs with minimalist layouts and blue accents on white backgrounds."
+  class="fade-in"
+  type="left"
+/>
+
+<TwoColsTextContent
+  type="OUTCOME"
+  description="The new system significantly improved content management efficiency and consistency across platforms:"
+  points={[
+    "Reduced content update time by 35% through streamlined processes",
+    "Established a centralized CMS, creating a single source of truth for product news",
+    "Enhanced data integrity across marketing sites and on-device platforms",
+    "Increased the number of supported locales, improving global reach",
+    "Improved the service's adaptability to changing needs",
+    "Decreased manual effort in the update process, boosting team productivity",
+    "Eliminated inconsistencies, significantly improving content accuracy",
+  ]}
+  class="fade-in"
+  theme={frontmatter.theme}
+/>
+
+<TwoColsTextContent
+  type="REFLECTION"
+  description="Transitioning to a microservice-based architecture with a centralized CMS can dramatically improve scalability, flexibility, and content consistency in complex, multi-platform environments. This approach enables businesses to efficiently manage and deliver localized content across various touchpoints, adapting quickly to changing needs and market demands. The significant 35% reduction in content update time demonstrates the tangible benefits of this architectural shift."
+  class="fade-in"
+  theme={frontmatter.theme}
+/>
+
+<InlineDemoVideo 
+  src="/assets/chromebook-10th-birthday/cb-10th-hero-demo.mp4"
+  poster="/assets/chromebook-10th-birthday/cb-10th-hero-demo.jpg"
+  alt="Description of the video"
+  class="fade-in"
 />

@@ -1,16 +1,17 @@
 ---
 interface Props {
   title: string,
-  type: "primary" | "secondary" | "tertiary" | "quaternary"
+  theme: "primary" | "secondary" | "tertiary" | "quaternary"
   level: number,
-  class?: string
+  class?: string,
+  transitionName?: string;
 }
 
-const { title, type, level, class: className }: Props = Astro.props;
+const { title, theme, level, class: className, transitionName }: Props = Astro.props;
 const Element = 'h' + level
 
 function removeSpanTags(text: string) {
   return text.replace(/<\/?span[^>]*>/g, '');
 }
 ---
-<Element class:list={[className, 'highlight-heading']} set:html={title} data-type={type} aria-label={removeSpanTags(title)}></Element>
+<Element class:list={[className, 'highlight-heading']} set:html={title} data-theme={theme} aria-label={removeSpanTags(title)} {...transitionName ? { 'transition:name': transitionName, 'transition:persist' : true } : {}}></Element>

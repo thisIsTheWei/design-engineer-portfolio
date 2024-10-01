@@ -1,66 +1,68 @@
 ---
 import Cta from "./composable/Cta.astro";
----
+import HighlightHeading from "./composable/HighlightHeading.astro";
 
-<section class="intro-hero-container">
-  <div class="intro-hero">
-    <div class="intro-hero__headline margin-block-end-6">
-      <h1 class="display1">Design Engineer</h1>
-      <div class="intro-hero__keywords padding-block-start-2">
-        <p>Based in Bay Area</p>
-        <p>Design + Code</p>
-        <p>Available to work</p>
-      </div>
+interface Props {
+  entry: {
+    data: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      feature_image: {
+        src: string;
+        alt: string;
+      };
+      url: string;
+      keywords: string[];
+      theme: "primary" | "secondary" | "tertiary" | "quaternary";
+      order: number;
+    },
+    slug: string;
+  }
+}
+
+const { entry }: Props = Astro.props;
+const { eyebrow, title, description, feature_image, url, keywords = [], theme, order } = entry.data;
+
+---
+<section>
+  <div class="case-study-hero">
+    <div class="case-study-hero__headline">
+      <p class="case-study-hero__eyebrow eyebrow" transition:name={`case-study-${order}-eyebrow`}>{eyebrow}</p>
+      <HighlightHeading title={title} theme={theme} level={1} class="h1 case-study-hero__headline" transitionName={`case-study-${order}-heading`}/>
+      {keywords.length > 0 && (
+          <ul class="tags case-study-hero__tags" transition:name={`case-study-${order}-keywords`}>
+            {keywords.map(keyword => (
+                <li>{keyword}</li>
+            ))}
+          </ul>
+      )}
     </div>
-    <h2 class="h2 intro-hero__statement">Bridging design and technology to create extraordinary experiences</h2>
-    <div class="intro-hero__detail flow">
-      <p class="body-l intro-hero__detail-body">I'm a design engineer and engineer leader with over a decade of experience transforming complex challenges into intuitive digital solutions for industry leaders like Google, crafting seamless user experiences that bring brands to life.</p>
-      <p class="body-l intro-hero__detail-body">If you would like to discuss opportunities to collaborate, please reach out.</p>
-      <div class="intro-hero__detail-buttons">
-        <Cta href="#contact-content" type="primary">Contact Me</Cta>
-        <Cta href="/assets/Resume_Wei_Hsin_Chen.pdf" type="secondary" icon="download" target="_blank">Download Resume</Cta>
-        <Cta href="https://www.linkedin.com/in/weihsin/" type="tertiary" icon="linkedin-logo">LinkedIn</Cta>
+    <div class="case-study-hero__description flow">
+      <p class="body-l case-study-hero__body">{description}</p>
+      <div class="case-study-hero__detail-buttons">
+        {url && <Cta href={url} type="primary">See Live</Cta>}
       </div>
     </div>
   </div>
 </section>
 
 <style lang="scss">
-  @use "../styles/abstracts" as *;
+  @use "../styles/abstracts/index" as *;
 
-  .intro-hero {
+  .case-study-hero {
+    border-bottom: var(--border-default);
     display: grid;
     gap: $size-8;
+    padding-block-start: $size-10;
     padding-block-end: $size-11;
+    grid-template-columns: 1fr ;
 
-    @container (width > 670px) {
-      grid-template-columns: repeat(2, 1fr);
-      gap: $size-12;
+    @include mq(m) {
+      grid-template-columns: 7fr 5fr 1fr;
     }
 
-    &__headline {
-      grid-column: 1 / -1;
-      display: flex;
-      flex-direction: column;
-      gap: clamp($size-6, 3VW, $size-9);
-      
-      @container (width > 670px) {
-        text-align: center;
-      }
-    }
-
-    &__keywords {
-      border-top: var(--border-default);
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-    }
-
-    &__statement {
-      padding-inline-end: $size-6;
-    }
-
-    &__detail {
+    &__description {
       display: flex;
       flex-direction: column;
       @container (width > 670px) {
@@ -68,20 +70,9 @@ import Cta from "./composable/Cta.astro";
       }
     }
 
-    &__detail-body {
-      @container (width > 928px) {
-        padding-inline-end: $size-14;
-      }
-      @container (width > 928px) {
-        padding-inline-end: $size-14;
-      }
-    }
-
-    &__detail-buttons {
-      display: inline-flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: $size-4;
+    &__tags {
+      padding-block-start: $size-8;
+      padding-inline-end: $size-12;
     }
   }
 </style>

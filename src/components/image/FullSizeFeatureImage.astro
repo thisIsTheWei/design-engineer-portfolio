@@ -1,15 +1,22 @@
 ---
-const { src, alt } = Astro.props;
+interface Props {
+  class?: string;
+  src: string;
+  alt?: string;
+  lazy?: boolean;
+  transitionName?: string;
+}
+const { class: className, src, alt, lazy = true, transitionName } = Astro.props;
 ---
 
-<section class="image-full">
-  <img src={src} alt={alt} class="" />
+<section class:list={[className, "full-size-feature-image"]}>
+  <img src={src} alt={alt}  loading={lazy ? "lazy" : "eager"} decoding="async" {...transitionName ? { 'transition:name': transitionName } : {}} />
 </section>
 
 <style lang="scss">
   @use "../../styles/abstracts/" as *;
 
-  .image-full {
+  .full-size-feature-image {
     border-radius: var(--border-radius-2, $border-radius-2);
     overflow: clip;
 

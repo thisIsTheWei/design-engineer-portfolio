@@ -1,5 +1,6 @@
 ---
-import '../styles/global.scss';
+import { ViewTransitions } from 'astro:transitions';
+import '../../styles/global.scss';
 
 interface Props {
     title?: string | undefined;
@@ -24,50 +25,5 @@ const {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Paytone+One&display=swap" 
   rel="preload" onload="this.onload=null;this.rel='stylesheet'" as="style">
-
-
-<script is:inline>
-  function getThemePreference() {
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('theme');
-    }
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  }
-
-  function setTheme(theme) {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('isDark');
-    } else {
-      document.documentElement.classList.remove('isDark');
-    }
-    if (typeof localStorage !== 'undefined') {
-      localStorage.setItem('theme', theme);
-    }
-  }
-
-  function updateTheme() {
-    setTheme(getThemePreference());
-  }
-
-  // Initial theme setup
-  updateTheme();
-
-  // Watch for changes in system color scheme
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateTheme);
-
-  // Watch for changes in document element class if localStorage is available
-  if (typeof localStorage !== 'undefined') {
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-          const isDark = document.documentElement.classList.contains('isDark');
-          localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        }
-      });
-    });
-
-    observer.observe(document.documentElement, { attributes: true });
-  }
-</script>
-
+<ViewTransitions />
 

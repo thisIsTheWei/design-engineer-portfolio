@@ -1,7 +1,11 @@
 ---
 import Cta from "./composable/Cta.astro";
+interface Props {
+  class?: string;
+}
+const { class: className }: Props = Astro.props;
 ---
-<section>
+<section class:list={[className]}>
   <div id="contact" class="contact">
     <h2 class="h1 contact__headline">Thanks for the visit. Reach out and let's chat.</h2>
     <div class="contact__buttons">

@@ -1,7 +1,7 @@
 ---
-import MainHead from '../components/MainHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import MainHead from '../components/global/MainHead.astro';
+import Header from '../components/global/Header.astro';
+import Footer from '../components/global/Footer.astro';
 import '../styles/global.scss';
 
 interface Props {
@@ -25,9 +25,32 @@ const { title, description = "Wei-Hsin Chen, A Design Engineer Portfolio" } = As
 
         <Footer />
         <script>
-            window.addEventListener('load', () => {
-                document.body.classList.add('loaded');
-            });
+          import { setupFadeInObserver } from "../utils/fade-in-observer";
+
+          function handleFadeIn() {
+            const observer = setupFadeInObserver();
+
+            // Cleanup function
+            return () => {
+              if (observer) {
+                observer.disconnect();
+              }
+            };
+          }
+
+          // Run on initial page load
+          let cleanup = handleFadeIn();
+
+          // Run on client-side navigation
+          document.addEventListener('astro:page-load', () => {
+            if (cleanup) cleanup();
+            cleanup = handleFadeIn();
+          });
+
+          // Cleanup on page unload
+          document.addEventListener('astro:before-swap', () => {
+            if (cleanup) cleanup();
+          });
         </script>
     </body>
 </html>

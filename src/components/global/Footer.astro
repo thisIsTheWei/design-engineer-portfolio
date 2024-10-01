@@ -1,8 +1,8 @@
 ---
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
-import ThemeToggle from './ThemeToggle.astro';
-import AnchorLists from './composable/AnchorLists.astro';
+import ThemeToggle from '../composable/ThemeToggle.astro';
+import AnchorLists from '../composable/AnchorLists.astro';
 
 interface MenuItem {
     href: string;
@@ -48,7 +48,7 @@ const contactItems: MenuItem[] = [
 </footer>
 
 <style lang="scss">
-  @use "../styles/abstracts/" as *;
+  @use "../../styles/abstracts/" as *;
 
   footer {
     align-items: flex-start;

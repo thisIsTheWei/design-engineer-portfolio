@@ -1,11 +1,6 @@
 @use "../abstracts/" as *;
 
 .even-columns {
-  --_grid-gap: var(--grid-gap, $grid-gap);
-  
-  display: grid;
-  gap: var(--_grid-gap);
-
   @include mq(m) {
     grid-template-columns: repeat(2, 1fr);
   }

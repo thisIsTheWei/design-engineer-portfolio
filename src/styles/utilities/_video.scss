@@ -1,0 +1,4 @@
+video {
+  --_width: var(--video-width, auto);
+  width: var(--_width);
+}
