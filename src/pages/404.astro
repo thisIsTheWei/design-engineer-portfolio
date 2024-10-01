@@ -5,8 +5,40 @@ import Cta from "../components/composable/Cta.astro";
 ---
 
 <BaseLayout>
-  <p class="eyebrow">Oops! Page not found</p>
-  <h1 class="display1">404</h1>
-  <p>The page you are looking for might have been removed had its name changed or is temporarily unavailable.</p>
-  <Cta href="/" type="primary">Go Home</Cta>
+  <section class="not-found grid">
+    <div class="content">
+      <p class="eyebrow">Oops! Page not found</p>
+      <h1 class="display1">404</h1>
+      <p>The page you are looking for might have been removed had its name changed or is temporarily unavailable.</p>
+      <div class="cta-wrapper">
+        <Cta href="/" type="primary">Go Home</Cta>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
+
+<style lang="scss">
+  @use "../styles/abstracts/" as *;
+  .not-found {
+    --headline-line-height: 0.8;
+
+    display: grid;
+    place-items: center;
+    min-height: 50vh;
+    
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 45ch;
+      gap: $size-6;
+    }
+
+    .cta-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+  }
+</style>
