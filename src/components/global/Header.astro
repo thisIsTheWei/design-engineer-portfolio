@@ -47,30 +47,16 @@ const navItems: NavItem[] = [
 
 
 <script>
-  const navToggle = document.querySelector('[aria-controls="primary-nav"]');
-  const navOverlay = document.querySelector('.nav-overlay');
+  import { setupNavigation } from '../../utils/nav';
 
-  navToggle?.addEventListener('click', () => {
-    const currentState = navToggle.getAttribute('aria-expanded');
-    navToggle.setAttribute('aria-expanded', currentState === 'false' ? 'true' : 'false');
-    navOverlay?.classList.toggle('show');
-    document.body.classList.toggle('menu-open');
-  });
-
-   // Close menu when clicking on a link
-   const navLinks = document.querySelectorAll('.nav-overlay a');
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        navToggle?.setAttribute('aria-expanded', 'false');
-        navOverlay?.classList.remove('show');
-        document.body.classList.remove('menu-open');
-      });
-  });
+  document.addEventListener('astro:page-load', setupNavigation);
 </script>
 <style lang="scss">
   @use '../../styles/abstracts/' as *;
 
   header {
+    --_animationStartsAfter: 50vh;
+    --_animationDistance: 120px;
     align-items: center;
     border-bottom: var(--border-default);
     display: flex;
@@ -78,8 +64,21 @@ const navItems: NavItem[] = [
     padding-block: $size-4;
     padding-inline: 0;
     margin-inline: var(--_section-padding);
-    position: relative;
+    position: sticky;
     z-index: 100;
+    top: 0;
+    background-color: var(--clr-background);
+
+    animation: stickyNav linear forwards;
+
+  @supports (animation-timeline: view()) {
+    animation-timeline: view();
+    animation-range-start: calc(100vh + var(--_animationStartsAfter));
+    animation-range-end: calc(
+      100vh + var(--_animationStartsAfter) + var(--_animationDistance)
+    );
+  }
+    
   }
 
   ul {
