@@ -20,6 +20,7 @@ keywords:
 theme: primary
 enable_case_study: True
 order: 1
+assets_folder: "/assets/chrome-enterprise-redesign/"
 ---
 
 <InfoTextColumns data={{
@@ -31,9 +32,10 @@ order: 1
 />
 
 <FullSizeFeatureImage
-  src="/assets/chrome-enterprise-redesign/featured-hero.jpg"
+  src="featured-hero.jpg"
   alt="Two monitors showing Chrome Enterprise and ChromeOS website designs with minimalist layouts and blue accents on white backgrounds."
   transitionName={`case-study-${frontmatter.order}-feature-image`}
+  assetFolder={frontmatter.assets_folder}
 />
 
 <TwoColsTextContent
@@ -45,6 +47,7 @@ order: 1
     "Iteration challenges created bottlenecks in the development process",
     "Limited component reusability across projects increased development time",
   ]}
+  class="fade-in"
   theme={frontmatter.theme}
 />
 
@@ -57,7 +60,18 @@ order: 1
     "Website composition engine: Streamlined the process of website creation",
     "Comprehensive design system: Established a flexible, theme-adaptable component library",
   ]}
+  class="fade-in"
   theme={frontmatter.theme}
+/>
+
+<DualFeatureImages
+  leftSrc="ce-design-systems-desktop.jpg"
+  leftAlt="Multiple Chrome Enterprise and ChromeOS website screenshots arranged around a laptop on a purple background."
+  rightSrc="ce-design-systems-mobile.jpg"
+  rightAlt="Mobile screens features Chrome Enterprise and ChromeOS website on a purple background"
+  class="fade-in"
+  type="left"
+  assetFolder={frontmatter.assets_folder}
 />
 
 <TwoColsTextContent
@@ -69,6 +83,7 @@ order: 1
     "Built-in development aids for scalability and standardization",
     "Seamless integration with existing build processes",
     ]}
+  class="fade-in"
   theme={frontmatter.theme}
 />
 
@@ -82,11 +97,41 @@ order: 1
     "Significantly reduced style guide setup time and accelerated development iterations",
     "Improved consistency across projects through the use of a shared design system",
   ]}
+  class="fade-in"
+  theme={frontmatter.theme}
+/>
+
+
+<KeyMetrics
+  class="fade-in"
+  description="Our innovative approach led to significant, measurable improvements across various aspects of the development process. These metrics demonstrate the transformative impact of our solution on both internal efficiency and client satisfaction."
+  metrics={[
+    {
+      value: "2X",
+      desc: "increase in development velocity",
+    },
+    {
+      value: "3X",
+      desc: "boost in team productivity",
+    },
+    {
+      value: "80%",
+      desc: "reduction in client review cycles (from 5 days to 1 day), with improved design-to-code alignment and fewer inconsistencies",
+    },
+  ]}
   theme={frontmatter.theme}
 />
 
 <TwoColsTextContent
   type="REFLECTION"
   description="This project demonstrates proactive problem-solving and technical expertise in identifying and addressing process bottlenecks. It showcases the ability to drive significant improvements in efficiency, consistency, and client satisfaction through innovative solutions and effective collaboration between design and development teams."
+  class="fade-in"
+  theme={frontmatter.theme}
+/>
+
+<TwoColsTextContent
+  type="RECOGNITION"
+  description="Our work on the Chrome Enterprise project received Bronze in the <a href='https://creativepool.com/huge/projects/chrome-enterprise-for-google' target='_blank' rel='noopener noreferrer'>Digital: Web category at Creativepool</a>, a prestigious industry award that recognizes excellence in creative work. This accolade celebrates our team's innovation in creating a human-centric site backed by revolutionary technology. The award underscores the project's impact and the value of our collaborative efforts in delivering outstanding digital experiences."
+  class="fade-in"
   theme={frontmatter.theme}
 />

@@ -9,6 +9,7 @@ import FullSizeFeatureImage from "../../components/image/FullSizeFeatureImage.as
 import DualFeatureImages from "../../components/image/DualFeatureImages.astro";
 import TwoColsTextContent from '../../components/TwoColsTextContent.astro';
 import InlineDemoVideo from '../../components/video/InlineDemoVideo.astro';
+import KeyMetrics from '../../components/KeyMetrics.astro';
 
 interface Props {
   entry: CollectionEntry<'work'>
@@ -28,7 +29,7 @@ const { Content } = await entry.render();
 <BaseLayout title={entry.data.title.replace(/<\/?span>/g, '')} description={entry.data.description}>
   <article class="case-study">
     <CaseStudyHero entry={entry} />
-    <Content components={{FullSizeFeatureImage, InfoTextColumns, TwoColsTextContent, DualFeatureImages, InlineDemoVideo}} frontmatter={entry.data}/>
+    <Content components={{FullSizeFeatureImage, InfoTextColumns, TwoColsTextContent, DualFeatureImages, InlineDemoVideo, KeyMetrics}} frontmatter={entry.data}/>
   </article>
   <Contact  class="fade-in"/>
 </BaseLayout>

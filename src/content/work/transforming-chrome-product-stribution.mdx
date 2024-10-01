@@ -14,22 +14,24 @@ keywords:
   - CI/CD
   - Lazy-Loading
 enable_case_study: True
-order: 4
+order: 6
 theme: primary
+assets_folder: "/assets/transforming-chrome-product-distribution/"
 ---
 
 <InfoTextColumns data={{
     ROLE: "Senior Web Engineer to Tech Lead" ,
     COMPANY: "Huge / Google" ,
-    TOOL: "HTML5, CSS3, JavaScript, Python, Google Cloud Platform (GCP), Internal CMS, Google Analytics",
+    TOOL: "HTML5, CSS3, JavaScript, Google Closure, GSAP, Lottie Animation, Python, Google Analytics",
     YEAR: "Q3 2017- Q2 2019",
   }}
 />
 
 <FullSizeFeatureImage
-  src="/assets/transforming-chrome-product-distribution/featured-hero.jpg"
+  src="/featured-hero.jpg"
   alt="Two monitors showing Chrome Enterprise and ChromeOS website designs with minimalist layouts and blue accents on white backgrounds."
   transitionName={`case-study-${frontmatter.order}-feature-image`}
+  assetFolder={frontmatter.assets_folder}
 />
 
 <TwoColsTextContent
@@ -89,9 +91,36 @@ theme: primary
   theme={frontmatter.theme}
 />
 
+<KeyMetrics
+  class="fade-in"
+  description="Our innovative approach led to significant, measurable improvements across various aspects of the development process. These metrics demonstrate the transformative impact of our solution on both internal efficiency and client satisfaction."
+  metrics={[
+    {
+      value: "30%",
+      desc: "increase in development efficiency",
+    },
+    {
+      value: "80%",
+      desc: "reduction in update cycles (from 8-10 weeks to 2 weeks)",
+    },
+    {
+      value: "256%",
+      desc: "improvement in site performance (Lighthouse score from 27 to 96)",
+    },
+  ]}
+  theme={frontmatter.theme}
+/>
+
 <TwoColsTextContent
   type="REFLECTION"
-  description="We transformed an outdated, high-traffic platform into a high-performing, efficient system by leveraging modern web technologies and focusing on user experience across all platforms. This project demonstrated the power of optimization and automation in dramatically improving both developer and user experiences, earning recognition as an exemplary case of web optimization at Google I/O 2019."
+  description="We transformed an outdated, high-traffic platform into a high-performing, efficient system by leveraging modern web technologies and focusing on user experience across all platforms. This project demonstrated the power of optimization and automation in dramatically improving both developer and user experiences."
+  class="fade-in"
+  theme={frontmatter.theme}
+/>
+
+<TwoColsTextContent
+  type="RECOGNITION"
+  description='Our work earned recognition as an exemplary case of web optimization, with Chrome team Technical Lead and manager Addy Osmani featuring it as one of the great examples of optimization at <a href="https://www.youtube.com/watch?v=YJGCZCaIZkQ&t=514s" target="_blank" rel="noopener noreferrer">Google I/O 2019</a>.'
   class="fade-in"
   theme={frontmatter.theme}
 />

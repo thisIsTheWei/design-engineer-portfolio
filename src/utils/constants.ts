@@ -19,6 +19,10 @@ export const CASE_STUDY_NARRATIVE = {
     EYEBROW: 'Reflection',
     TITLE: 'Key Takeaway'
   },
+  RECOGNITION: {
+    EYEBROW: 'Industry Impact',
+    TITLE: 'Notable Recognition'
+  },
 };
 
 export const CASE_STUDY_SPEC = {

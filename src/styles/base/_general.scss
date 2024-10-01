@@ -16,7 +16,7 @@ body, .body {
 
 /* Responsive Headline Sizes */
 
-.display1, .display2, .h1, .h2, .h3, .h4, .h5, .h6 {
+.display1, .display2, .display3, .h1, .h2, .h3, .h4, .h5, .h6 {
   color: var(--clr-ff-headline, $heading-text-color);
   font-family: var(--ff-headline, $heading-font-family);
   font-weight: var(--ff-weight-headline, $heading-font-weight);
@@ -24,7 +24,7 @@ body, .body {
   letter-spacing: 0;
 }
 
-.display1, .display2 {
+.display1, .display2, .display3 {
   font-size: clamp(4.5rem, 11vw - 0.175rem, 9.6rem);
   letter-spacing: var(--letter-spacing-tight, $letter-spacing-tight);
 }
@@ -32,6 +32,11 @@ body, .body {
 .display2 {
   --headline-line-height: var(--display-line-height-tight, #{$display-line-height-tight});
   font-size: clamp(3.375rem, 6.11vw + 2rem, 7.5rem);
+}
+
+.display3 {
+  --headline-line-height: var(--display-line-height-tight, #{$display-line-height-tight});
+  font-size: clamp(3.375rem, 6.11vw + 2rem, 6rem);
 }
 
 .h1 {

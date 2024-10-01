@@ -6,16 +6,17 @@ interface Props {
   rightSrc?: string,
   rightAlt?: string,
   type?: string,
+  assetFolder: string;
 }
-const { class: className, leftSrc, leftAlt, rightSrc, rightAlt, type } = Astro.props;
+const { class: className, leftSrc, leftAlt, rightSrc, rightAlt, type, assetFolder } = Astro.props;
 ---
 
 <section class:list={[className, "dual-feature-images grid"]} datatype={type}>
   <div class="dual-feature-image dual-feature-image__left border-radius-2">
-    <img src={leftSrc} alt={leftAlt} loading="lazy" decoding="async" />
+    <img src={assetFolder+leftSrc} alt={leftAlt} loading="lazy" decoding="async" />
   </div>
   <div class="dual-feature-image dual-feature-image__right border-radius-2">
-    <img src={rightSrc} alt={rightAlt}  loading="lazy" decoding="async" />
+    <img src={assetFolder+rightSrc} alt={rightAlt}  loading="lazy" decoding="async" />
   </div>
 </section>
 
@@ -57,6 +58,13 @@ const { class: className, leftSrc, leftAlt, rightSrc, rightAlt, type } = Astro.p
     }
     .dual-feature-image__right {
       aspect-ratio: 7/7.14;
+    }
+  }
+
+  [datatype="even"] {
+    .dual-feature-image__left,
+    .dual-feature-image__right {
+      aspect-ratio: 16 / 21.75;
     }
   }
 

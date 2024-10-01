@@ -18,7 +18,11 @@ const {
 <meta name="description" content={description} />
 <meta name="generator" content={Astro.generator} />
 <title>{title}</title>
-
+<script>
+  import { initTheme } from "../../utils/theme";
+  document.addEventListener('astro:page-load', initTheme);
+</script>
+</head>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">

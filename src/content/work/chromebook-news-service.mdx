@@ -1,6 +1,6 @@
 ---
-eyebrow: "Optimizing Content Delivery"
-title: "Transforming Chromebook's News Service: <span>A Scalable Solution</span> Impacting Millions"
+eyebrow: "Content Delivery Optimization"
+title: "<span>Reimagining</span> Chromebook's News Service"
 description: "Led the development of innovative tools and a comprehensive design system, transforming web development workflows for projects like Chrome Enterprise and Chrome OS. This initiative significantly improved efficiency, consistency, and collaboration between designers and developers."
 featured: true
 feature_image:
@@ -16,6 +16,7 @@ keywords:
 enable_case_study: True
 order: 3
 theme: tertiary
+assets_folder: "/assets/chromebook-news-service/"
 ---
 
 <InfoTextColumns data={{
@@ -28,9 +29,10 @@ theme: tertiary
 
 
 <FullSizeFeatureImage
-  src="/assets/chromebook-news-service/featured-hero.jpg"
+  src="featured-hero.jpg"
   alt="Two monitors showing Chrome Enterprise and ChromeOS website designs with minimalist layouts and blue accents on white backgrounds."
   transitionName={`case-study-${frontmatter.order}-feature-image`}
+  assetFolder={frontmatter.assets_folder}
 />
 
 <TwoColsTextContent
@@ -66,12 +68,13 @@ theme: tertiary
 />
 
 <DualFeatureImages
-  leftSrc="/assets/chromebook-news-service/featured-hero.jpg"
-  leftAlt="Two monitors showing Chrome Enterprise and ChromeOS website designs with minimalist layouts and blue accents on white backgrounds."
-  rightSrc="/assets/chromebook-news-service/featured-hero.jpg"
-  rightAlt="Two monitors showing Chrome Enterprise and ChromeOS website designs with minimalist layouts and blue accents on white backgrounds."
+  leftSrc="chrome-os-news-on-tablet.jpg"
+  leftAlt="Tablet showing ChromeOS new feature news on Chromebook.com website."
+  rightSrc="chrome-os-news-on-chromebook.jpg"
+  rightAlt="Chromebook displaying new features update on a desk with office supplies"
   class="fade-in"
-  type="left"
+  type="right"
+  assetFolder={frontmatter.assets_folder}
 />
 
 <TwoColsTextContent
@@ -95,11 +98,4 @@ theme: tertiary
   description="Transitioning to a microservice-based architecture with a centralized CMS can dramatically improve scalability, flexibility, and content consistency in complex, multi-platform environments. This approach enables businesses to efficiently manage and deliver localized content across various touchpoints, adapting quickly to changing needs and market demands. The significant 35% reduction in content update time demonstrates the tangible benefits of this architectural shift."
   class="fade-in"
   theme={frontmatter.theme}
-/>
-
-<InlineDemoVideo 
-  src="/assets/chromebook-10th-birthday/cb-10th-hero-demo.mp4"
-  poster="/assets/chromebook-10th-birthday/cb-10th-hero-demo.jpg"
-  alt="Description of the video"
-  class="fade-in"
 />

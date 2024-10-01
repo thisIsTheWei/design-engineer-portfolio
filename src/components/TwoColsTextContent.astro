@@ -19,7 +19,7 @@ const { class: className, type, description, points, theme } = Astro.props;
     <h3 class="h5">{CASE_STUDY_NARRATIVE[type].TITLE}</h3>
   </div>
   <div class="two-cols-content__description">
-    { description && <p>{description}</p> }
+    { description && <p set:html={description}></p> }
     { points && (
         <ul>
           {points.map(point => (

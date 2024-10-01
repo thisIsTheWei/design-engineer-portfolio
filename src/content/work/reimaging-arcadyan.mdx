@@ -1,11 +1,11 @@
 ---
-eyebrow: "Reimagining Arcadyan"
-title: "A Global Website Redesign <span>Revolutionizing User Experience</span> for a Tech Giant"
+eyebrow: "Global Web Presence"
+title: "<span>Elevating</span> Arcadyan's Digital Landscape"
 description: "Led the visual concept creation and managed the team in developing a comprehensive overhaul of Arcadyan's global website from October 2020 to March 2021. Through meticulous UX design, strategic content planning, and the creation of a new design system, we delivered a modern, user-friendly website optimized for showcasing products and attracting talent."
 featured: true
 feature_image:
   src: "/assets/reimaging-arcadyan/featured-hero.jpg"
-  alt: "Two monitors showing Chrome Enterprise and ChromeOS website designs with minimalist layouts and blue accents on white backgrounds."
+  alt: "Person using redesigned Arcadyan website on laptop and smartphone"
 url: "https://chromeenterprise.google/"
 keywords:
   - Information Architecture
@@ -18,6 +18,7 @@ keywords:
 enable_case_study: True
 order: 5
 theme: quaternary
+assets_folder: "/assets/reimaging-arcadyan/"
 ---
 
 <InfoTextColumns data={{
@@ -29,9 +30,10 @@ theme: quaternary
 />
 
 <FullSizeFeatureImage
-  src="/assets/reimaging-arcadyan/featured-hero.jpg"
-  alt="Two monitors showing Chrome Enterprise and ChromeOS website designs with minimalist layouts and blue accents on white backgrounds."
+  src="/featured-hero.jpg"
+  alt="Person using redesigned Arcadyan website on laptop and smartphone"
   transitionName={`case-study-${frontmatter.order}-feature-image`}
+  assetFolder={frontmatter.assets_folder}
 />
 
 <TwoColsTextContent
@@ -62,6 +64,13 @@ theme: quaternary
   ]}
   class="fade-in"
   theme={frontmatter.theme}
+/>
+
+<FullSizeFeatureImage
+  src="/before-after.jpg"
+  alt="Before and after comparison of Arcadyan website redesign on laptops"
+  assetFolder={frontmatter.assets_folder}
+  class="fade-in"
 />
 
 <TwoColsTextContent
@@ -99,9 +108,12 @@ theme: quaternary
   theme={frontmatter.theme}
 />
 
-<InlineDemoVideo 
-  src="/assets/chromebook-10th-birthday/cb-10th-hero-demo.mp4"
-  poster="/assets/chromebook-10th-birthday/cb-10th-hero-demo.jpg"
-  alt="Description of the video"
+<DualFeatureImages
+  leftSrc="ia-wireframe-design-desktop.jpg"
+  leftAlt="Three monitors displaying different stages of Arcadyan website development."
+  rightSrc="website-on-tablet.jpg"
+  rightAlt="Tablet showcasing Arcadyan's 5G Solutions page"
   class="fade-in"
+  type="left"
+  assetFolder={frontmatter.assets_folder}
 />

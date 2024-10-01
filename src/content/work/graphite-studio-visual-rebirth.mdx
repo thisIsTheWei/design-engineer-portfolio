@@ -1,6 +1,6 @@
 ---
 eyebrow: "Redefining Creative Identity"
-title: "Crafting a Creative Foundation: Graphite Studio's <span>Visual Rebirth</span>"
+title: "Graphite Studio's <span>Visual Rebirth</span>"
 description: "Developed a comprehensive brand identity for Graphite Studio, a new design studio branching out from Gopomo. The project encompassed logo design inspired by graphite's atomic structure, visual identity system creation, and website development, resulting in a cohesive brand that embodies the studio's innovative spirit and creative approach."
 featured: true
 feature_image: 
@@ -17,6 +17,7 @@ keywords:
 enable_case_study: True
 order: 2
 theme: secondary
+assets_folder: "/assets/graphite-studio-visual-rebirth/"
 ---
 
 <InfoTextColumns data={{
@@ -28,9 +29,10 @@ theme: secondary
 />
 
 <FullSizeFeatureImage
-  src="/assets/graphite-studio-visual-rebirth/featured-hero.jpg"
+  src="/featured-hero.jpg"
   alt="Two monitors showing Chrome Enterprise and ChromeOS website designs with minimalist layouts and blue accents on white backgrounds."
   transitionName={`case-study-${frontmatter.order}-feature-image`}
+  assetFolder={frontmatter.assets_folder}
 />
 
 <TwoColsTextContent
@@ -55,6 +57,16 @@ theme: secondary
   theme={frontmatter.theme}
 />
 
+<DualFeatureImages
+  leftSrc="website-mock-desktop-mobile.jpg"
+  leftAlt="Person using laptop and smartphone displaying Graphite studio website."
+  rightSrc="website-mock-tablet.jpg"
+  rightAlt="Tablet showing Featured Projects section on pink and gray background"
+  class="fade-in"
+  type="left"
+  assetFolder={frontmatter.assets_folder}
+/>
+
 <TwoColsTextContent
   type="FEATURES"
   points={[
@@ -71,6 +83,16 @@ theme: secondary
   description="While specific metrics are not available, the project successfully established a strong, distinctive brand identity for Graphite Studio. The new visual identity effectively communicates the studio's creative approach and sets it apart in the market."
   class="fade-in"
   theme={frontmatter.theme}
+/>
+
+<DualFeatureImages
+  leftSrc="branding-01.jpg"
+  leftAlt="Person using laptop and smartphone displaying Graphite studio website."
+  rightSrc="branding-02.jpg"
+  rightAlt="Tablet showing Featured Projects section on pink and gray background"
+  class="fade-in"
+  type="even"
+  assetFolder={frontmatter.assets_folder}
 />
 
 <TwoColsTextContent

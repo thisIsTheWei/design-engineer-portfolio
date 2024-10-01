@@ -4,13 +4,14 @@ interface Props {
   src: string;
   alt?: string;
   lazy?: boolean;
+  assetFolder: string;
   transitionName?: string;
 }
-const { class: className, src, alt, lazy = true, transitionName } = Astro.props;
+const { class: className, src, alt, lazy = true, assetFolder, transitionName } = Astro.props;
 ---
 
 <section class:list={[className, "full-size-feature-image"]}>
-  <img src={src} alt={alt}  loading={lazy ? "lazy" : "eager"} decoding="async" {...transitionName ? { 'transition:name': transitionName } : {}} />
+  <img src={assetFolder + src} alt={alt}  loading={lazy ? "lazy" : "eager"} decoding="async" {...transitionName ? { 'transition:name': transitionName } : {}} />
 </section>
 
 <style lang="scss">

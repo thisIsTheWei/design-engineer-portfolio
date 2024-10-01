@@ -4,17 +4,42 @@ interface Props {
   poster: string;
   alt: string;
   class?: string;
+  assetFolder: string;
 }
 
-const { class: className, src, poster, alt } = Astro.props;
+const { class: className, src, poster, alt, assetFolder } = Astro.props;
 ---
 
-<section class:list={[className, "inline-demo-video border-radius-2"]} data-video-src={src} data-video-label={alt}>
-  <img src={poster} alt={alt} class="inline-demo-video__poster" />
+<section class:list={[className, "inline-demo-video border-radius-2"]} data-video-src={assetFolder+src} data-video-label={alt}>
+  <img src={assetFolder+poster} alt={alt} class="inline-demo-video__poster" />
+  <div class="inline-demo-video__caption">
+    <p class="body-s">{alt}</p>
+  </div>
 </section>
 
 <script>
-  const videoContainers = document.querySelectorAll('.inline-demo-video');
+  function initInlineDemoVideo(container: HTMLElement) {
+    const videoSrc = container.dataset.videoSrc;
+    const videoLabel = container.dataset.videoLabel;
+    if (videoSrc) {
+      const video = document.createElement('video');
+      video.src = videoSrc;
+      video.controls = false;
+      video.muted = true;
+      video.playsInline = true;
+      video.loop = true;
+      video.autoplay = true;
+      if(videoLabel) {
+        video.setAttribute('aria-label', videoLabel);
+      }
+      
+      const poster = container.querySelector('.inline-demo-video__poster');
+
+      if (poster) {
+        container.replaceChild(video, poster);
+      }
+    }
+  }
 
   const observerOptions = {
     root: null,
@@ -24,50 +49,49 @@ const { class: className, src, poster, alt } = Astro.props;
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      console.log(entry.isIntersecting);
       if (entry.isIntersecting) {
-        const container = entry.target as HTMLElement;
-        const videoSrc = container.dataset.videoSrc;
-        const videoLabel = container.dataset.videoLabel;
-        if (videoSrc) {
-          const video = document.createElement('video');
-          video.src = videoSrc;
-          video.controls = false;
-          video.muted = true;
-          video.playsInline = true;
-          video.loop = true;
-          video.autoplay = true;
-          if(videoLabel) {
-            video.setAttribute('aria-label', videoLabel);
-          }
-          
-          const poster = container.querySelector('.inline-demo-video__poster');
-
-          if (poster) {
-            container.replaceChild(video, poster);
-          }
-        }
-        observer.unobserve(container);
+        initInlineDemoVideo(entry.target as HTMLElement);
+        observer.unobserve(entry.target);
       }
     });
   }, observerOptions);
 
-  videoContainers.forEach(container => {
-    observer.observe(container);
+  document.addEventListener('astro:page-load', () => {
+    const videoContainers = document.querySelectorAll('.inline-demo-video');
+    videoContainers.forEach(container => {
+      observer.observe(container);
+    });
   });
 </script>
-<style>
+<style lang="scss">
+  @use "../../styles/abstracts/" as *;
   .inline-demo-video {
     --video-width: 100%;
 
-    width: 100%;
     max-width: 100%;
     overflow: clip;
+    position: relative;
+    width: 100%;
+
+    &__poster {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    &__caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: $size-2;
+      text-align: center;
+      p {
+        max-width: 100%;
+      }
+    }
   }
 
-  .inline-demo-video__poster {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
 </style>
