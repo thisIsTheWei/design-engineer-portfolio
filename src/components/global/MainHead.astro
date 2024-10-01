@@ -8,21 +8,39 @@ interface Props {
 }
 
 const { 
-    title = "Wei-Hsin Chen: Design Engineer Portfolio",
-    description = "The portfolio of Wei-Hsin Chen, a design engineer."
+    title = "Wei-Hsin Chen | Design Engineer & UX Leader",
+    description = "Design Engineer with 10+ years transforming complex challenges into intuitive digital solutions for Google and other industry leaders. Bridging design and technology to create extraordinary experiences."
 } = Astro.props;
 ---
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width" />
+<title>{title}</title>
 <meta name="description" content={description} />
 <meta name="generator" content={Astro.generator} />
-<title>{title}</title>
+<!-- HTML Meta Tags -->
+<title>Wei-Hsin Chen: Design Engineer Portfolio</title>
+<meta name="description" content="Wei-Hsin Chen, A Design Engineer Portfolio">
+
+<!-- Facebook Meta Tags -->
+<meta property="og:url" content="https://weidesign.engineer/">
+<meta property="og:type" content="website">
+<meta property="og:title" content={title}>
+<meta property="og:description" content={description}>
+<meta property="og:image" content="/og.png">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="weidesign.engineer">
+<meta property="twitter:url" content="https://weidesign.engineer/">
+<meta name="twitter:title" content={title}>
+<meta name="twitter:description" content=description}>
+<meta name="twitter:image" content="/og.png">
+
 <script>
   import { initTheme } from "../../utils/theme";
   document.addEventListener('astro:page-load', initTheme);
 </script>
-</head>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">

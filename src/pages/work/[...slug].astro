@@ -26,7 +26,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
-<BaseLayout title={entry.data.title.replace(/<\/?span>/g, '')} description={entry.data.description}>
+<BaseLayout title={`${entry.data.meta_data.title} | Wei-Hsin Chen`} description={entry.data.meta_data.description}>
   <article class="case-study">
     <CaseStudyHero entry={entry} />
     <Content components={{FullSizeFeatureImage, InfoTextColumns, TwoColsTextContent, DualFeatureImages, InlineDemoVideo, KeyMetrics}} frontmatter={entry.data}/>
