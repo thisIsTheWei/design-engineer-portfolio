@@ -1,0 +1,35 @@
+---
+// ContentSection.astro
+interface Props {
+  sectionType: string; // e.g., "THE CHALLENGE", "THE PROCESS", "THE OUTCOME"
+  title: string;
+  description: string;
+  points: string[];
+}
+
+const { sectionType, title, description, points } = Astro.props;
+---
+
+<section class="two-cols-content grid even-columns">
+  <div class="two-cols-content__title">
+    <h2 class="eyebrow">{sectionType}</h2>
+    <h3 class="h5">{title}</h3>
+  </div>
+  <div class="two-cols-content__description">
+    <p>{description}</p>
+    { points && (
+        <ul>
+          {points.map(point => (
+              <li>{point}</li>
+          ))}
+        </ul>
+    )
+    }
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../styles/abstracts/" as *;
+
+
+</style>

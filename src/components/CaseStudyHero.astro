@@ -1,0 +1,87 @@
+---
+import Cta from "./composable/Cta.astro";
+---
+
+<section class="intro-hero-container">
+  <div class="intro-hero">
+    <div class="intro-hero__headline margin-block-end-6">
+      <h1 class="display1">Design Engineer</h1>
+      <div class="intro-hero__keywords padding-block-start-2">
+        <p>Based in Bay Area</p>
+        <p>Design + Code</p>
+        <p>Available to work</p>
+      </div>
+    </div>
+    <h2 class="h2 intro-hero__statement">Bridging design and technology to create extraordinary experiences</h2>
+    <div class="intro-hero__detail flow">
+      <p class="body-l intro-hero__detail-body">I'm a design engineer and engineer leader with over a decade of experience transforming complex challenges into intuitive digital solutions for industry leaders like Google, crafting seamless user experiences that bring brands to life.</p>
+      <p class="body-l intro-hero__detail-body">If you would like to discuss opportunities to collaborate, please reach out.</p>
+      <div class="intro-hero__detail-buttons">
+        <Cta href="#contact-content" type="primary">Contact Me</Cta>
+        <Cta href="/assets/Resume_Wei_Hsin_Chen.pdf" type="secondary" icon="download" target="_blank">Download Resume</Cta>
+        <Cta href="https://www.linkedin.com/in/weihsin/" type="tertiary" icon="linkedin-logo">LinkedIn</Cta>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../styles/abstracts" as *;
+
+  .intro-hero {
+    display: grid;
+    gap: $size-8;
+    padding-block-end: $size-11;
+
+    @container (width > 670px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: $size-12;
+    }
+
+    &__headline {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-direction: column;
+      gap: clamp($size-6, 3VW, $size-9);
+      
+      @container (width > 670px) {
+        text-align: center;
+      }
+    }
+
+    &__keywords {
+      border-top: var(--border-default);
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &__statement {
+      padding-inline-end: $size-6;
+    }
+
+    &__detail {
+      display: flex;
+      flex-direction: column;
+      @container (width > 670px) {
+        margin-top: clamp(14rem, 16vw, 16rem);
+      }
+    }
+
+    &__detail-body {
+      @container (width > 928px) {
+        padding-inline-end: $size-14;
+      }
+      @container (width > 928px) {
+        padding-inline-end: $size-14;
+      }
+    }
+
+    &__detail-buttons {
+      display: inline-flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: $size-4;
+    }
+  }
+</style>

@@ -1,9 +1,0 @@
-@use "../abstracts/" as *;
-
-.grid-col {
-  @include mq(m) {
-    > .span-2 {
-      grid-column: span 2;
-    }
-  }
-}

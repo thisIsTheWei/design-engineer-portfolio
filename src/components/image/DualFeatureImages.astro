@@ -1,0 +1,20 @@
+---
+const { src, alt } = Astro.props;
+---
+
+<section class="image-full">
+  <img src={src} alt={alt} class="" />
+</section>
+
+<style lang="scss">
+  @use "../../styles/abstracts/" as *;
+
+  .image-full {
+    border-radius: var(--border-radius-2, $border-radius-2);
+    overflow: clip;
+
+    @include mq(m) {
+      aspect-ratio: 16 / 7;
+    }
+  }
+</style>
