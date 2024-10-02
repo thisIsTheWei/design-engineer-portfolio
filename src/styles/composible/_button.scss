@@ -31,6 +31,7 @@ $radius-size: 500px;
   transition: all 275ms ease;
   overflow: clip;
   position: relative;
+  max-width: $radius-size/2;
 
   &__text, svg {
     z-index: z(base) + 1;

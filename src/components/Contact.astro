@@ -9,8 +9,9 @@ const { class: className }: Props = Astro.props;
   <div id="contact" class="contact">
     <h2 class="h1 contact__headline">Thanks for the visit. Reach out and let's chat.</h2>
     <div class="contact__buttons">
-      <Cta href="https://calendar.app.google/e7Vuknr4uMFS8J6z8" type="primary" icon="video-camera">Get in touch</Cta>
-      <Cta href="/assets/Resume_Wei_Hsin_Chen.pdf" type="secondary" icon="download" target="_blank">Download Resume</Cta>
+      <Cta href="mailto:wei.design.engineer@gmail.com" type="primary" icon="envelope" target="_blank">Email Me</Cta>
+      <Cta href="https://calendar.app.google/dUoxuZs3eMKXjrVS8" type="secondary" icon="video-camera" target="_blank">Schedule a Meeting</Cta>
+      <Cta href="/assets/Resume_Wei_Hsin_Chen.pdf" type="tertiary" icon="download">Download Resume</Cta>
     </div>
   </div> 
 </section>
@@ -36,14 +37,12 @@ const { class: className }: Props = Astro.props;
     }
 
     &__buttons {
+      align-items: center;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      flex-wrap: wrap;
       justify-content: center;
-      gap: $size-4;
-
-      @container (width > 500px) {
-        flex-direction: row;
-      }
+      gap: $size-4
     }
   }
 
