@@ -22,8 +22,8 @@ interface Props {
       order: number;
     };
     slug: string;
-    fadeIn?: boolean | IntersectionOptions;
-  }
+  };
+  fadeIn?: boolean | IntersectionOptions;
 }
 
 const { class: className, work, fadeIn = false }: Props = Astro.props;

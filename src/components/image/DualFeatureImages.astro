@@ -1,5 +1,5 @@
 ---
-import {IntersectionOptions} from "../../scripts/types/intersections";
+import type {IntersectionOptions} from "../../scripts/types/intersections";
 import {getFadeInDataAttribute} from "../../scripts/utils/intersection-observer/fadein-intersection-observer";
 interface Props {
   class?: string,
@@ -11,7 +11,7 @@ interface Props {
   assetFolder: string;
   fadeIn?: boolean | IntersectionOptions;
 }
-const { class: className, leftSrc, leftAlt, rightSrc, rightAlt, type, assetFolder, fadeIn } = Astro.props;
+const { class: className, leftSrc, leftAlt, rightSrc, rightAlt, type, assetFolder, fadeIn = false } = Astro.props;
 const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
 ---
 

@@ -30,7 +30,7 @@ const { title, description = "Wei-Hsin Chen, A Design Engineer Portfolio" } = As
         <script>
             import { FadeinIntersectionObserver } from "../scripts/utils/intersection-observer/fadein-intersection-observer.ts";
 
-            let fadeInObserver = null;
+            let fadeInObserver: FadeinIntersectionObserver | null = null;
 
             function initializeFadeInObserver() {
                 // Customize default options as needed
