@@ -1,7 +1,7 @@
 const observerOptions = {
   root: null,
   rootMargin: '0px 0px -30% 0px',
-  threshold: 0.01
+  threshold: 0.2
 };
 
 export function setupFadeInObserver() {

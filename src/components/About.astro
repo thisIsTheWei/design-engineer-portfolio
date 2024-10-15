@@ -1,15 +1,25 @@
 ---
+import type { IntersectionOptions } from '../scripts/types/intersections';
 import { Image } from 'astro:assets';
 import headshot from '../assets/profile-wei-hsin-chen.png';
+import {getFadeInDataAttribute} from "../scripts/utils/intersection-observer/fadein-intersection-observer";
 
 interface Props {
   class?: string;
+  fadeIn?: boolean | IntersectionOptions;
 }
 
-const { class: className }: Props = Astro.props;
+const {
+  class: className,
+  fadeIn = false
+}: Props = Astro.props;
+
+const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
 ---
 
-<section class:list={[className, "about grid"]} id="about-content">
+<section class:list={[className, "about grid"]}
+         id="about-content"
+         {...fadeInDataAttribute !== undefined ? { 'data-fade-in-intersect': fadeInDataAttribute } : {}}>
   <div class="about__image">
     <Image src={headshot} alt="Wei-Hsin Chen" width={400} height={532} format='avif' quality={"mid"} />
   </div>

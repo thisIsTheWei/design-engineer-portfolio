@@ -1,5 +1,7 @@
 ---
-import { CASE_STUDY_NARRATIVE } from '../utils/constants';
+import {CASE_STUDY_NARRATIVE} from '../scripts/utils/constants';
+import type {IntersectionOptions} from '../scripts/types/intersections';
+import {getFadeInDataAttribute} from "../scripts/utils/intersection-observer/fadein-intersection-observer";
 
 export type NarrativeType = 'CHALLENGE' | 'APPROACH' | 'FEATURES' | 'OUTCOME' | 'REFLECTION';
 interface Props {
@@ -8,19 +10,30 @@ interface Props {
   description: string;
   points: string[];
   theme: "primary" | "secondary" | "tertiary" | "quaternary"
+  fadeIn?: boolean | IntersectionOptions;
 }
 
-const { class: className, type, description, points, theme } = Astro.props;
+const {
+  class: className,
+  type,
+  description,
+  points,
+  theme,
+  fadeIn = false
+}: Props = Astro.props;
+
+const fadeInDataAttribute = getFadeInDataAttribute(fadeIn)
 ---
 
-<section class:list={[className, "two-cols-content grid even-columns"]}>
+<section class:list={[className, "two-cols-content grid even-columns"]}
+         {...fadeInDataAttribute !== undefined ? { 'data-fade-in-intersect': fadeInDataAttribute } : {}}>
   <div class="two-cols-content__title">
     <h2 class="eyebrow" data-theme={theme}>{CASE_STUDY_NARRATIVE[type].EYEBROW}</h2>
     <h3 class="h5">{CASE_STUDY_NARRATIVE[type].TITLE}</h3>
   </div>
   <div class="two-cols-content__description">
-    { description && <p set:html={description}></p> }
-    { points && (
+    {description && <p set:html={description}></p>}
+    {points && (
         <ul>
           {points.map(point => (
               <li>{point}</li>
@@ -74,7 +87,7 @@ const { class: className, type, description, points, theme } = Astro.props;
   ul {
     padding-inline-start: #{$size-6};
 
-    @include mq(m){
+    @include mq(m) {
       padding-block-start: #{$size-4};
     }
   }

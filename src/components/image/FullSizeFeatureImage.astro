@@ -1,4 +1,6 @@
 ---
+import {IntersectionOptions} from "../../scripts/types/intersections";
+import {getFadeInDataAttribute} from "../../scripts/utils/intersection-observer/fadein-intersection-observer";
 interface Props {
   class?: string;
   src: string;
@@ -6,23 +8,66 @@ interface Props {
   lazy?: boolean;
   assetFolder: string;
   transitionName?: string;
+  fadeIn?: boolean | IntersectionOptions;
 }
-const { class: className, src, alt, lazy = true, assetFolder, transitionName } = Astro.props;
+const { class: className, src, alt, lazy = true, assetFolder, transitionName, fadeIn } = Astro.props;
+const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
 ---
 
-<section class:list={[className, "full-size-feature-image"]}>
-  <img src={assetFolder + src} alt={alt}  loading={lazy ? "lazy" : "eager"} decoding="async" {...transitionName ? { 'transition:name': transitionName } : {}} />
+<section class:list={[className, "full-size-feature-image"]}
+         {...fadeInDataAttribute !== undefined ? { 'data-fade-in-intersect': fadeInDataAttribute } : {}}>
+  <div class="full-size-feature-image__block">
+    <img src={assetFolder + src} alt={alt}  loading={lazy ? "lazy" : "eager"} decoding="async" {...transitionName ? { 'transition:name': transitionName } : {}} />
+  </div>
 </section>
 
 <style lang="scss">
   @use "../../styles/abstracts/" as *;
+  @use "../../styles/utilities/" as *;
 
   .full-size-feature-image {
-    border-radius: var(--border-radius-2, $border-radius-2);
-    overflow: clip;
+    --_clr-reveal-box: white;
+    --_reveal-animation-delay: 0.3s;
 
-    @include mq(m) {
-      aspect-ratio: 16 / 7;
+    &__block {
+      border-radius: var(--border-radius-2, $border-radius-2);
+      overflow: clip;
+      position: relative;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      @include mq(m) {
+        aspect-ratio: 16 / 7;
+      }
+    }
+  }
+  [data-fade-in-intersect] {
+    .full-size-feature-image__block {
+      &::after {
+        animation: 0.9s $easeInOutQuart var(--_reveal-animation-delay) both paused slide-out-right;
+        content: "";
+        background-color: var(--_clr-reveal-box, transparent);
+        display: block;
+        left: 0;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        z-index: z(modal);
+        width: 100%;
+      }
+    }
+    img {
+      animation: 1.5s $easeInOutQuart calc(var(--_reveal-animation-delay) + 0.1s) both paused scale-in-down;
+    }
+  }
+  [data-fade-in-intersect].is-intersecting {
+    img, .full-size-feature-image__block::after {
+      animation-play-state: running;
     }
   }
 </style>

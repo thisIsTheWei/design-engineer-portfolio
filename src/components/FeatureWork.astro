@@ -1,7 +1,8 @@
 ---
+import type { IntersectionOptions } from '../scripts/types/intersections';
 import Cta from './composable/Cta.astro';
 import HighlightHeading from './composable/HighlightHeading.astro';
-import { Image } from 'astro:assets';
+import {getFadeInDataAttribute} from "../scripts/utils/intersection-observer/fadein-intersection-observer";
 
 interface Props {
   class?: string;
@@ -21,39 +22,51 @@ interface Props {
       order: number;
     };
     slug: string;
+    fadeIn?: boolean | IntersectionOptions;
   }
 }
 
-const { class: className, work }: Props = Astro.props;
+const { class: className, work, fadeIn = false }: Props = Astro.props;
 const { eyebrow, title, feature_image, url, keywords = [], enable_case_study, theme, order } = work.data;
+const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
 ---
-<div class:list={[className, "featured-work-container"]}>
-  <div class="featured-work">
-  <div class="featured-work__image">
-    <img src={feature_image.src} alt={feature_image.alt} loading="lazy" decoding="async" transition:name={`case-study-${order}-feature-image`}/>
-  </div>
-  <div class="featured-work__content">
-    <p class="eyebrow" transition:name={`case-study-${order}-eyebrow`}>{eyebrow}</p>
-    <HighlightHeading title={title} theme={theme} level={3} class="h3" transitionName={`case-study-${order}-heading`} />
-    {keywords.length > 0 && (
-      <ul class="tags featured-work__tags" transition:name={`case-study-${order}-keywords`}>
-        {keywords.map(keyword => (
-          <li>{keyword}</li>
-        ))}
-      </ul>
-    )}
-  </div>
-  <div class="featured-work__ctas">
-    {enable_case_study && <Cta href={`/work/${work.slug}`} type="primary">View Case Study</Cta>}
-    {url && <Cta href={url} type="secondary">See Live</Cta>}
+<div
+    class:list={[className, "featured-work-container"]}
+    {...fadeInDataAttribute !== undefined ? { 'data-fade-in-intersect': fadeInDataAttribute } : {}}>
+  <div class="featured-work"  data-theme={theme}>
+    <div class="featured-work__image">
+      <img src={feature_image.src} alt={feature_image.alt} loading="lazy" decoding="async" transition:name={`case-study-${order}-feature-image`}/>
+    </div>
+    <div class="featured-work__content">
+      <p class="eyebrow" transition:name={`case-study-${order}-eyebrow`}>{eyebrow}</p>
+      <HighlightHeading title={title} theme={theme} level={3} class="h3" transitionName={`case-study-${order}-heading`} />
+      {keywords.length > 0 && (
+        <ul class="tags featured-work__tags" transition:name={`case-study-${order}-keywords`}>
+          {keywords.map(keyword => (
+            <li>{keyword}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+    <div class="featured-work__ctas">
+      {enable_case_study && <Cta href={`/work/${work.slug}`} type="primary">View Case Study</Cta>}
+      {url && <Cta href={url} type="secondary">See Live</Cta>}
     </div>
   </div>
 </div>
 <style lang="scss">
   @use "../styles/abstracts/" as *;
-  
+  @use "../styles/utilities/" as *;
+
   .featured-work-container {
+    --_reveal-animation-delay: 0.3s;
     container-type: inline-size;
+
+    @include mq(m) {
+      &:nth-child(3n+3) {
+        --_reveal-animation-delay: 0.6s;
+      }
+    }
   }
 
   .span-2 {
@@ -68,15 +81,34 @@ const { eyebrow, title, feature_image, url, keywords = [], enable_case_study, th
   }
 
   .featured-work {
+    --_clr-reveal-box: trasnparent;
+
     container-type: inline-size;
     display: grid;
     gap: $size-8;
     grid-template-columns: 1fr;
 
+    &[data-theme="primary"]{
+      --_clr-reveal-box: var(--clr-highlight-primary);
+    }
+
+    &[data-theme="secondary"]{
+      --_clr-reveal-box: var(--clr-highlight-secondary);
+    }
+
+    &[data-theme="tertiary"]{
+      --_clr-reveal-box: var(--clr-highlight-tertiary);
+    }
+
+    &[data-theme="quaternary"]{
+      --_clr-reveal-box: var(--clr-highlight-quaternary);
+    }
+
     &__image {
       aspect-ratio: 4 / 3;
       border-radius: var(--border-radius-2, $border-radius-2);
       overflow: hidden;
+      position: relative;
 
       img {
         width: 100%;
@@ -115,4 +147,31 @@ const { eyebrow, title, feature_image, url, keywords = [], enable_case_study, th
       }
     }
   }
+
+  [data-fade-in-intersect] {
+    .featured-work__image {
+      &::after {
+        animation: 0.9s $easeInOutQuart var(--_reveal-animation-delay) both paused slide-out-right;
+        content: "";
+        background-color: var(--_clr-reveal-box, transparent);
+        display: block;
+        left: 0;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        z-index: z(modal);
+        width: 100%;
+      }
+    }
+    img {
+      animation: 1.5s $easeInOutQuart calc(var(--_reveal-animation-delay) + 0.1s) both paused scale-in-down;
+    }
+
+    &.is-intersecting {
+      img, .featured-work__image::after {
+        animation-play-state: running;
+      }
+    }
+  }
+
 </style>

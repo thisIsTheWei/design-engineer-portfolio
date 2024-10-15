@@ -1,5 +1,7 @@
 ---
+import type { IntersectionOptions } from '../scripts/types/intersections';
 import InfoTextColumn from "./InfoTextColumn.astro";
+import {getFadeInDataAttribute} from "../scripts/utils/intersection-observer/fadein-intersection-observer";
 interface Info {
   content: {}
 }
@@ -7,12 +9,15 @@ interface Info {
 interface Props {
   class?: string,
   data: Record<InfoTextColumnType, string>;
+  fadeIn?: boolean | IntersectionOptions;
 }
 type InfoTextColumnType = 'ROLE' | 'COMPANY' | 'TOOL' | 'YEAR';
-const { class: className, data } = Astro.props;
+const { class: className, data, fadeIn = false } = Astro.props;
+const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
 ---
 
-<section class:list={[className, "info-text-columns-container", "grid"]}>
+<section class:list={[className, "info-text-columns-container", "grid"]}
+         {...fadeInDataAttribute !== undefined ? { 'data-fade-in-intersect': fadeInDataAttribute } : {}}>
   <div class="info-text-columns grid even-columns">
     {Object.entries(data).map(([key, value]) => (
       <InfoTextColumn 

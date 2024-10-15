@@ -40,6 +40,4 @@ export function initScrollNavHighlight() {
 
   // Initial call to set the active section on page load
   updateActiveSection();
-
-  console.log('Scroll nav highlight initialized');
 }

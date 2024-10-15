@@ -1,11 +1,26 @@
 ---
+import type { IntersectionOptions } from '../scripts/types/intersections';
 import Cta from "./composable/Cta.astro";
 interface Props {
   class?: string;
+  fadeIn?: boolean | IntersectionOptions
 }
-const { class: className }: Props = Astro.props;
+const {
+  class: className,
+  fadeIn = false
+}: Props = Astro.props;
+
+let fadeInDataAttribute: string | undefined;
+
+if (typeof fadeIn === 'object') {
+  fadeInDataAttribute = JSON.stringify(fadeIn);
+} else if (fadeIn === true) {
+  fadeInDataAttribute = '';
+}
 ---
-<section class:list={[className]}>
+<section
+    class:list={[className]}
+    {...fadeInDataAttribute !== undefined ? { 'data-fade-in-intersect': fadeInDataAttribute } : {}}>
   <div id="contact" class="contact">
     <h2 class="h1 contact__headline">Thanks for the visit. Reach out and let's chat.</h2>
     <div class="contact__buttons">

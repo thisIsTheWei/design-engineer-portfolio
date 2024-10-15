@@ -1,4 +1,6 @@
 ---
+import {IntersectionOptions} from "../../scripts/types/intersections";
+import {getFadeInDataAttribute} from "../../scripts/utils/intersection-observer/fadein-intersection-observer";
 interface Props {
   class?: string,
   leftSrc?: string,
@@ -7,25 +9,35 @@ interface Props {
   rightAlt?: string,
   type?: string,
   assetFolder: string;
+  fadeIn?: boolean | IntersectionOptions;
 }
-const { class: className, leftSrc, leftAlt, rightSrc, rightAlt, type, assetFolder } = Astro.props;
+const { class: className, leftSrc, leftAlt, rightSrc, rightAlt, type, assetFolder, fadeIn } = Astro.props;
+const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
 ---
 
-<section class:list={[className, "dual-feature-images grid"]} datatype={type}>
+<section class:list={[className, "dual-feature-images grid"]} datatype={type}
+         {...fadeInDataAttribute !== undefined ? { 'data-fade-in-intersect': fadeInDataAttribute } : {}}>
   <div class="dual-feature-image dual-feature-image__left border-radius-2">
-    <img src={assetFolder+leftSrc} alt={leftAlt} loading="lazy" decoding="async" />
+    <div class="dual-feature-image__block">
+      <img src={assetFolder+leftSrc} alt={leftAlt} loading="lazy" decoding="async" />
+    </div>
   </div>
   <div class="dual-feature-image dual-feature-image__right border-radius-2">
-    <img src={assetFolder+rightSrc} alt={rightAlt}  loading="lazy" decoding="async" />
+    <div class="dual-feature-image__block">
+      <img src={assetFolder+rightSrc} alt={rightAlt}  loading="lazy" decoding="async" />
+    </div>
   </div>
 </section>
 
 <style lang="scss">
   @use "../../styles/abstracts/" as *;
+  @use "../../styles/utilities/" as *;
 
   .dual-feature-images {
-    grid-template-columns: 1fr 1fr;
+    --_clr-reveal-box: white;
+    --_reveal-animation-delay: 0.3s;
 
+    grid-template-columns: 1fr 1fr;
 
     &[datatype="right"] {
       grid-template-columns: 2fr 3fr;
@@ -42,16 +54,27 @@ const { class: className, leftSrc, leftAlt, rightSrc, rightAlt, type, assetFolde
       object-position: center;
     }
   }
+  .dual-feature-image__block{
+    height: 100%;
+    width: 100%;
+    position: relative;
+  }
 
   [datatype="right"] {
     .dual-feature-image__right {
       aspect-ratio: 7/5;
+    }
+    .dual-feature-image__left {
+      --_reveal-animation-delay: 0.5s;
     }
   }
 
   [datatype="left"] {
     .dual-feature-image__left {
       aspect-ratio: 7/5
+    }
+    .dual-feature-image__right {
+      --_reveal-animation-delay: 0.5s;
     }
   }
 
@@ -64,5 +87,30 @@ const { class: className, leftSrc, leftAlt, rightSrc, rightAlt, type, assetFolde
 
   .dual-feature-image {
     overflow: clip;
+  }
+
+  [data-fade-in-intersect] {
+    .dual-feature-image__block {
+      &::after {
+        animation: 0.9s $easeInOutQuart var(--_reveal-animation-delay) both paused slide-out-right;
+        content: "";
+        background-color: var(--_clr-reveal-box, transparent);
+        display: block;
+        left: 0;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        z-index: z(modal);
+        width: 100%;
+      }
+    }
+    img {
+      animation: 1.5s $easeInOutQuart calc(var(--_reveal-animation-delay) + 0.1s) both paused scale-in-down;
+    }
+  }
+  [data-fade-in-intersect].is-intersecting {
+    img, .dual-feature-image__block::after {
+      animation-play-state: running;
+    }
   }
 </style>

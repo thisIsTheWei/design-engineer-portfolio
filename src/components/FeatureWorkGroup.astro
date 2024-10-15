@@ -21,7 +21,8 @@ const { class: className }: Props = Astro.props;
       featuredWorks.map((work: any, index: number) => (
         <FeaturedWork
           work={work}
-          class={index === 0 || index === 3 ? "span-2 fade-in" : "fade-in"}
+          class={index === 0 || index === 3 ? "span-2" : ""}
+          fadeIn
         />
       ))
     }

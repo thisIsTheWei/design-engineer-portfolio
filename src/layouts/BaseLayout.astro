@@ -28,32 +28,42 @@ const { title, description = "Wei-Hsin Chen, A Design Engineer Portfolio" } = As
 
         <Footer />
         <script>
-          import { setupFadeInObserver } from "../utils/fade-in-observer";
+            import { FadeinIntersectionObserver } from "../scripts/utils/intersection-observer/fadein-intersection-observer.ts";
 
-          function handleFadeIn() {
-            const observer = setupFadeInObserver();
+            let fadeInObserver = null;
 
-            // Cleanup function
-            return () => {
-              if (observer) {
-                observer.disconnect();
-              }
-            };
-          }
+            function initializeFadeInObserver() {
+                // Customize default options as needed
+                fadeInObserver = new FadeinIntersectionObserver();
+            }
 
-          // Run on initial page load
-          let cleanup = handleFadeIn();
+            function cleanupFadeInObserver() {
+                if (fadeInObserver) {
+                    fadeInObserver.disconnect();
+                    fadeInObserver = null;
+                }
+            }
 
-          // Run on client-side navigation
-          document.addEventListener('astro:page-load', () => {
-            if (cleanup) cleanup();
-            cleanup = handleFadeIn();
-          });
+            // Initialize on script load (which occurs after DOM is ready in this context)
+            initializeFadeInObserver();
 
-          // Cleanup on page unload
-          document.addEventListener('astro:before-swap', () => {
-            if (cleanup) cleanup();
-          });
+            // Handle client-side navigation
+            document.addEventListener('astro:page-load', () => {
+                cleanupFadeInObserver();
+                initializeFadeInObserver();
+            });
+
+            // Cleanup before page unload
+            document.addEventListener('astro:before-swap', cleanupFadeInObserver);
+
+            // Cleanup when the script's parent element is removed from the DOM
+            // This helps during development with HMR (Hot Module Replacement)
+            if (import.meta.hot) {
+                import.meta.hot.dispose(() => {
+                    cleanupFadeInObserver();
+                });
+            }
+
         </script>
     </body>
 </html>

@@ -1,4 +1,6 @@
 ---
+import type { IntersectionOptions } from '../scripts/types/intersections';
+import {getFadeInDataAttribute} from "../scripts/utils/intersection-observer/fadein-intersection-observer";
 interface Metric {
   value: string;
   desc: string;
@@ -8,12 +10,15 @@ interface Props {
   class?: string;
   description: string
   metrics: Array<Metric>;
+  fadeIn?: boolean | IntersectionOptions;
 }
 
-const { class: className, description, metrics}: Props = Astro.props;
+const { class: className, description, metrics, fadeIn = false}: Props = Astro.props;
+const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
 ---
 
-<section  class:list={[className, "key-metrics grid border-radius-2"]}>
+<section  class:list={[className, "key-metrics grid border-radius-2"]}
+          {...fadeInDataAttribute !== undefined ? { 'data-fade-in-intersect': fadeInDataAttribute } : {}}>
   <div class="key-metrics__description">
     <h2 class="h3">Key Metrics</h2>
     <p>{description}</p>

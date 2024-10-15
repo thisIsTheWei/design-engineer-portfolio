@@ -1,16 +1,23 @@
 ---
+import type { IntersectionOptions } from '../scripts/types/intersections';
+import {getFadeInDataAttribute} from "../../scripts/utils/intersection-observer/fadein-intersection-observer";
 interface Props {
   src: string;
   poster: string;
   alt: string;
   class?: string;
   assetFolder: string;
+  fadeIn?: boolean | IntersectionOptions;
 }
 
-const { class: className, src, poster, alt, assetFolder } = Astro.props;
+const { class: className, src, poster, alt, assetFolder, fadeIn = false } = Astro.props;
+const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
 ---
 
-<section class:list={[className, "inline-demo-video border-radius-2"]} data-video-src={assetFolder+src} data-video-label={alt}>
+<section class:list={[className, "inline-demo-video border-radius-2"]}
+         data-video-src={assetFolder+src}
+         data-video-label={alt}
+         {...fadeInDataAttribute !== undefined ? { 'data-fade-in-intersect': fadeInDataAttribute } : {}}>
   <img src={assetFolder+poster} alt={alt} class="inline-demo-video__poster" />
   <div class="inline-demo-video__caption">
     <p class="body-s">{alt}</p>

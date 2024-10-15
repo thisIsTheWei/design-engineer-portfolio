@@ -1,0 +1,19 @@
+$easeInOutQuart: cubic-bezier(0.76, 0, 0.24, 1);
+$easeOutQuad: cubic-bezier(0.5, 1, 0.89, 1);
+
+@keyframes scale-in-down {
+  0% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes slide-out-right {
+  0% {
+    transform: translate(0%, 0);
+  }
+  100% {
+    transform: translate(100%, 0);
+  }
+}
