@@ -16,18 +16,19 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
 
 <section class:list={[className, "full-size-feature-image"]}
          {...fadeInDataAttribute !== undefined ? { 'data-fade-in-intersect': fadeInDataAttribute } : {}}>
-  <div class="full-size-feature-image__block">
-    <img src={assetFolder + src} alt={alt}  loading={lazy ? "lazy" : "eager"} decoding="async" {...transitionName ? { 'transition:name': transitionName } : {}} />
+  <div class="full-size-feature-image__block" {...(fadeIn ? { 'data-animation-block-slide': 'slide-out-right' } : {})}>
+    <img
+        src={assetFolder + src} alt={alt}
+        loading={lazy ? "lazy" : "eager"}
+        decoding="async" {...transitionName ? { 'transition:name': transitionName } : {}}
+        {...(fadeIn ? { 'data-animation-scale': 'in-down' } : {})}/>
   </div>
 </section>
 
 <style lang="scss">
   @use "../../styles/abstracts/" as *;
-  @use "../../styles/utilities/" as *;
 
   .full-size-feature-image {
-    --_clr-reveal-box: white;
-    --_reveal-animation-delay: 0.3s;
 
     &__block {
       border-radius: var(--border-radius-2, $border-radius-2);
@@ -43,32 +44,11 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
       }
 
       @include mq(m) {
-        aspect-ratio: 16 / 7;
+        aspect-ratio: 16 / 9;
       }
     }
-  }
-  [data-fade-in-intersect] {
-    .full-size-feature-image__block {
-      &::after {
-        animation: 0.9s $easeInOutQuart var(--_reveal-animation-delay) both paused slide-out-right;
-        content: "";
-        background-color: var(--_clr-reveal-box, transparent);
-        display: block;
-        left: 0;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        z-index: z(modal);
-        width: 100%;
-      }
-    }
-    img {
-      animation: 1.5s $easeInOutQuart calc(var(--_reveal-animation-delay) + 0.1s) both paused scale-in-down;
-    }
-  }
-  [data-fade-in-intersect].is-intersecting {
-    img, .full-size-feature-image__block::after {
-      animation-play-state: running;
+    [data-animation-block-slide] {
+      --_clr-reveal-block: white;
     }
   }
 </style>

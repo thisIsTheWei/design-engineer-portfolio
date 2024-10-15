@@ -15,16 +15,25 @@ const { class: className, leftSrc, leftAlt, rightSrc, rightAlt, type, assetFolde
 const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
 ---
 
-<section class:list={[className, "dual-feature-images grid"]} datatype={type}
+<section class:list={[className, "dual-feature-images grid"]} data-type={type}
          {...fadeInDataAttribute !== undefined ? { 'data-fade-in-intersect': fadeInDataAttribute } : {}}>
   <div class="dual-feature-image dual-feature-image__left border-radius-2">
-    <div class="dual-feature-image__block">
-      <img src={assetFolder+leftSrc} alt={leftAlt} loading="lazy" decoding="async" />
+    <div class="dual-feature-image__block" data-animation-block-slide="slide-out-right">
+      <img src={assetFolder+leftSrc}
+           alt={leftAlt}
+           loading="lazy"
+           decoding="async"
+           {...(fadeIn ? { 'data-animation-scale': 'in-down' } : {})}/>
     </div>
   </div>
   <div class="dual-feature-image dual-feature-image__right border-radius-2">
-    <div class="dual-feature-image__block">
-      <img src={assetFolder+rightSrc} alt={rightAlt}  loading="lazy" decoding="async" />
+    <div class="dual-feature-image__block" data-animation-block-slide="slide-out-right">
+      <img
+          src={assetFolder+rightSrc}
+          alt={rightAlt}
+          loading="lazy"
+          decoding="async"
+          {...(fadeIn ? { 'data-animation-scale': 'in-down' } : {})}/>
     </div>
   </div>
 </section>
@@ -34,16 +43,13 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
   @use "../../styles/utilities/" as *;
 
   .dual-feature-images {
-    --_clr-reveal-box: white;
-    --_reveal-animation-delay: 0.3s;
-
     grid-template-columns: 1fr 1fr;
 
-    &[datatype="right"] {
+    &[data-type="right"] {
       grid-template-columns: 2fr 3fr;
     }
 
-    &[datatype="left"] {
+    &[data-type="left"] {
       grid-template-columns: 3fr 2fr;
     }
 
@@ -60,32 +66,28 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
     position: relative;
   }
 
-  [datatype="right"] {
+  [data-type="right"] {
     .dual-feature-image__right {
       aspect-ratio: 7/5;
     }
-    .dual-feature-image__left {
-      --_reveal-animation-delay: 0.8s;
+    .dual-feature-image__right [data-animation-block-slide] {
+      --_animation-delay: 0.6s;
     }
   }
 
-  [datatype="left"] {
+  [data-type="left"] {
     .dual-feature-image__left {
       aspect-ratio: 7/5
     }
-    .dual-feature-image__right {
-      --_reveal-animation-delay: 0.8s;
+    .dual-feature-image__right [data-animation-block-slide] {
+      --_animation-delay: 0.6s;
     }
   }
 
-  [datatype="even"] {
+  [data-type="even"] {
     .dual-feature-image__left,
     .dual-feature-image__right {
       aspect-ratio: 16 / 21.75;
-    }
-
-    .dual-feature-image__right {
-      --_reveal-animation-delay: 0.3s;
     }
   }
 
@@ -93,28 +95,7 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
     overflow: clip;
   }
 
-  [data-fade-in-intersect] {
-    .dual-feature-image__block {
-      &::after {
-        animation: 0.9s $easeInOutQuart var(--_reveal-animation-delay) both paused slide-out-right;
-        content: "";
-        background-color: var(--_clr-reveal-box, transparent);
-        display: block;
-        left: 0;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        z-index: z(modal);
-        width: 100%;
-      }
-    }
-    img {
-      animation: 1.5s $easeInOutQuart calc(var(--_reveal-animation-delay) + 0.1s) both paused scale-in-down;
-    }
-  }
-  [data-fade-in-intersect].is-intersecting {
-    img, .dual-feature-image__block::after {
-      animation-play-state: running;
-    }
+  [data-animation-block-slide] {
+    --_clr-reveal-block: white;
   }
 </style>

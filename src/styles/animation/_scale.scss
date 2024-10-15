@@ -1,0 +1,25 @@
+@use "../abstracts" as *;
+
+[data-animation-scale] {
+  --_animation-delay: 0.3s;
+  --_animation-play-state: paused;
+}
+
+[data-animation-scale="in-down"] {
+  animation: 1.5s $easeInOutQuart calc(var(--_animation-delay) + 0.1s) both var(--_animation-play-state, paused) scale-in-down;
+}
+
+.is-intersecting {
+  [data-animation-scale] {
+    --_animation-play-state: running;
+  }
+}
+
+@keyframes scale-in-down {
+  0% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

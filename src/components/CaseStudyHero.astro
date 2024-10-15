@@ -27,9 +27,12 @@ const { eyebrow, title, description, feature_image, url, keywords = [], theme, o
 ---
 <section>
   <div class="case-study-hero">
-    <div class="case-study-hero__headline">
+    <div class="case-study-hero__header">
       <p class="case-study-hero__eyebrow eyebrow" transition:name={`case-study-${order}-eyebrow`}>{eyebrow}</p>
-      <HighlightHeading title={title} theme={theme} level={1} class="h1 case-study-hero__headline" transitionName={`case-study-${order}-heading`}/>
+      <HighlightHeading
+          title={title} theme={theme}
+          level={1}
+          class="h1 case-study-hero__headline" transitionName={`case-study-${order}-heading`}/>
       {keywords.length > 0 && (
           <ul class="tags case-study-hero__tags" transition:name={`case-study-${order}-keywords`}>
             {keywords.map(keyword => (
@@ -75,4 +78,5 @@ const { eyebrow, title, description, feature_image, url, keywords = [], theme, o
       padding-inline-end: $size-12;
     }
   }
+
 </style>

@@ -73,24 +73,31 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
     }
 
     &__item {
+      --_animation-play-state: paused;
       --_item-background: #{clr(neutral, white)};
+
+      animation: 0.6s ease-out var(--_animation-delay) both var(--_animation-play-state, paused) pop-in;
       background-color: var(--_item-background, clr(neutral, white));
       display: flex;
       flex-direction: column;
       padding: $size-8;
       gap: $size-4;
       justify-content: space-between;
+      transform-origin: top left;
 
       &:nth-child(1) {
-        --_item-background: #{clr(primary, lightest)}
+        --_item-background: #{clr(primary, lightest)};
+        --_animation-delay: 0.3s;
       }
 
       &:nth-child(2) {
-        --_item-background: #{clr(secondary, lightest)}
+        --_item-background: #{clr(secondary, lightest)};
+        --_animation-delay: 0.5s;
       }
 
       &:nth-child(3) {
-        --_item-background: #{clr(tertiary, lightest)}
+        --_item-background: #{clr(tertiary, lightest)};
+        --_animation-delay: 0.7s;
       }
 
       @include mq(m) {
@@ -128,5 +135,18 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
       }
       }
     }
+  }
+
+  .is-intersecting {
+    .key-metrics__item {
+      --_animation-play-state: running;
+    }
+  }
+
+
+  @keyframes pop-in {
+    0% { opacity: 0; transform: scale(0.1); }
+    80% { opacity: 1; transform: scale(1.1); }
+    100% { opacity: 1; transform: scale(1); }
   }
 </style>

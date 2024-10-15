@@ -1,0 +1,70 @@
+@use "../abstracts" as *;
+
+[data-animation-block-slide] {
+  --_clr-reveal-block: grey;
+  --_animation-delay: 0.3s;
+  --_animation-play-state: paused;
+
+  position: relative;
+
+  &::after {
+    content: "";
+    background-color: var(--_clr-reveal-block, grey);
+    display: block;
+    left: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: z(modal);
+    width: 100%;
+  }
+
+  [data-theme="primary"] & {
+    --_clr-reveal-block: var(--clr-highlight-primary);
+  }
+
+  [data-theme="secondary"] & {
+    --_clr-reveal-block: var(--clr-highlight-secondary);
+  }
+
+  [data-theme="tertiary"] & {
+    --_clr-reveal-block: var(--clr-highlight-tertiary);
+  }
+
+  [data-theme="quaternary"] & {
+    --_clr-reveal-block: var(--clr-highlight-quaternary);
+  }
+
+}
+
+[data-animation-block-slide="slide-out-right"] {
+  &::after {
+    animation: 0.9s $easeInOutQuart var(--_animation-delay) both var(--_animation-play-state, paused) slide-out-right;
+  }
+}
+
+.is-intersecting {
+  [data-animation-block-slide] {
+    --_animation-play-state: running;
+  }
+}
+
+@keyframes slide-out-right {
+  0% {
+    transform: translate(0%, 0);
+  }
+  100% {
+    transform: translate(100%, 0);
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translate(0, -20%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
