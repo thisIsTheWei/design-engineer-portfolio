@@ -56,7 +56,13 @@ $section-title-border-reverse: 1px solid clr(primary, lightest);
 $section-spacing: $size-11; // 64px
 
 // links
-$color-link-hover: clr(primary, base);
+$color-link: #0000EE;
+$color-link-hover: #551A8B;
+$color-link-visited: #800080;
+
+$color-link-reverse: lightskyblue;
+$color-link-hover-reverse: #ffffff;
+$color-link-visited-reverse: #6d4b8d;
 
 // buttons
 $button-font-size: $font-size-default;
@@ -126,4 +132,6 @@ $color-highlight-quaternary: clr(quaternary, dark);
 $color-highlight-quaternary-reverse: clr(quaternary, lighter);
 
 $color-background-theme-toggle: clr(neutral, lighter);
+$color-background-theme-toggle-hover: clr(neutral, light);
 $color-background-theme-toggle-reverse: clr(neutral, base);
+$color-background-theme-toggle-reverse-hover: clr(neutral, dark);

@@ -130,3 +130,16 @@ main > * {
 a > svg {
   display: inline-block;
 }
+
+a {
+  --_clr-link-text: var(--clr-link, #{$color-link});
+  color: var(--_clr-link-text);
+
+  &:hover, &:active, &:focus {
+    --clr-link: var(--clr-link-hover, #{$color-link-hover});
+  }
+
+  &:visited  {
+    --clr-link: var(--clr-link-visited, #{$color-link-visited});
+  }
+}

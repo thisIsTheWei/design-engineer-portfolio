@@ -12,13 +12,13 @@ $radius-size: 500px;
   --_btn-font-size: var(--button-font-size);
   --_btn-font-weight: var(--button-font-weight);
   --_btn-gap: var(--button-gap);
+  --clr-link: var(--_clr-button-text);
   --icon-size: var(--button-icon-size);
 
   align-items: center;
   background-color: var(--_clr-button-background);
   border: var(--_btn-border);
   border-radius: var(--_btn-border-radius);
-  color: var(--_clr-button-text);
   cursor: pointer;
   font-size: var(--_btn-font-size);
   font-weight: var(--_btn-font-weight);
@@ -56,7 +56,7 @@ $radius-size: 500px;
   }
 
   &:hover, &:focus-visible {
-    --_clr-button-text: var(--clr-button-text-hover);
+    --clr-link: var(--clr-button-text-hover);
 
     &:before {
       --_clr-button-background: var(--clr-button-background-hover);
@@ -67,15 +67,15 @@ $radius-size: 500px;
 
   &:active {
     --_clr-button-background: var(--clr-button-background-active);
-    --_clr-button-text: var(--clr-button-text-active);
+    --clr-link: var(--clr-button-text-active);
   }
 
   &[data-type="primary"] {
     --_clr-button-background: var(--clr-button-primary);
-    --_clr-button-text: var(--clr-button-primary-text);
+    --clr-link: var(--clr-button-primary-text);
 
     &:hover, &:focus-visible {
-      --_clr-button-text: var(--clr-button-primary-text-hover);
+      --clr-link: var(--clr-button-primary-text-hover);
       --_btn-border: 1px solid var(--clr-button-primary-border-hover);
 
       &:before {
@@ -85,14 +85,14 @@ $radius-size: 500px;
 
     &:active {
       --_clr-button-background: var(--clr-button-primary-active);
-      --_clr-button-text: var(--clr-button-primary-text-active);
+      --clr-link: var(--clr-button-primary-text-active);
       --_btn-border: 1px solid var(--clr-button-primary-border-active);
     }
   }
 
   &[data-type="secondary"] {
     --_clr-button-background: var(--clr-button-secondary);
-    --_clr-button-text: var(--clr-button-secondary-text);
+    --clr-link: var(--clr-button-secondary-text);
     --_btn-border: 1px solid var(--clr-button-secondary-border);
 
     &:hover, &:focus-visible {

@@ -32,8 +32,9 @@
   --border-default: #{$border-default};
 
   // links
-  --clr-link: currentColor;
+  --clr-link: #{$color-link};
   --clr-link-hover: #{$color-link-hover};
+  --clr-link-visited: #{$color-link-visited};
 
   // buttons
   --clr-button-background: #{$color-button-tertiary};
@@ -96,6 +97,7 @@
 
   --clr-menu-toggle: #{$color-menu-toggle};
   --clr-background-theme-toggle: #{$color-background-theme-toggle};
+  --clr-background-theme-toggle-hover: #{$color-background-theme-toggle-hover};
 
   &.theme-dark {
     --clr-background: #{$color-background-default-dark};
@@ -117,5 +119,9 @@
     --clr-highlight-tertiary: #{$color-highlight-tertiary-reverse};
     --clr-highlight-quaternary: #{$color-highlight-quaternary-reverse};
     --clr-background-theme-toggle: #{$color-background-theme-toggle-reverse};
+    --clr-background-theme-toggle-hover: #{$color-background-theme-toggle-reverse-hover};
+    --clr-link: #{$color-link-reverse};
+    --clr-link-hover: #{$color-link-hover-reverse};
+    --clr-link-visited: #{$color-link-visited-reverse};
   }
 }

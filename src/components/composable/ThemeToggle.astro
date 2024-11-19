@@ -12,14 +12,19 @@ import Icon from "./Icon.astro";
 <style lang="scss">
   @use "../../styles/abstracts/" as *;
   .theme-toggle {
-    --_background: var(--clr-background-theme-toggle, #{$color-background-theme-toggle});
+    --bg-clr-theme-toggle: var(--clr-background-theme-toggle, #{$color-background-theme-toggle});
+    --_bg-clr-theme-toggle: var(--bg-clr-theme-toggle);
     --icon-size: 20px;
-    background: var(--_background);
+    background: var(--_bg-clr-theme-toggle);
     border: 0;
     border-radius: 50%;
     cursor: pointer;
     padding: 10px 12px;
     width: 44px;
+
+    &:hover {
+      --bg-clr-theme-toggle: var(--clr-background-theme-toggle-hover, #{$color-background-theme-toggle-hover});
+    }
   }
   .sun { 
     color: clr(neutral, black);
