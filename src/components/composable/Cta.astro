@@ -9,12 +9,15 @@ interface Props {
   icon?: string | null;
   class?: string;
   target?: "_blank" | "_self";
+  animationAttributes?: {},
+  style?:string
 }
 
-const { href, type = "tertiary", size = "small", class: className, icon = null, target = "_self" }: Props = Astro.props;
+const { href, type = "tertiary", size = "small", class: className, icon = null, target = "_self", animationAttributes = {}, style:styleInfo }: Props = Astro.props;
 
 const isExternal = href.startsWith('http') || href.startsWith('//');
 const iconToUse = icon || (isExternal ? 'arrow-upper-right' : null);
+const animationAttrs = Object.fromEntries(Object.entries(animationAttributes));
 ---
 
 <a 
@@ -25,6 +28,8 @@ const iconToUse = icon || (isExternal ? 'arrow-upper-right' : null);
   target={isExternal ? '_blank' : target}
   rel={isExternal ? 'noopener noreferrer' : undefined}
   {...(iconToUse ? { 'data-icon': iconToUse } : {})}
+  {...animationAttrs}
+  style={styleInfo}
 >
   <span class="button__text"><slot /></span>
   {iconToUse && (

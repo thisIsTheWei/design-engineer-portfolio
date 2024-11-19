@@ -4,7 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Cta from "../components/composable/Cta.astro";
 ---
 
-<BaseLayout>
+<BaseLayout title="404 | Wei-Hsin Chen">
   <section class="not-found grid">
     <div class="content">
       <p class="eyebrow">Oops! Page not found</p>
@@ -18,7 +18,7 @@ import Cta from "../components/composable/Cta.astro";
 </BaseLayout>
 
 <style lang="scss">
-  @use "../styles/abstracts/" as *;
+  @use "../styles/abstracts/index" as *;
   .not-found {
     --headline-line-height: 0.8;
 

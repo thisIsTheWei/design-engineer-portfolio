@@ -15,7 +15,7 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
 ---
 
 <section class:list={[className, "full-size-feature-image"]}
-         {...fadeInDataAttribute !== undefined ? { 'data-fade-in-intersect': fadeInDataAttribute } : {}}>
+         {...fadeInDataAttribute !== undefined ? { 'data-fade-in-intersect data-animation-fade-in="from-bottom"': fadeInDataAttribute } : {}}>
   <div class="full-size-feature-image__block" {...(fadeIn ? { 'data-animation-block-slide': 'slide-out-right' } : {})}>
     <img
         src={assetFolder + src} alt={alt}
@@ -26,7 +26,7 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
 </section>
 
 <style lang="scss">
-  @use "../../styles/abstracts/" as *;
+  @use "../../styles/abstracts/index" as *;
 
   .full-size-feature-image {
 
@@ -48,7 +48,7 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
       }
     }
     [data-animation-block-slide] {
-      --_clr-reveal-block: white;
+      --clr-reveal-block: white;
     }
   }
 </style>

@@ -1,0 +1,21 @@
+//data-fade-in-intersect
+[data-animation-fade-in] {
+  --_fade-opacity: var(--fade-opacity, 0);
+  --_direction: var(--direction, none);
+  --_animation-delay: var(--animation-delay, 0);
+  opacity: var(--_fade-opacity);
+  transform: var(--_direction);
+  transition: opacity 0.5s ease-in, transform 0.5s ease-in;
+  transition-delay: var(--animation-delay);
+}
+
+[data-animation-fade-in="from-bottom"] {
+  --direction: translateY(5%);
+}
+
+[data-animation-fade-in="from-bottom"].is-intersecting,
+.is-intersecting [data-animation-fade-in="from-bottom"] {
+  --fade-opacity: 1;
+  --direction: translateY(0);
+}
+

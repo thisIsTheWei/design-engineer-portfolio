@@ -32,7 +32,7 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
 ---
 <div
     class:list={[className, "featured-work-container"]}
-    {...fadeInDataAttribute !== undefined ? { 'data-fade-in-intersect': fadeInDataAttribute } : {}}>
+    {...fadeInDataAttribute !== undefined ? { 'data-fade-in-intersect data-animation-fade-in="from-bottom"': fadeInDataAttribute } : {}}>
   <div class="featured-work"  data-theme={theme}>
     <div class="featured-work__image"
          data-animation-block-slide="slide-out-right">
@@ -62,15 +62,15 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
   </div>
 </div>
 <style lang="scss">
-  @use "../styles/abstracts/" as *;
-  @use "../styles/utilities/" as *;
+  @use "../styles/abstracts/index" as *;
+  @use "../styles/utilities/index" as *;
 
   .featured-work-container {
     container-type: inline-size;
 
     @include mq(m) {
       &:nth-child(3n+3) [data-animation-block-slide] {
-        --_animation-delay: 0.6s;
+        --animation-delay: 0.6s;
       }
     }
   }

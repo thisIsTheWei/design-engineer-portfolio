@@ -12,37 +12,45 @@ const {
     description = "Design Engineer with 10+ years transforming complex challenges into intuitive digital solutions for Google and other industry leaders. Bridging design and technology to create extraordinary experiences."
 } = Astro.props;
 ---
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <meta name="generator" content={Astro.generator}>
 
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width">
-<title>{title}</title>
-<meta name="description" content={description}>
-<meta name="generator" content={Astro.generator}>
+  <!-- Facebook Meta Tags -->
+  <meta property="og:url" content="https://weidesign.engineer/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:image" content="/og.png">
 
-<!-- Facebook Meta Tags -->
-<meta property="og:url" content="https://weidesign.engineer/">
-<meta property="og:type" content="website">
-<meta property="og:title" content={title}>
-<meta property="og:description" content={description}>
-<meta property="og:image" content="/og.png">
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="twitter:domain" content="weidesign.engineer">
+  <meta property="twitter:url" content="https://weidesign.engineer/">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content="/og.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Paytone+One&display=swap"
+    rel="preload" onload="this.onload=null;this.rel='stylesheet'" as="style">
+  <ViewTransitions />
+  <script>
+    import { initTheme } from "../../scripts/utils/theme";
+    document.addEventListener('astro:page-load', initTheme);
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script is:inline type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-3W70CS5FFJ"></script>
+  <script type="text/partytown">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-<!-- Twitter Meta Tags -->
-<meta name="twitter:card" content="summary_large_image">
-<meta property="twitter:domain" content="weidesign.engineer">
-<meta property="twitter:url" content="https://weidesign.engineer/">
-<meta name="twitter:title" content={title}>
-<meta name="twitter:description" content=description}>
-<meta name="twitter:image" content="/og.png">
-
-<script>
-  import { initTheme } from "../../scripts/utils/theme";
-  document.addEventListener('astro:page-load', initTheme);
-</script>
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="icon" type="image/png" href="/favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Paytone+One&display=swap" 
-  rel="preload" onload="this.onload=null;this.rel='stylesheet'" as="style">
-<ViewTransitions />
-
+    gtag('config', 'G-3W70CS5FFJ');
+  </script>
+</head>

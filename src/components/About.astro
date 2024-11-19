@@ -19,7 +19,7 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
 
 <section class:list={[className, "about grid"]}
          id="about-content"
-         {...fadeInDataAttribute !== undefined ? { 'data-fade-in-intersect': fadeInDataAttribute } : {}}>
+         {...fadeInDataAttribute !== undefined ? { 'data-fade-in-intersect data-animation-fade-in="from-bottom"': fadeInDataAttribute } : {}}>
   <div class="about__image">
     <Image src={headshot} alt="Wei-Hsin Chen" width={400} height={532} format='avif' quality={"mid"} />
   </div>
@@ -38,7 +38,7 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
 </section>
 
 <style lang="scss">
-  @use '../styles/abstracts/' as *;
+  @use '../styles/abstracts/index' as *;
 
   .about {
     &__image {

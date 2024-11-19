@@ -83,9 +83,9 @@ body, .body {
 }
 
 .base-layout {
-  --_max-width: 1440px;
-  --_padding: #{$size-4};
-  --_section-padding: #{$size-4};
+  --_max-width: var(--max-width, 1440px);
+  --_padding: var(--padding, #{$size-4});
+  --_section-padding: var(--section-padding, #{$size-4});
 
   display: grid;
   grid-template-columns: 

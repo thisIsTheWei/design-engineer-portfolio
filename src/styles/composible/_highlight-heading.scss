@@ -1,23 +1,23 @@
 .highlight-heading {
-  --_clr-highlight: var(--clr-highlight-primary);
-  
+  --_clr-highlight: var(--clr-highlight, --clr-highlight-primary);
+
   span {
     color: var(--_clr-highlight);
   }
 
-  &[data-theme="primary"] span {
-    --_clr-highlight: var(--clr-highlight-primary);
+  &[data-theme="primary"] {
+    --clr-highlight: var(--clr-highlight-primary);
   }
 
-  &[data-theme="secondary"] span {
-    --_clr-highlight: var(--clr-highlight-secondary);
+  &[data-theme="secondary"] {
+    --clr-highlight: var(--clr-highlight-secondary);
   }
 
-  &[data-theme="tertiary"] span {
-    --_clr-highlight: var(--clr-highlight-tertiary);
+  &[data-theme="tertiary"] {
+    --clr-highlight: var(--clr-highlight-tertiary);
   }
 
-  &[data-theme="quaternary"] span {
-    --_clr-highlight: var(--clr-highlight-quaternary);
+  &[data-theme="quaternary"] {
+    --clr-highlight: var(--clr-highlight-quaternary);
   }
 }

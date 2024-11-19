@@ -17,61 +17,15 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
 <section class:list={[className, "inline-demo-video border-radius-2"]}
          data-video-src={assetFolder+src}
          data-video-label={alt}
-         {...fadeInDataAttribute !== undefined ? { 'data-fade-in-intersect': fadeInDataAttribute } : {}}>
+         {...fadeInDataAttribute !== undefined ? { 'data-fade-in-intersect data-animation-fade-in="from-bottom"': fadeInDataAttribute } : {}}>
   <img src={assetFolder+poster} alt={alt} class="inline-demo-video__poster" />
   <div class="inline-demo-video__caption">
     <p class="body-s">{alt}</p>
   </div>
 </section>
 
-<script>
-  function initInlineDemoVideo(container: HTMLElement) {
-    const videoSrc = container.dataset.videoSrc;
-    const videoLabel = container.dataset.videoLabel;
-    if (videoSrc) {
-      const video = document.createElement('video');
-      video.src = videoSrc;
-      video.controls = false;
-      video.muted = true;
-      video.playsInline = true;
-      video.loop = true;
-      video.autoplay = true;
-      if(videoLabel) {
-        video.setAttribute('aria-label', videoLabel);
-      }
-      
-      const poster = container.querySelector('.inline-demo-video__poster');
-
-      if (poster) {
-        container.replaceChild(video, poster);
-      }
-    }
-  }
-
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        initInlineDemoVideo(entry.target as HTMLElement);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  document.addEventListener('astro:page-load', () => {
-    const videoContainers = document.querySelectorAll('.inline-demo-video');
-    videoContainers.forEach(container => {
-      observer.observe(container);
-    });
-  });
-</script>
 <style lang="scss">
-  @use "../../styles/abstracts/" as *;
+  @use "../../styles/abstracts/index" as *;
   .inline-demo-video {
     --video-width: 100%;
 
@@ -102,3 +56,50 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
   }
 
 </style>
+
+<script>
+  function initInlineDemoVideo(container: HTMLElement) {
+    const videoSrc = container.dataset.videoSrc;
+    const videoLabel = container.dataset.videoLabel;
+    if (videoSrc) {
+      const video = document.createElement('video');
+      video.src = videoSrc;
+      video.controls = true;
+      video.muted = true;
+      video.playsInline = true;
+      video.loop = true;
+      video.autoplay = true;
+      if(videoLabel) {
+        video.setAttribute('aria-label', videoLabel);
+      }
+
+      const poster = container.querySelector('.inline-demo-video__poster');
+
+      if (poster) {
+        container.replaceChild(video, poster);
+      }
+    }
+  }
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        initInlineDemoVideo(entry.target as HTMLElement);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.addEventListener('astro:page-load', () => {
+    const videoContainers = document.querySelectorAll('.inline-demo-video');
+    videoContainers.forEach(container => {
+      observer.observe(container);
+    });
+  });
+</script>

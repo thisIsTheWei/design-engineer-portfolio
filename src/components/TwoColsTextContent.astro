@@ -26,7 +26,7 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn)
 ---
 
 <section class:list={[className, "two-cols-content grid even-columns"]}
-         {...fadeInDataAttribute !== undefined ? { 'data-fade-in-intersect': fadeInDataAttribute } : {}}>
+         {...fadeInDataAttribute !== undefined ? { 'data-fade-in-intersect data-animation-fade-in="from-bottom"': fadeInDataAttribute } : {}}>
   <div class="two-cols-content__title">
     <h2 class="eyebrow" data-theme={theme}>{CASE_STUDY_NARRATIVE[type].EYEBROW}</h2>
     <h3 class="h5">{CASE_STUDY_NARRATIVE[type].TITLE}</h3>
@@ -45,7 +45,7 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn)
 </section>
 
 <style lang="scss">
-  @use "../styles/abstracts/" as *;
+  @use "../styles/abstracts/index" as *;
 
   .two-cols-content {
     --_padding-block: #{$size-4};

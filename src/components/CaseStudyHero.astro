@@ -22,7 +22,7 @@ interface Props {
 }
 
 const { entry }: Props = Astro.props;
-const { eyebrow, title, description, feature_image, url, keywords = [], theme, order } = entry.data;
+const { eyebrow, title, description, url, keywords = [], theme, order } = entry.data;
 
 ---
 <section>
@@ -54,7 +54,8 @@ const { eyebrow, title, description, feature_image, url, keywords = [], theme, o
   @use "../styles/abstracts/index" as *;
 
   .case-study-hero {
-    border-bottom: var(--border-default);
+    --_border-bottom: var(--border-default, #{$border-default});
+    border-bottom: var(--_border-bottom);
     display: grid;
     gap: $size-8;
     padding-block-start: $size-10;

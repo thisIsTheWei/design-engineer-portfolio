@@ -15,23 +15,44 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
 ---
 <section
     class:list={[className]}
-    {...fadeInDataAttribute !== undefined ? { 'data-fade-in-intersect': fadeInDataAttribute } : {}}>
+    {...fadeInDataAttribute !== undefined ? { 'data-fade-in-intersect data-animation-fade-in="from-bottom"': fadeInDataAttribute } : {}}>
   <div id="contact" class="contact">
     <h2 class="h1 contact__headline">Thanks for the visit. Reach out and let's chat.</h2>
     <div class="contact__buttons">
-      <Cta href="mailto:wei.design.engineer@gmail.com" type="primary" icon="envelope" target="_blank">Email Me</Cta>
-      <Cta href="https://calendar.app.google/dUoxuZs3eMKXjrVS8" type="secondary" icon="video-camera" target="_blank">Schedule a Meeting</Cta>
-      <Cta href="/assets/Resume_Wei_Hsin_Chen.pdf" type="tertiary" icon="download">Download Resume</Cta>
+      <Cta
+          href="mailto:wei.design.engineer@gmail.com"
+          type="primary" icon="envelope"
+          target="_blank"
+          animationAttributes={{ 'data-animation-fade-in': 'from-bottom' }}
+          style="--animation-delay: 0.3s">Email Me</Cta>
+      <Cta
+          href="https://calendar.app.google/dUoxuZs3eMKXjrVS8"
+          type="secondary"
+          icon="video-camera"
+          target="_blank"
+          animationAttributes={{ 'data-animation-fade-in': 'from-bottom' }}
+          style="--animation-delay: 0.45s">Schedule a Meeting</Cta>
+      <Cta
+          href="/assets/Resume_Wei_Hsin_Chen.pdf"
+          type="tertiary"
+          icon="download"
+          animationAttributes={{ 'data-animation-fade-in': 'from-bottom' }}
+          style="--animation-delay: 0.6s">Download Resume</Cta>
     </div>
   </div> 
 </section>
 
 <style lang="scss">
-  @use '../styles/abstracts/' as *;
+  @use '../styles/abstracts/index' as *;
   
   section {
-    background-color: var(--clr-callout-background, $color-callout-background);
-    border-radius: var(--border-radius-2, $border-radius-2);
+    --clr-contact-background: var(--clr-callout-background, #{$color-callout-background});
+    --_clr-contact-background: var(--clr-contact-background);
+    --border-radius: var(--border-radius-2, #{$border-radius-2});
+    --_border-radius: var(--border-radius);
+
+    background-color: var(--_clr-contact-background);
+    border-radius: var(--_border-radius);
     padding-block: clamp($size-6, 7.5vw - $size-4, $size-12);
     padding-inline: clamp($size-6, 12.5vw - $size-4, $size-14);
   }

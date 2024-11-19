@@ -1,9 +1,10 @@
 @use "../abstracts" as *;
 
 [data-animation-block-slide] {
-  --_clr-reveal-block: grey;
-  --_animation-delay: 0.3s;
-  --_animation-play-state: paused;
+  --clr-reveal-block: var(--clr-highlight-primary, clr(primary, dark));
+  --_clr-reveal-block: var(--clr-reveal-block);
+  --_animation-delay: var(--animation-delay, 0.3s);
+  --_animation-play-state: var(--animation-play-state, paused);
 
   position: relative;
 
@@ -20,19 +21,19 @@
   }
 
   [data-theme="primary"] & {
-    --_clr-reveal-block: var(--clr-highlight-primary);
+    --clr-reveal-block: var(--clr-highlight-primary);
   }
 
   [data-theme="secondary"] & {
-    --_clr-reveal-block: var(--clr-highlight-secondary);
+    --clr-reveal-block: var(--clr-highlight-secondary);
   }
 
   [data-theme="tertiary"] & {
-    --_clr-reveal-block: var(--clr-highlight-tertiary);
+    --clr-reveal-block: var(--clr-highlight-tertiary);
   }
 
   [data-theme="quaternary"] & {
-    --_clr-reveal-block: var(--clr-highlight-quaternary);
+    --clr-reveal-block: var(--clr-highlight-quaternary);
   }
 
 }
@@ -45,7 +46,7 @@
 
 .is-intersecting {
   [data-animation-block-slide] {
-    --_animation-play-state: running;
+    --animation-play-state: running;
   }
 }
 

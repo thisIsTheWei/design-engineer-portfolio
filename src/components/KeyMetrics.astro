@@ -18,14 +18,14 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
 ---
 
 <section  class:list={[className, "key-metrics grid border-radius-2"]}
-          {...fadeInDataAttribute !== undefined ? { 'data-fade-in-intersect': fadeInDataAttribute } : {}}>
+          {...fadeInDataAttribute !== undefined ? { 'data-fade-in-intersect data-animation-fade-in="from-bottom"': fadeInDataAttribute } : {}}>
   <div class="key-metrics__description">
     <h2 class="h3">Key Metrics</h2>
     <p>{description}</p>
   </div>
   <div class="key-metrics__metrics">
     {metrics.map(metric => (
-      <div class="key-metrics__item border-radius-2">
+      <div class="key-metrics__item border-radius-2" data-animation-pop="top-right">
          <h3 class="display3">{metric.value}</h3>
          <p>{metric.desc}</p>
        </div>
@@ -34,11 +34,11 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
 </section>
 
 <style lang="scss">
-  @use "../styles/abstracts/" as *;
+  @use "../styles/abstracts/index" as *;
 
   .key-metrics {
-    --_clr-background: #{clr(neutral, white)};
-    background-color: var(--_clr-background, clr(neutral, white));
+    --_clr-key-metrics-background: var(--clr-key-metrics-background, #{clr(neutral, white)});
+    background-color: var(--_clr-key-metrics-background);
     padding: $size-6 $size-8;
     
     @include mq(m) {
@@ -73,31 +73,28 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
     }
 
     &__item {
-      --_animation-play-state: paused;
-      --_item-background: #{clr(neutral, white)};
+      --_clr-item-background: var(--clr-item-background, #{clr(neutral, white)});
 
-      animation: 0.6s ease-out var(--_animation-delay) both var(--_animation-play-state, paused) pop-in;
-      background-color: var(--_item-background, clr(neutral, white));
+      background-color: var(--clr-item-background, clr(neutral, white));
       display: flex;
       flex-direction: column;
       padding: $size-8;
       gap: $size-4;
       justify-content: space-between;
-      transform-origin: top left;
 
       &:nth-child(1) {
-        --_item-background: #{clr(primary, lightest)};
-        --_animation-delay: 0.3s;
+        --clr-item-background: #{clr(primary, lightest)};
+        --animation-delay: 0.3s;
       }
 
       &:nth-child(2) {
-        --_item-background: #{clr(secondary, lightest)};
-        --_animation-delay: 0.5s;
+        --clr-item-background: #{clr(secondary, lightest)};
+        --animation-delay: 0.5s;
       }
 
       &:nth-child(3) {
-        --_item-background: #{clr(tertiary, lightest)};
-        --_animation-delay: 0.7s;
+        --clr-item-background: #{clr(tertiary, lightest)};
+        --animation-delay: 0.7s;
       }
 
       @include mq(m) {
@@ -119,34 +116,21 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
   }
   :root.theme-dark {
     .key-metrics {
-      --_clr-background: #{clr(neutral, dark)};
+      --clr-key-metrics-background: #{clr(neutral, dark)};
 
       &__item{
         &:nth-child(1) {
-        --_item-background: #{clr(primary, darker)}
+        --clr-item-background: #{clr(primary, darker)}
       }
 
       &:nth-child(2) {
-        --_item-background: #{clr(secondary, darker)}
+        --clr-item-background: #{clr(secondary, darker)}
       }
 
       &:nth-child(3) {
-        --_item-background: #{clr(tertiary, darker)}
+        --clr-item-background: #{clr(tertiary, darker)}
       }
       }
     }
-  }
-
-  .is-intersecting {
-    .key-metrics__item {
-      --_animation-play-state: running;
-    }
-  }
-
-
-  @keyframes pop-in {
-    0% { opacity: 0; transform: scale(0.1); }
-    80% { opacity: 1; transform: scale(1.1); }
-    100% { opacity: 1; transform: scale(1); }
   }
 </style>
