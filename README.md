@@ -88,9 +88,6 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 📧 Contact
 
-thisIsTheWei - darthkimo@gmail.com
+🖥️ My portfolio Site: [https://weidesign.engineer/](https://weidesign.engineer/)
 
-Project Link: [https://github.com/thisIsTheWei/design-engineer-portfolio](https://github.com/thisIsTheWei/design-engineer-portfolio)
-
-
-Deployed Site: [https://weidesign.engineer/](https://weidesign.engineer/)
+📀 Repo Link: [https://github.com/thisIsTheWei/design-engineer-portfolio](https://github.com/thisIsTheWei/design-engineer-portfolio)
