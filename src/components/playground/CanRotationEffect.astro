@@ -1,0 +1,59 @@
+---
+
+---
+<div class="banner">
+  <div class="product">
+    <div class="soda" style="--cover-image: url(/assets/playground/cover_01.png)"></div>
+    <div class="soda" style="--cover-image: url(/assets/playground/cover_02.png)"></div>
+  </div>
+</div>
+
+<style>
+  .banner {
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+
+    .product {
+      --rotate-left: 0;
+      bottom: 170px;
+      height: 500px;
+      position: absolute;
+      width: 500px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      transition: 0.7s;
+      display: flex;
+      cursor: pointer;
+    }
+
+    .product:hover {
+      --rotate-left: -1100px;
+      transform: translateX(-50%) translateY(-120px);
+    }
+
+    .soda {
+      aspect-ratio: 2 / 5.1 ;
+      background:
+          var(--cover-image) var(--rotate-left) 0,
+          url("/assets/playground/soda_02.png");
+      background-blend-mode: multiply;
+      background-size: auto 100%;
+      left: 50%;
+      mask-image: url("/assets/playground/soda_02.png");
+      mask-size:  auto 100%;
+      position: absolute;
+      width: 200px;
+      transform: translateX(-50%);
+      transition: 0.7s;
+    }
+
+    .soda:nth-child(2) {
+      opacity: 0;
+    }
+    .product:hover .soda:nth-child(2) {
+      opacity: 1;
+    }
+  }
+</style>

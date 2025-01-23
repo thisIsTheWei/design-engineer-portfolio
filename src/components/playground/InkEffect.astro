@@ -3,15 +3,39 @@
 ---
 <div class="banner">
   <div class="content">
-    <h1 class="display1">Fullbloom</h1>
-    <p class="eyebrow">Ink Effect</p>
+    <h1 class="display1">Full bloom</h1>
+    <p>Ink Effect</p>
   </div>
 </div>
 
 <style>
-  body :global(.banner) {
-    background-color: black;
-    color: white;
-    margin: 0;
+  .banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
   }
+
+  .banner::before {
+    background-image: url("/assets/playground/animation.png");
+    background-size: cover;
+    background-position: center;
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    mask-image: url("/assets/playground/ink_animation_2.gif");
+    mask-size: cover;
+    mask-position: center;
+  }
+
+  .display1 {
+    --clr-ff-headline: white;
+  }
+
+  p {
+    color: white;
+  }
+
 </style>

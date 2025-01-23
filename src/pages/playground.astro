@@ -1,6 +1,7 @@
 ---
 import MainHead from "../components/global/MainHead.astro";
 import InkEffect from "../components/playground/InkEffect.astro";
+import CanRotationEffect from "../components/playground/CanRotationEffect.astro";
 const { title = 'Playground', description = "Wei-Hsin Chen, A Design Engineer Portfolio" } = Astro.props;
 export const prerender = false;
 ---
@@ -8,9 +9,10 @@ export const prerender = false;
 
 <html lang="en">
 <MainHead title={title} description={description} />
-<body>
+<body style="--clr-background: black;">
   <main>
     <InkEffect />
+    <!--<CanRotationEffect />-->
   </main>
 </body>
 </html>
