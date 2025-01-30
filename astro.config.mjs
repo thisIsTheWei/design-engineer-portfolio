@@ -9,9 +9,12 @@ import robotsTxt from 'astro-robots-txt';
 
 import partytown from "@astrojs/partytown";
 
+import netlify from '@astrojs/netlify';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://weidesign.engineer/',
+
   integrations: [
     mdx(),
     sitemap(),
@@ -21,4 +24,6 @@ export default defineConfig({
         forward: ["dataLayer.push"],
       },
     }),],
+
+  adapter: netlify(),
 });
