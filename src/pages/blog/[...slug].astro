@@ -28,15 +28,18 @@ const { Content } = await render(entry);
 >
   <article class="blog-post">
     <div class="title">
-      <div class="date">
-        <FormattedDate date={entry.data.pubDate} />
-        {
-          entry.data.updatedDate && (
-            <div class="last-updated-on">
-              Last updated on <FormattedDate date={entry.data.updatedDate} />
-            </div>
-          )
-        }
+      <div class="posted-by">
+        <span class="body-small">Posted by <a href="/">Wei-Hsin Chen</a></span>
+        <div class="date">
+          <FormattedDate date={entry.data.pubDate} />
+          {
+            entry.data.updatedDate && (
+                  <div class="last-updated-on">
+                    Last updated on <FormattedDate date={entry.data.updatedDate} />
+                  </div>
+            )
+          }
+        </div>
       </div>
       <h1>{entry.data.title}</h1>
     </div>
@@ -75,9 +78,12 @@ const { Content } = await render(entry);
     .title h1 {
       margin: 0 0 0.5em 0;
     }
-    .date {
+    .posted-by {
+      display: flex;
+      gap: $size-2;
+      font-size: var(--body-font-size-small);
+      justify-content: center;
       margin-bottom: 0.5em;
-      color: rgb(var(--gray));
     }
   }
 
