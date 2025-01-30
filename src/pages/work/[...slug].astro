@@ -1,42 +1,56 @@
 ---
-import type { CollectionEntry } from 'astro:content'
-import { getCollection } from 'astro:content'
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Contact from "../../components/Contact.astro";
 import CaseStudyHero from "../../components/CaseStudyHero.astro";
-import InfoTextColumns from '../../components/InfoTextColumns.astro';
+import InfoTextColumns from "../../components/InfoTextColumns.astro";
 import FullSizeFeatureImage from "../../components/image/FullSizeFeatureImage.astro";
 import DualFeatureImages from "../../components/image/DualFeatureImages.astro";
-import TwoColsTextContent from '../../components/TwoColsTextContent.astro';
-import InlineDemoVideo from '../../components/video/InlineDemoVideo.astro';
-import KeyMetrics from '../../components/KeyMetrics.astro';
+import TwoColsTextContent from "../../components/TwoColsTextContent.astro";
+import InlineDemoVideo from "../../components/video/InlineDemoVideo.astro";
+import KeyMetrics from "../../components/KeyMetrics.astro";
 
 interface Props {
-  entry: CollectionEntry<'work'>
+  entry: CollectionEntry<"work">;
 }
 
 export async function getStaticPaths() {
-  const works = await getCollection('work')
-  return works.map(entry => ({
+  const works = await getCollection("work");
+  return works.map((entry) => ({
     params: { slug: entry.slug },
-    props: { entry }
-  }))
+    props: { entry },
+  }));
 }
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
-<BaseLayout title={`${entry.data.meta_data.title} | Wei-Hsin Chen`} description={entry.data.meta_data.description}>
+
+<BaseLayout
+  title={`${entry.data.meta_data.title} | Wei-Hsin Chen`}
+  description={entry.data.meta_data.description}
+>
   <article class="case-study">
     <CaseStudyHero entry={entry} />
-    <Content components={{FullSizeFeatureImage, InfoTextColumns, TwoColsTextContent, DualFeatureImages, InlineDemoVideo, KeyMetrics}} frontmatter={entry.data}/>
+    <Content
+      components={{
+        FullSizeFeatureImage,
+        InfoTextColumns,
+        TwoColsTextContent,
+        DualFeatureImages,
+        InlineDemoVideo,
+        KeyMetrics,
+      }}
+      frontmatter={entry.data}
+    />
   </article>
-  <Contact fadeIn/>
+  <Contact fadeIn />
 </BaseLayout>
 
 <style lang="scss">
-   @use "../../styles/abstracts/" as *;
-  
+  @use "../../styles/abstracts/" as *;
+
   .case-study {
     display: flex;
     flex-direction: column;
@@ -50,5 +64,4 @@ const { Content } = await entry.render();
       gap: $size-12;
     }
   }
-
 </style>

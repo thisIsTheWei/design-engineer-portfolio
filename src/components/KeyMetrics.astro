@@ -37,8 +37,8 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
   @use "../styles/abstracts/index" as *;
 
   .key-metrics {
-    --_clr-key-metrics-background: var(--clr-key-metrics-background, #{clr(neutral, white)});
-    background-color: var(--_clr-key-metrics-background);
+    --_clr-bg: var(--clr-bg, #{clr(neutral, white)});
+    background-color: var(--_clr-bg);
     padding: $size-6 $size-8;
     
     @include mq(m) {
@@ -73,9 +73,9 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
     }
 
     &__item {
-      --_clr-item-background: var(--clr-item-background, #{clr(neutral, white)});
+      --_clr-item-bg: var(--clr-item-bg, #{clr(neutral, white)});
 
-      background-color: var(--clr-item-background, clr(neutral, white));
+      background-color: var(--clr-item-bg);
       display: flex;
       flex-direction: column;
       padding: $size-8;
@@ -83,17 +83,17 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
       justify-content: space-between;
 
       &:nth-child(1) {
-        --clr-item-background: #{clr(primary, lightest)};
+        --clr-item-bg: #{clr(primary, lightest)};
         --animation-delay: 0.3s;
       }
 
       &:nth-child(2) {
-        --clr-item-background: #{clr(secondary, lightest)};
+        --clr-item-bg: #{clr(secondary, lightest)};
         --animation-delay: 0.5s;
       }
 
       &:nth-child(3) {
-        --clr-item-background: #{clr(tertiary, lightest)};
+        --clr-item-bg: #{clr(tertiary, lightest)};
         --animation-delay: 0.7s;
       }
 
@@ -116,20 +116,20 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
   }
   :root.theme-dark {
     .key-metrics {
-      --clr-key-metrics-background: #{clr(neutral, dark)};
+      --clr-bg: #{clr(neutral, dark)};
 
       &__item{
         &:nth-child(1) {
-        --clr-item-background: #{clr(primary, darker)}
-      }
+          --clr-item-bg: #{clr(primary, darker)}
+        }
 
-      &:nth-child(2) {
-        --clr-item-background: #{clr(secondary, darker)}
-      }
+        &:nth-child(2) {
+          --clr-item-bg: #{clr(secondary, darker)}
+        }
 
-      &:nth-child(3) {
-        --clr-item-background: #{clr(tertiary, darker)}
-      }
+        &:nth-child(3) {
+          --clr-item-bg: #{clr(tertiary, darker)}
+        }
       }
     }
   }

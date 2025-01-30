@@ -1,0 +1,259 @@
+---
+title: 'CSS Custom Properties as APIs: A Scalable Architecture Pattern'
+description: 'A pattern to build scalable a CSS architecture using custom properties as component APIs. Discover a simple but practical way for managing component styles, theming, and animations.'
+pubDate: 'Jul 08 2022'
+heroImage: '/blog-placeholder-1.jpg'
+---
+
+After years of building component libraries and design systems, I've been fascinated by the evolving patterns in CSS architecture, particularly around CSS Custom Properties. While working on Chrome Enterprise and ChromeOS, I implemented and refined an interesting pattern that leverages the power of CSS custom properties to create clear component APIs.
+
+For instance, implementing a dark theme traditionally might require overriding styles:
+
+```scss
+// Without the pattern - fighting specificity
+.dark-theme .button.primary {
+  background-color: #1a1a1a;
+  color: white;
+}
+
+// With the pattern - clean customization
+:root.theme-dark {
+  .button {
+    --clr-btn_bg: #1a1a1a;
+    --clr-btn-txt: white;
+  }
+}
+```
+
+This pattern, which has gained traction in the frontend community and been discussed by experts like Lea Verou in her talk ["CSS Variable Secrets" at CSS Day 2022](https://www.youtube.com/watch?v=ZuZizqDF4q8) and Kevin Powell in [Using CSS custom properties](https://www.youtube.com/watch?v=_2LwjfYc1x8), offers a powerful approach to component styling. I've since implemented this pattern in my portfolio website (which you're currently viewing), demonstrating its effectiveness
+
+The core idea is elegantly simple: create a clear separation between public and private CSS custom properties, effectively establishing a component API that's both flexible and maintainable. Let me show you how this works in practice.
+
+> The site is built on Astro (I love Astro.) not from React or other framework, but the same pattern should be applied to it.
+
+## The Pattern
+
+The pattern revolves around two key concepts:
+
+1. **Private Variables** (`--_variable`): Handle internal component logic and implementation details
+2. **Public Variables** (`--variable`): Form the component's public API for customization
+
+This creates a clear contract between the component and its consumers, providing several immediate benefits:
+
+- **Clear Component API**: Developers can easily understand how to customize components
+- **Encapsulation**: Internal styles are protected from external interference
+- **Maintainable Theming**: Theme variations can be implemented without touching component internals
+- **Reduced Specificity Issues**: No need for high-specificity selectors to override styles
+
+### Key Metrics Component
+
+This component displays important statistics with different background colors and responsive layouts. Let's look at both its template and styling:
+
+#### Component Template
+
+```astro
+<section class:list={["key-metrics grid border-radius-2"]} data-animation-fade-in="from-bottom">
+  <div class="key-metrics__description">
+    <h2 class="h3">Key Metrics</h2>
+    <p>{description}</p>
+  </div>
+  <div class="key-metrics__metrics">
+    {metrics.map(metric => (
+      <div class="key-metrics__item border-radius-2" data-animation-pop="top-right">
+         <h3 class="display3">{metric.value}</h3>
+         <p>{metric.desc}</p>
+       </div>
+    ))}
+  </div>
+</section>
+```
+
+#### Component Styling
+
+```scss
+.key-metrics {
+  --_clr-bg: var(--clr-bg, #{clr(neutral, white)});
+  background-color: var(--_clr-bg);
+  
+  &__item {
+    --_clr-item-bg: var(--clr-item-bg, #{clr(neutral, white)});
+    background-color: var(--clr-item-bg);
+    
+    &:nth-child(1) {
+      --clr-item-bg: #{clr(primary, lightest)};
+    }
+    
+    &:nth-child(2) {
+      --clr-item-bg: #{clr(secondary, lightest)};
+    }
+  }
+}
+```
+
+The private `--_clr-bg` variable handles the internal implementation, while `--clr-bg` provides the public API for theming. This separation enables clean theme implementation:
+
+```scss
+:root.theme-dark {
+  .key-metrics {
+    --clr-bg: #{clr(neutral, dark)};
+    
+    &__item {
+      &:nth-child(1) {
+        --clr-item-bg: #{clr(primary, darker)}
+      }
+    }
+  }
+}
+```
+
+### Button Component
+
+Another example is the most fundamental element we always built, the Button/CTA. Buttons usually need multiple variants while maintaining consistent behavior. Let's look at both its template and styling:
+
+#### Component Template
+
+```astro
+<a href={href} 
+   class="button" 
+   data-type={type} 
+   {...animationAttributes} 
+   style={style}>
+   <slot />
+   {icon && <Icon name={icon} />}
+</a>
+```
+
+#### Component Styling
+
+```scss
+.button {
+  --_btn-border: var(--btn-border, var(--button-border));
+  --_btn-bg: var(--clr-btn_bg, var(--clr-button-background));
+  --_btn-text: var(--clr-btn-txt, var(--clr-button-text));
+  
+  border: var(--_btn-border);
+  background-color: var(--_btn-bg);
+  
+  &[data-type="primary"] {
+    --clr-btn_bg: var(--clr-button-primary);
+    --clr-btn-txt: var(--clr-button-primary-text);
+    
+    &:hover {
+      --clr-btn_bg: var(--clr-button-primary-hover);
+    }
+  }
+}
+```
+
+#### Using the Button Component
+
+The public API makes it easy to customize buttons while maintaining their core behavior:
+
+```scss
+// Creating a special variant using the public API
+.hero-cta {
+  --clr-btn_bg: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+  --clr-btn-txt: white;
+}
+```
+
+```astro
+<Button 
+  type="primary" 
+  class="hero-cta"
+  animationAttributes={{ 'data-animation-fade-in': 'from-bottom' }}>
+  Get Started
+</Button>
+```
+
+This structure provides:
+
+- Clean variant management through data attributes
+- Consistent hover states
+- Theme support via public variable overrides
+- Clear API for customization
+
+## Extending the Pattern to Animations
+
+The public/private pattern works equally well for managing animations. Here's how I implement fade-in animations in my portfolio:
+
+```scss
+[data-animation-fade-in] {
+  /* Private animation variables */
+  --_fade-opacity: var(--fade-opacity, 0);
+  --_direction: var(--direction, none);
+  --_animation-delay: var(--animation-delay, 0);
+  
+  /* Using private variables in implementation */
+  opacity: var(--_fade-opacity);
+  transform: var(--_direction);
+  transition: opacity 0.5s ease-in, transform 0.5s ease-in;
+  transition-delay: var(--animation-delay);
+}
+
+/* Animation variants */
+[data-animation-fade-in="from-bottom"] {
+  --direction: translateY(5%);
+}
+
+/* Active states */
+[data-animation-fade-in="from-bottom"].is-intersecting {
+  --fade-opacity: 1;
+  --direction: translateY(0);
+}
+```
+
+The beauty of this approach is its flexibility. You can control animations through:
+
+1. CSS classes:
+
+```scss
+.delayed-animation {
+  --animation-delay: 0.5s;
+}
+```
+
+2. Inline styles in components:
+
+```jsx
+<Cta
+    href="/assets/Resume_Wei_Hsin_Chen.pdf"
+    type="tertiary"
+    icon="download"
+    animationAttributes={{ 'data-animation-fade-in': 'from-bottom' }}
+    style="--animation-delay: 0.6s">
+    Download Resume
+</Cta>
+```
+
+This pattern maintains a clean separation between animation logic and its public API while enabling easy customization through CSS variables.
+
+### Why This Pattern Works
+
+1. **Encapsulation**: Private variables protect internal implementation
+2. **Flexibility**: Public API enables customization without breaking components
+3. **Maintainability**: Clear separation between internal logic and public interface
+4. **Theme Support**: Simplified implementation of dark mode and other themes
+
+### Rules to Follow
+
+1. Never reference another component's private variables
+2. Always provide fallbacks for public variables
+3. Use consistent naming conventions across components
+4. Document the public API variables available for customization
+
+### Conclusion
+
+This public/private pattern has proven invaluable in both large enterprise applications and smaller projects. It provides a clean way to handle component variations, theming, and animations while maintaining a clear separation between internal implementation and public APIs.
+
+The key benefits I've seen include:
+- Faster development cycles due to clear component APIs
+- Reduced CSS specificity conflicts
+- Easier theme implementation
+- More maintainable codebases
+
+Whether you're building a design system or a personal website, this pattern can help create more maintainable and scalable CSS architectures while providing flexibility for customization and theming.
+
+> Want to see this pattern in action? Check out the complete implementation in my portfolio website's [GitHub repository](https://github.com/your-repo). The site is built with Astro and demonstrates all the concepts discussed in this article. Feel free to explore, adapt, and let me know what you think!
+
+Let me know your thoughts and how you implement this pattern in your projects!

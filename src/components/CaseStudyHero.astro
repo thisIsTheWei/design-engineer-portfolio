@@ -54,8 +54,7 @@ const { eyebrow, title, description, url, keywords = [], theme, order } = entry.
   @use "../styles/abstracts/index" as *;
 
   .case-study-hero {
-    --_border-bottom: var(--border-default, #{$border-default});
-    border-bottom: var(--_border-bottom);
+    border-bottom: var(--border-default);
     display: grid;
     gap: $size-8;
     padding-block-start: $size-10;

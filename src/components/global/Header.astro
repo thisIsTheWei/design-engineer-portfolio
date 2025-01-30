@@ -18,6 +18,7 @@ const navItems: NavItem[] = [
   { text: 'Home', href: '/' },
 	{ text: 'Featured Works', href: '/#featured-works-content' },
 	{ text: 'About', href: '/#about-content' },
+  { text: 'Blog', href: '/blog/css-architecture-api-pattern' },
 ];
 
 ---
@@ -33,7 +34,7 @@ const navItems: NavItem[] = [
       <ul>
         {navItems.map((item, index) => (
           <li>
-            <a href={item.href} class="lnk-effect lnk-effect--expand" style={`transition-delay:` + (index*0.1 + 0.2) + 's'}>{item.text}</a>
+            <a href={item.href}  class={`lnk-effect lnk-effect--expand ${item.href === Astro.url.pathname ? "active" : ""}`} style={`transition-delay:` + (index*0.1 + 0.2) + 's'}>{item.text}</a>
           </li>
         ))}
       </ul>

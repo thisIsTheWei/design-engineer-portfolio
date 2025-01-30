@@ -46,10 +46,8 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
   @use '../styles/abstracts/index' as *;
   
   section {
-    --clr-contact-background: var(--clr-callout-background, #{$color-callout-background});
-    --_clr-contact-background: var(--clr-contact-background);
-    --border-radius: var(--border-radius-2, #{$border-radius-2});
-    --_border-radius: var(--border-radius);
+    --_clr-contact-background: var(--clr-contact-background, var(--clr-callout-background));
+    --_border-radius: var(--border-radius, var(--border-radius-2));
 
     background-color: var(--_clr-contact-background);
     border-radius: var(--_border-radius);

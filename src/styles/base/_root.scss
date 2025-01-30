@@ -32,7 +32,7 @@
   --border-default: #{$border-default};
 
   // links
-  --clr-link: #{$color-link};
+  --_clr-link: #{$color-link};
   --clr-link-hover: #{$color-link-hover};
   --clr-link-visited: #{$color-link-visited};
 
@@ -120,7 +120,7 @@
     --clr-highlight-quaternary: #{$color-highlight-quaternary-reverse};
     --clr-background-theme-toggle: #{$color-background-theme-toggle-reverse};
     --clr-background-theme-toggle-hover: #{$color-background-theme-toggle-reverse-hover};
-    --clr-link: #{$color-link-reverse};
+    --_clr-link: #{$color-link-reverse};
     --clr-link-hover: #{$color-link-hover-reverse};
     --clr-link-visited: #{$color-link-visited-reverse};
   }

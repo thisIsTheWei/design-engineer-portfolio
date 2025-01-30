@@ -1,0 +1,124 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import { render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Contact from "../../components/Contact.astro";
+import FormattedDate from "../../components/composable/FormattedDate.astro";
+
+interface Props {
+  entry: CollectionEntry<"blog">;
+}
+
+export async function getStaticPaths() {
+  const blogs = await getCollection("blog");
+  return blogs.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<BaseLayout
+  title={`${entry.data.title} | Wei-Hsin Chen`}
+  description={entry.data.description}
+>
+  <article class="blog-post">
+    <div class="title">
+      <div class="date">
+        <FormattedDate date={entry.data.pubDate} />
+        {
+          entry.data.updatedDate && (
+                <div class="last-updated-on">
+                  Last updated on <FormattedDate date={entry.data.updatedDate} />
+                </div>
+          )
+        }
+      </div>
+      <h1>{entry.data.title}</h1>
+      <hr />
+    </div>
+    <Content />
+  </article>
+  <Contact fadeIn />
+</BaseLayout>
+
+<style is:global lang="scss">
+  @use "../../styles/abstracts/" as *;
+
+  :root {
+    --clr-blockquote-background: #{clr(secondary, lightest)};
+  }
+
+  .base-layout {
+
+  }
+
+  .blog-post {
+    margin-inline: auto;
+    max-width: 65ch;
+    > * + * {
+      --_flow-space: var(--flow-space, 1rem);
+      margin-block-start: var(--_flow-space);
+    }
+
+    ol, ul {
+      padding-left: 2rem;
+    }
+
+    .title {
+      margin-bottom: 1em;
+      padding: 1em 0;
+      text-align: center;
+      line-height: 1;
+    }
+    .title h1 {
+      margin: 0 0 0.5em 0;
+    }
+    .date {
+      margin-bottom: 0.5em;
+      color: rgb(var(--gray));
+    }
+  }
+
+  h1 {
+    --ff-size: clamp(1.2rem, 3vw + 0.6rem, 2.4rem);
+  }
+
+  h2 {
+    --ff-size: clamp(1.08rem, 2.4vw + 0.54rem, 2.1rem);
+  }
+
+  h3 {
+    --ff-size: clamp(0.96rem, 1.8vw + 0.48rem, 1.8rem);
+  }
+
+  h4 {
+    --ff-size: clamp(0.84rem, 1.2vw + 0.42rem, 1.5rem);
+  }
+
+  pre {
+    padding: 1.5rem;
+  }
+
+  blockquote {
+    color: #555555;
+    padding: 1.2rem 1.2rem 1.2rem 3rem;;
+    border-left:8px solid clr(secondary, darker) ;
+    position: relative;
+    background: var(--clr-blockquote-background, #{clr(secondary, lightest)});
+    &::before{
+      content: "🚨";
+      position: absolute;
+      left: 1rem;
+    }
+    &::after{
+      content: '';
+    }
+    P {
+      --clr-bg: #{clr(secondary, lightest)};
+    }
+  }
+</style>

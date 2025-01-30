@@ -1,5 +1,5 @@
 .highlight-heading {
-  --_clr-highlight: var(--clr-highlight, --clr-highlight-primary);
+  --_clr-highlight: var(--clr-highlight, var(--clr-highlight-primary));
 
   span {
     color: var(--_clr-highlight);

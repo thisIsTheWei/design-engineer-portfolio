@@ -1,84 +1,107 @@
 @use "../abstracts" as *;
+
 html,
 body {
-	min-height: 100%;
+  min-height: 100%;
 }
 
-body, .body {
-  background-color: var(--clr-background, $color-background-default);
+body,
+p,
+.body {
+  --_clr-bg: var(--clr-bg, var(--clr-background, $color-background-default));
+  --_ff: var(--ff, var(--clr-ff-body, $body-font-family));
+  --_ff-size: var(--ff-size, var(--body-font-size, $body-font-size));
+  --_ff-weight: var(--ff-weight, var(--ff-weight-body, $body-font-weight));
+  --_line-height: var(--line-height, var(--body-line-height, $body-line-height));
+
+  background-color: var(--_clr-bg);
   color: var(--clr-ff-body, $body-text-color);
-  font-family: var(--ff-body, $font-family-base);
-  font-size: var(--body-font-size, $body-font-size);
-  font-weight: var(--ff-weight-body, $body-font-weight);
-  line-height: var(--body-line-height, $body-line-height);
+  font-family: var(--ff-body);
+  font-size: var(--ff-size);
+  font-weight: var(--ff-weight);
+  line-height: var(--_line-height);
 }
 
 /* Responsive Headline Sizes */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  --_clr: var(--clr, var(--clr-ff-headline, $heading-text-color));
+  --_ff: var(--ff, var(--ff-headline, $heading-font-family));
+  --_ff-size: var(--ff-size, 1.5rem);
+  --_ff-weight: var(--ff-weight, var(--ff-weight-headline, $heading-font-weight));
+  --_line-height: var(--line-height, var(--headline-line-height, $heading-line-height));
+  --_letter-spacing: var(--letter-spacing, 0);
 
-.display1, .display2, .display3, .h1, .h2, .h3, .h4, .h5, .h6 {
-  color: var(--clr-ff-headline, $heading-text-color);
-  font-family: var(--ff-headline, $heading-font-family);
-  font-weight: var(--ff-weight-headline, $heading-font-weight);
-  line-height: var(--headline-line-height, $heading-line-height);
-  letter-spacing: 0;
+  color: var(--_clr);
+  font-family: var(--_ff);
+  font-size: var(--_ff-size);
+  font-weight: var(--_ff-weight);
+  line-height: var(--_line-height, $heading-line-height);
+  letter-spacing: var(--_letter-spacing);
 }
 
-.display1, .display2, .display3 {
-  font-size: clamp(4.5rem, 11vw - 0.175rem, 9.6rem);
-  letter-spacing: var(--letter-spacing-tight, $letter-spacing-tight);
+.display1,
+.display2,
+.display3 {
+  --ff-size: clamp(4.5rem, 11vw - 0.175rem, 9.6rem);
+  --letter-spacing: var(--letter-spacing-tight, $letter-spacing-tight);
 }
 
 .display2 {
-  --headline-line-height: var(--display-line-height-tight, #{$display-line-height-tight});
-  font-size: clamp(3.375rem, 6.11vw + 2rem, 7.5rem);
+  --line-height: var(--display-line-height-tight, #{$display-line-height-tight});
+  --ff-size: clamp(3.375rem, 6.11vw + 2rem, 7.5rem);
 }
 
 .display3 {
   --headline-line-height: var(--display-line-height-tight, #{$display-line-height-tight});
-  font-size: clamp(3.375rem, 6.11vw + 2rem, 6rem);
+  --ff-size: clamp(3.375rem, 6.11vw + 2rem, 6rem);
 }
 
 .h1 {
-  font-size: clamp(2rem, 5vw + 1rem, 4rem);
+  --ff-size: clamp(2rem, 5vw + 1rem, 4rem);
   letter-spacing: var(--letter-spacing-loose, $letter-spacing-loose);
 }
 
 .h2 {
-  font-size: clamp(1.8rem, 4vw + 0.9rem, 3.5rem);
+  --ff-size: clamp(1.8rem, 4vw + 0.9rem, 3.5rem);
 }
 
 .h3 {
-  font-size: clamp(1.6rem, 3vw + 0.8rem, 3rem);
+  --ff-size: clamp(1.6rem, 3vw + 0.8rem, 3rem);
 }
 
 .h4 {
-  font-size: clamp(1.4rem, 2vw + 0.7rem, 2.5rem);
+  --ff-size: clamp(1.4rem, 2vw + 0.7rem, 2.5rem);
 }
 
 .h5 {
-  font-size: clamp(1.2rem, 1vw + 0.6rem, 2rem);
+  --ff-size: clamp(1.2rem, 1vw + 0.6rem, 2rem);
 }
 
 .h6 {
-  font-size: clamp(1rem, 0.5vw + 0.5rem, 1.5rem);
+  --ff-size: clamp(1rem, 0.5vw + 0.5rem, 1.5rem);
 }
 
 .body-l {
-  font-size: var(--body-font-size-large, $body-font-size-large);
+  --ff-size: var(--body-font-size-large, $body-font-size-large);
 }
 
 .body-s {
-  font-size: var(--body-font-size-small, $body-font-size-small);
+  --ff-size: var(--body-font-size-small, $body-font-size-small);
 }
 
 .body-xs {
-  font-size: var(--body-font-size-tiny, $body-font-size-tiny);
+  --ff-size: var(--body-font-size-tiny, $body-font-size-tiny);
 }
 
 .eyebrow {
-  font-size: var(--eyebrow-font-size, $eyebrow-font-size );
-  font-weight: var(--eyebrow-font-weight, $eyebrow-font-weight);
-  line-height: var(--eyebrow-line-height, $eyebrow-line-height);
+  --ff-size: var(--eyebrow-font-size, $eyebrow-font-size );
+  --ff-weight: var(--eyebrow-font-weight, $eyebrow-font-weight);
+  --line-height: var(--eyebrow-line-height, $eyebrow-line-height);
   text-transform: uppercase;
 }
 
@@ -88,12 +111,10 @@ body, .body {
   --_section-padding: var(--section-padding, #{$size-4});
 
   display: grid;
-  grid-template-columns: 
-    minmax(var(--_padding), 1fr)
-    min(var(--_max-width), 100% - (var(--_padding) * 2))
-    minmax(var(--_padding), 1fr);
+  grid-template-columns:
+    minmax(var(--_padding), 1fr) min(var(--_max-width), 100% - (var(--_padding) * 2)) minmax(var(--_padding), 1fr);
 
-  & > * {
+  &>* {
     grid-column: 2/3;
     padding-inline-end: var(--_section-padding);
     padding-inline-start: var(--_section-padding);
@@ -101,33 +122,33 @@ body, .body {
     @include mq(m) {
       --_section-padding: #{$size-6};
     }
-  
+
     @include mq(l) {
       --_section-padding: #{$size-8};
     }
-  
+
     @include mq(xl) {
       --_section-padding: #{$size-12};
     }
   }
 
-  & > .full-bleed {
+  &>.full-bleed {
     grid-column: 1/-1;
   }
 }
 
-main, 
-section, 
-header, 
+main,
+section,
+header,
 footer {
   container-type: inline-size;
 }
 
-main > * {
+main>* {
   margin-block-end: var(--section-spacing);
 }
 
-a > svg {
+a>svg {
   display: inline-block;
 }
 
@@ -135,11 +156,13 @@ a {
   --_clr-link-text: var(--clr-link, #{$color-link});
   color: var(--_clr-link-text);
 
-  &:hover, &:active, &:focus {
-    --clr-link: var(--clr-link-hover, #{$color-link-hover});
+  &:hover,
+  &:active,
+  &:focus {
+    --_clr-link: var(--clr-link-hover, #{$color-link-hover});
   }
 
-  &:visited  {
-    --clr-link: var(--clr-link-visited, #{$color-link-visited});
+  &:visited {
+    --_clr-link: var(--clr-link-visited, #{$color-link-visited});
   }
 }
