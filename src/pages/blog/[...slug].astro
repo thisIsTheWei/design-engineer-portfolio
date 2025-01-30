@@ -32,23 +32,26 @@ const { Content } = await render(entry);
         <FormattedDate date={entry.data.pubDate} />
         {
           entry.data.updatedDate && (
-                <div class="last-updated-on">
-                  Last updated on <FormattedDate date={entry.data.updatedDate} />
-                </div>
+            <div class="last-updated-on">
+              Last updated on <FormattedDate date={entry.data.updatedDate} />
+            </div>
           )
         }
       </div>
       <h1>{entry.data.title}</h1>
-      <hr />
     </div>
     <Content />
   </article>
   <Contact fadeIn />
+  {
+    entry.data.codepen && (
+      <script src="https://cpwebassets.codepen.io/assets/embed/ei.js" async />
+    )
+  }
 </BaseLayout>
 
 <style is:global lang="scss">
   @use "../../styles/abstracts/" as *;
-
 
   .blog-post {
     margin-inline: auto;
@@ -58,7 +61,8 @@ const { Content } = await render(entry);
       margin-block-start: var(--_flow-space);
     }
 
-    ol, ul {
+    ol,
+    ul {
       padding-left: 2rem;
     }
 
@@ -83,14 +87,20 @@ const { Content } = await render(entry);
 
   h2 {
     --ff-size: clamp(1.08rem, 2.4vw + 0.54rem, 2.1rem);
+
+    padding-block-start: 1.4rem;
   }
 
   h3 {
     --ff-size: clamp(0.96rem, 1.8vw + 0.48rem, 1.8rem);
+
+    padding-block-start: 1.2rem;
   }
 
   h4 {
     --ff-size: clamp(0.84rem, 1.2vw + 0.42rem, 1.5rem);
+
+    padding-block-start: 1rem;
   }
 
   pre {
@@ -99,17 +109,17 @@ const { Content } = await render(entry);
 
   blockquote {
     color: var(--clr-blockquote-text);
-    padding: 1.2rem 1.2rem 1.2rem 3rem;;
-    border-left:8px solid clr(secondary, darker) ;
+    padding: 1.2rem 1.2rem 1.2rem 3rem;
+    border-left: 8px solid clr(secondary, darker);
     position: relative;
     background: var(--clr-blockquote-background);
-    &::before{
+    &::before {
       content: "🚨";
       position: absolute;
       left: 1rem;
     }
-    &::after{
-      content: '';
+    &::after {
+      content: "";
     }
     P {
       --clr-bg: var(--clr-blockquote-background);

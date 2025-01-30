@@ -3,6 +3,7 @@ title: 'CSS Custom Properties as APIs: A Scalable Architecture Pattern'
 description: 'A pattern to build scalable a CSS architecture using custom properties as component APIs. Discover a simple but practical way for managing component styles, theming, and animations.'
 pubDate: 'Jul 08 2022'
 heroImage: '/blog-placeholder-1.jpg'
+codepen: true
 ---
 
 After years of building component libraries and design systems, I've been fascinated by the evolving patterns in CSS architecture, particularly around CSS Custom Properties. While working on Chrome Enterprise and ChromeOS, I implemented and refined an interesting pattern that leverages the power of CSS custom properties to create clear component APIs.
@@ -77,7 +78,7 @@ This component displays important statistics with different background colors an
   
   &__item {
     --_clr-item-bg: var(--clr-item-bg, #{clr(neutral, white)});
-    background-color: var(--clr-item-bg);
+    background-color: var(--c_lr-item-bg);
     
     &:nth-child(1) {
       --clr-item-bg: #{clr(primary, lightest)};
@@ -105,6 +106,14 @@ The private `--_clr-bg` variable handles the internal implementation, while `--c
   }
 }
 ```
+
+#### Codepen: Basic Pattern Demo
+
+<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="zxObozW" data-pen-title="CSS Custom Properties as APIs: Basic Pattern Demo" data-user="thisIsTheWei" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/thisIsTheWei/pen/zxObozW">
+  CSS Custom Properties as APIs: Basic Pattern Demo</a> by Wei (<a href="https://codepen.io/thisIsTheWei">@thisIsTheWei</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
 
 ### Button Component
 
@@ -166,6 +175,14 @@ The public API makes it easy to customize buttons while maintaining their core b
 </Button>
 ```
 
+#### Codepen: Button Demo
+
+<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="bNbZqNm" data-pen-title="CSS Custom Properties as APIs: Button Demo" data-user="thisIsTheWei" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/thisIsTheWei/pen/bNbZqNm">
+  CSS Custom Properties as APIs: Button Demo</a> by Wei (<a href="https://codepen.io/thisIsTheWei">@thisIsTheWei</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+
 This structure provides:
 
 - Clean variant management through data attributes
@@ -188,7 +205,7 @@ The public/private pattern works equally well for managing animations. Here's ho
   opacity: var(--_fade-opacity);
   transform: var(--_direction);
   transition: opacity 0.5s ease-in, transform 0.5s ease-in;
-  transition-delay: var(--animation-delay);
+  transition-delay: var(--_animation-delay);
 }
 
 /* Animation variants */
@@ -226,6 +243,14 @@ The beauty of this approach is its flexibility. You can control animations throu
 </Cta>
 ```
 
+#### Codepen: Animation Demo
+
+<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="WbemRVY" data-pen-title="CSS Custom Properties as APIs: Animation Demo" data-user="thisIsTheWei" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/thisIsTheWei/pen/WbemRVY">
+  CSS Custom Properties as APIs: Animation Demo</a> by Wei (<a href="https://codepen.io/thisIsTheWei">@thisIsTheWei</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+
 This pattern maintains a clean separation between animation logic and its public API while enabling easy customization through CSS variables.
 
 ### Why This Pattern Works
@@ -247,6 +272,7 @@ This pattern maintains a clean separation between animation logic and its public
 This public/private pattern has proven invaluable in both large enterprise applications and smaller projects. It provides a clean way to handle component variations, theming, and animations while maintaining a clear separation between internal implementation and public APIs.
 
 The key benefits I've seen include:
+
 - Faster development cycles due to clear component APIs
 - Reduced CSS specificity conflicts
 - Easier theme implementation
