@@ -12,7 +12,7 @@
   --_clr-btn_bg: var(--clr-btn_bg, var(--clr-button-background));
   --_clr-btn-hover_bg: var(--clr-btn-hover_bg, var(--_clr-btn_bg));
   --_clr-btn-txt: var(--clr-btn-txt, var(--clr-button-text));
-  --_clr-link: var(--clr-link, --_clr-btn-txt);
+  --_clr: var(--clr, --_clr-btn-txt);
   --icon-size: var(--button-icon-size);
 
   align-items: center;
@@ -72,7 +72,7 @@
 
   &[data-type="primary"] {
     --clr-btn_bg: var(--clr-button-primary);
-    --clr-link: var(--clr-button-primary-text);
+    --clr: var(--clr-button-primary-text);
     --clr-btn-hover_bg: var(--clr-button-primary-hover);
 
     &:hover, &:focus-visible {
@@ -89,7 +89,7 @@
 
   &[data-type="secondary"] {
     --clr-btn_bg: var(--clr-button-secondary);
-    --clr-link: var(--clr-button-secondary-text);
+    --clr: var(--clr-button-secondary-text);
     --btn-border: 1px solid var(--clr-button-secondary-border);
     --clr-btn-hover_bg: var(--clr-button-secondary-hover);
 
@@ -100,6 +100,10 @@
     &:active {
       --clr-btn_bg: var(--clr-button-secondary-active);
     }
+  }
+
+  &[data-type="tertiary"] {
+    --clr: var(--clr-button-tertiary-text);
   }
 
   &[data-size="large"] {

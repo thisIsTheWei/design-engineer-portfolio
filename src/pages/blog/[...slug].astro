@@ -49,13 +49,6 @@ const { Content } = await render(entry);
 <style is:global lang="scss">
   @use "../../styles/abstracts/" as *;
 
-  :root {
-    --clr-blockquote-background: #{clr(secondary, lightest)};
-  }
-
-  .base-layout {
-
-  }
 
   .blog-post {
     margin-inline: auto;
@@ -105,11 +98,11 @@ const { Content } = await render(entry);
   }
 
   blockquote {
-    color: #555555;
+    color: var(--clr-blockquote-text);
     padding: 1.2rem 1.2rem 1.2rem 3rem;;
     border-left:8px solid clr(secondary, darker) ;
     position: relative;
-    background: var(--clr-blockquote-background, #{clr(secondary, lightest)});
+    background: var(--clr-blockquote-background);
     &::before{
       content: "🚨";
       position: absolute;
@@ -119,7 +112,8 @@ const { Content } = await render(entry);
       content: '';
     }
     P {
-      --clr-bg: #{clr(secondary, lightest)};
+      --clr-bg: var(--clr-blockquote-background);
+      --clr: var(--clr-blockquote-text);
     }
   }
 </style>

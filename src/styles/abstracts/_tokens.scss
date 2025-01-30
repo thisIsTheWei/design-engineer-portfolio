@@ -56,13 +56,13 @@ $section-title-border-reverse: 1px solid clr(primary, lightest);
 $section-spacing: $size-11; // 64px
 
 // links
-$color-link: #0000EE;
-$color-link-hover: #551A8B;
-$color-link-visited: #800080;
+$color-link-text: #0000EE;
+$color-link-text-hover: clr(primary, light);
+$color-link-text-visited: clr(neutral, base);
 
-$color-link-reverse: lightskyblue;
-$color-link-hover-reverse: #ffffff;
-$color-link-visited-reverse: #6d4b8d;
+$color-link-text-reverse: clr(neutral, lightest);
+$color-link-text-hover-reverse: clr(primary, lighter-more);
+$color-link-text-visited-reverse: clr(neutral, light);
 
 // buttons
 $button-font-size: $font-size-default;
@@ -102,12 +102,6 @@ $color-button-tertiary-text-active: clr(neutral, darker);
 
 $color-callout-background: clr(primary, lightest);
 
-$color-link-text: clr(neutral, dark);
-$color-link-text-reverse: clr(neutral, lightest);
-$color-link-text-hover: clr(primary, light);
-$color-link-text-hover-reverse: clr(neutral, lightest);
-$color-link-text-active: clr(neutral, base);
-$color-link-text-active-reverse: clr(neutral, lightest);
 
 $color-menu-toggle: clr(neutral, dark);
 $color-menu-toggle-reverse: clr(neutral, white);
@@ -139,3 +133,7 @@ $color-background-theme-toggle-reverse-hover: clr(neutral, dark);
 
 //   blockquote
 $color-blockquote-background: clr(secondary, lightest);
+$color-blockquote-text: clr(secondary, darker);
+
+$color-blockquote-background-reverse: clr(secondary, darker);
+$color-blockquote-text-reverse: clr(secondary, lightest);

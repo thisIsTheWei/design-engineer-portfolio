@@ -5,20 +5,23 @@ body {
   min-height: 100%;
 }
 
-body,
-p,
-.body {
+body {
   --_clr-bg: var(--clr-bg, var(--clr-background, $color-background-default));
-  --_ff: var(--ff, var(--clr-ff-body, $body-font-family));
+  background-color: var(--_clr-bg);
+}
+
+body,
+p {
+  --_clr: var(--clr, var(--clr-ff-body, $body-text-color));
+  --_ff: var(--ff, var(--ff-body, $body-font-family));
   --_ff-size: var(--ff-size, var(--body-font-size, $body-font-size));
   --_ff-weight: var(--ff-weight, var(--ff-weight-body, $body-font-weight));
   --_line-height: var(--line-height, var(--body-line-height, $body-line-height));
 
-  background-color: var(--_clr-bg);
-  color: var(--clr-ff-body, $body-text-color);
-  font-family: var(--ff-body);
-  font-size: var(--ff-size);
-  font-weight: var(--ff-weight);
+  color: var(--_clr);
+  font-family: var(--_ff);
+  font-size: var(--_ff-size);
+  font-weight: var(--_ff-weight);
   line-height: var(--_line-height);
 }
 
@@ -153,16 +156,17 @@ a>svg {
 }
 
 a {
-  --_clr-link-text: var(--clr-link, #{$color-link});
-  color: var(--_clr-link-text);
+  --clr: var(--clr-link-text, #{$color-link-text});
+  --_clr: var(--clr);
+  color: var(--_clr);
 
   &:hover,
   &:active,
   &:focus {
-    --_clr-link: var(--clr-link-hover, #{$color-link-hover});
+    --clr: var(--clr-link-text-hover, #{$color-link-text-hover});
   }
 
   &:visited {
-    --_clr-link: var(--clr-link-visited, #{$color-link-visited});
+    --clr: var(--clr-link-text-visited, #{$color-link-text-visited});
   }
 }
