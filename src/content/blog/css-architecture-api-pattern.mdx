@@ -20,7 +20,7 @@ For instance, implementing a dark theme traditionally might require overriding s
 // With the pattern - clean customization
 :root.theme-dark {
   .button {
-    --clr-btn_bg: #1a1a1a;
+    --clr-btn-bg: #1a1a1a;
     --clr-btn-txt: white;
   }
 }
@@ -78,7 +78,7 @@ This component displays important statistics with different background colors an
   
   &__item {
     --_clr-item-bg: var(--clr-item-bg, #{clr(neutral, white)});
-    background-color: var(--c_lr-item-bg);
+    background-color: var(--_clr-item-bg);
     
     &:nth-child(1) {
       --clr-item-bg: #{clr(primary, lightest)};
@@ -137,18 +137,19 @@ Another example is the most fundamental element we always built, the Button/CTA.
 ```scss
 .button {
   --_btn-border: var(--btn-border, var(--button-border));
-  --_btn-bg: var(--clr-btn_bg, var(--clr-button-background));
-  --_btn-text: var(--clr-btn-txt, var(--clr-button-text));
+  --_clr-btn-bg: var(--clr-btn-bg, var(--clr-button-background));
+  --_clr-btn-txt: var(--clr-btn-txt, var(--clr-button-text));
   
   border: var(--_btn-border);
-  background-color: var(--_btn-bg);
+  background-color: var(--_clr-btn-bg);
+  color: var(--_clr-btn-txt);
   
   &[data-type="primary"] {
-    --clr-btn_bg: var(--clr-button-primary);
+    --clr-btn-bg: var(--clr-button-primary);
     --clr-btn-txt: var(--clr-button-primary-text);
     
     &:hover {
-      --clr-btn_bg: var(--clr-button-primary-hover);
+      --clr-btn-bg: var(--clr-button-primary-hover);
     }
   }
 }
@@ -161,7 +162,7 @@ The public API makes it easy to customize buttons while maintaining their core b
 ```scss
 // Creating a special variant using the public API
 .hero-cta {
-  --clr-btn_bg: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+  --clr-btn-bg: linear-gradient(to right, var(--color-primary), var(--color-secondary));
   --clr-btn-txt: white;
 }
 ```
