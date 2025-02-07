@@ -1,8 +1,8 @@
 ---
-import type { IntersectionOptions } from '../scripts/types/intersections';
-import Cta from './composable/Cta.astro';
-import HighlightHeading from './composable/HighlightHeading.astro';
-import {getFadeInDataAttribute} from "../scripts/utils/intersection-observer/fadein-intersection-observer";
+import type { IntersectionOptions } from "../scripts/types/intersections";
+import Cta from "./composable/Cta.astro";
+import HighlightHeading from "./composable/HighlightHeading.astro";
+import { getFadeInDataAttribute } from "../scripts/utils/intersection-observer/fadein-intersection-observer";
 
 interface Props {
   class?: string;
@@ -15,7 +15,7 @@ interface Props {
         src: string;
         alt: string;
       };
-      url: string;
+      urls: string;
       keywords: string[];
       enable_case_study: boolean;
       theme: "primary" | "secondary" | "tertiary" | "quaternary";
@@ -27,37 +27,81 @@ interface Props {
 }
 
 const { class: className, work, fadeIn = false }: Props = Astro.props;
-const { eyebrow, title, feature_image, url, keywords = [], enable_case_study, theme, order } = work.data;
+const {
+  eyebrow,
+  title,
+  feature_image,
+  urls,
+  keywords = [],
+  enable_case_study,
+  theme,
+  order,
+} = work.data;
 const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
 ---
+
 <div
-    class:list={[className, "featured-work-container"]}
-    {...fadeInDataAttribute !== undefined ? { 'data-fade-in-intersect data-animation-fade-in="from-bottom"': fadeInDataAttribute } : {}}>
-  <div class="featured-work"  data-theme={theme}>
-    <div class="featured-work__image"
-         data-animation-block-slide="slide-out-right">
+  class:list={[className, "featured-work-container"]}
+  {...fadeInDataAttribute !== undefined
+    ? {
+        'data-fade-in-intersect data-animation-fade-in="from-bottom"':
+          fadeInDataAttribute,
+      }
+    : {}}
+>
+  <div class="featured-work" data-theme={theme}>
+    <div
+      class="featured-work__image"
+      data-animation-block-slide="slide-out-right"
+    >
       <img
-          src={feature_image.src}
-          alt={feature_image.alt}
-          loading="lazy"
-          decoding="async"
-          transition:name={`case-study-${order}-feature-image`}
-          data-animation-slide="scale-in-down"/>
+        src={feature_image.src}
+        alt={feature_image.alt}
+        loading="lazy"
+        decoding="async"
+        transition:name={`case-study-${order}-feature-image`}
+        data-animation-slide="scale-in-down"
+      />
     </div>
     <div class="featured-work__content">
-      <p class="eyebrow" transition:name={`case-study-${order}-eyebrow`}>{eyebrow}</p>
-      <HighlightHeading title={title} theme={theme} level={3} class="h3" transitionName={`case-study-${order}-heading`} />
-      {keywords.length > 0 && (
-        <ul class="tags featured-work__tags" transition:name={`case-study-${order}-keywords`}>
-          {keywords.map(keyword => (
-            <li>{keyword}</li>
-          ))}
-        </ul>
-      )}
+      <p class="eyebrow" transition:name={`case-study-${order}-eyebrow`}>
+        {eyebrow}
+      </p>
+      <HighlightHeading
+        title={title}
+        theme={theme}
+        level={3}
+        class="h3"
+        transitionName={`case-study-${order}-heading`}
+      />
+      {
+        keywords.length > 0 && (
+          <ul
+            class="tags featured-work__tags"
+            transition:name={`case-study-${order}-keywords`}
+          >
+            {keywords.map((keyword) => (
+              <li>{keyword}</li>
+            ))}
+          </ul>
+        )
+      }
     </div>
     <div class="featured-work__ctas">
-      {enable_case_study && <Cta href={`/work/${work.slug}`} type="primary">View Case Study</Cta>}
-      {url && <Cta href={url} type="secondary">See Live</Cta>}
+      {
+        enable_case_study && (
+          <Cta href={`/work/${work.id}`} type="primary">
+            View Case Study
+          </Cta>
+        )
+      }
+      {
+        urls && (
+          <Cta href={urls[0]} type="secondary">
+            See Live
+          </Cta>
+        )
+      }
     </div>
   </div>
 </div>
@@ -69,7 +113,7 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
     container-type: inline-size;
 
     @include mq(m) {
-      &:nth-child(3n+3) [data-animation-block-slide] {
+      &:nth-child(3n + 3) [data-animation-block-slide] {
         --animation-delay: 0.6s;
       }
     }
@@ -123,8 +167,8 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
         align-items: end;
         display: flex;
         flex-direction: row;
-        gap: $size-4; 
-      } 
+        gap: $size-4;
+      }
     }
 
     @container (width > 940px) {
