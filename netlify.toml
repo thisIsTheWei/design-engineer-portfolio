@@ -1,5 +1,5 @@
 [build]
-  command = "git config --global submodule.recurse false && npm run build"
+  command = "npm run build"
   publish = "dist"
 
 [[redirects]]
