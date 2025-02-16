@@ -11,32 +11,33 @@ interface Props {
 }
 
 export async function getStaticPaths() {
-  const blogPosts = await getCollection("blog");
-  return blogPosts.map((post) => ({
-    params: { slug: post.id },
-    props: { post },
+  const blogs = await getCollection("blog");
+  return blogs.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
   }));
 }
 
-const { post } = Astro.props;
-const { Content } = await render(post);
-const { title, description, pubDate, updatedDate, heroImage, codepen } =
-  post.data;
+const { entry } = Astro.props;
+const { Content } = await render(entry);
 ---
 
-<BaseLayout title={`${title} | Wei-Hsin Chen`} description={description}>
+<BaseLayout
+  title={`${entry.data.title} | Wei-Hsin Chen`}
+  description={entry.data.description}
+>
   <article class="blog-post">
     <div class="title">
-      <h1>{title}</h1>
+      <h1>{entry.data.title}</h1>
       <div class="posted-by">
         <span class="body-small">Posted by <a href="/">Wei-Hsin Chen</a></span>
         <div class="date">
-          <FormattedDate date={pubDate} />
+          <FormattedDate date={entry.data.pubDate} />
           {
-            updatedDate && (
-              <div class="last-updated-on">
-                Last updated on <FormattedDate date={updatedDate} />
-              </div>
+            entry.data.updatedDate && (
+                  <div class="last-updated-on">
+                    Last updated on <FormattedDate date={entry.data.updatedDate} />
+                  </div>
             )
           }
         </div>
@@ -46,7 +47,7 @@ const { title, description, pubDate, updatedDate, heroImage, codepen } =
   </article>
   <Contact fadeIn />
   {
-    codepen && (
+    entry.data.codepen && (
       <script src="https://cpwebassets.codepen.io/assets/embed/ei.js" async />
     )
   }

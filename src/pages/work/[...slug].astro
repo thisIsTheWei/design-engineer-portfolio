@@ -1,7 +1,6 @@
 ---
 // @ts-nocheck
 import type { CollectionEntry } from "astro:content";
-import { render } from "astro:content";
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Contact from "../../components/Contact.astro";
@@ -20,19 +19,18 @@ interface Props {
 export async function getStaticPaths() {
   const works = await getCollection("work");
   return works.map((entry) => ({
-    params: { slug: entry.id },
+    params: { slug: entry.slug },
     props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
-const { Content } = await render(entry);
-const { meta_data, data } = entry.data;
+const { Content } = await entry.render();
 ---
 
 <BaseLayout
-  title={`${meta_data.title} | Wei-Hsin Chen`}
-  description={meta_data.description}
+  title={`${entry.data.meta_data.title} | Wei-Hsin Chen`}
+  description={entry.data.meta_data.description}
 >
   <article class="case-study">
     <CaseStudyHero entry={entry} />
@@ -45,7 +43,7 @@ const { meta_data, data } = entry.data;
         InlineDemoVideo,
         KeyMetrics,
       }}
-      frontmatter={data}
+      frontmatter={entry.data}
     />
   </article>
   <Contact fadeIn />
