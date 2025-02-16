@@ -12,39 +12,66 @@ interface Props {
         src: string;
         alt: string;
       };
-      url: string;
+      urls: string[];
       keywords: string[];
       theme: "primary" | "secondary" | "tertiary" | "quaternary";
       order: number;
-    },
-    slug: string;
-  }
+    };
+  };
 }
 
 const { entry }: Props = Astro.props;
-const { eyebrow, title, description, url, keywords = [], theme, order } = entry.data;
-
+const {
+  eyebrow,
+  title,
+  description,
+  urls,
+  keywords = [],
+  theme,
+  order,
+} = entry.data;
 ---
+
 <section>
   <div class="case-study-hero">
     <div class="case-study-hero__header">
-      <p class="case-study-hero__eyebrow eyebrow" transition:name={`case-study-${order}-eyebrow`}>{eyebrow}</p>
+      <p
+        class="case-study-hero__eyebrow eyebrow"
+        transition:name={`case-study-${order}-eyebrow`}
+      >
+        {eyebrow}
+      </p>
       <HighlightHeading
-          title={title} theme={theme}
-          level={1}
-          class="h1 case-study-hero__headline" transitionName={`case-study-${order}-heading`}/>
-      {keywords.length > 0 && (
-          <ul class="tags case-study-hero__tags" transition:name={`case-study-${order}-keywords`}>
-            {keywords.map(keyword => (
-                <li>{keyword}</li>
+        title={title}
+        theme={theme}
+        level={1}
+        class="h1 case-study-hero__headline"
+        transitionName={`case-study-${order}-heading`}
+      />
+      {
+        keywords.length > 0 && (
+          <ul
+            class="tags case-study-hero__tags"
+            transition:name={`case-study-${order}-keywords`}
+          >
+            {keywords.map((keyword) => (
+              <li>{keyword}</li>
             ))}
           </ul>
-      )}
+        )
+      }
     </div>
     <div class="case-study-hero__description flow">
       <p class="body-l case-study-hero__body">{description}</p>
       <div class="case-study-hero__detail-buttons">
-        {url && <Cta href={url} type="primary">See Live</Cta>}
+        {
+          urls &&
+            urls.map((url, index) => (
+              <Cta href={url} type={index > 0 ? "secondary" : "primary"}>
+                See Live
+              </Cta>
+            ))
+        }
       </div>
     </div>
   </div>
@@ -59,7 +86,7 @@ const { eyebrow, title, description, url, keywords = [], theme, order } = entry.
     gap: $size-8;
     padding-block-start: $size-10;
     padding-block-end: $size-11;
-    grid-template-columns: 1fr ;
+    grid-template-columns: 1fr;
 
     @include mq(m) {
       grid-template-columns: 7fr 5fr 1fr;
@@ -77,6 +104,10 @@ const { eyebrow, title, description, url, keywords = [], theme, order } = entry.
       padding-block-start: $size-8;
       padding-inline-end: $size-12;
     }
-  }
 
+    &__detail-buttons {
+      display: flex;
+      gap: $size-4;
+    }
+  }
 </style>
