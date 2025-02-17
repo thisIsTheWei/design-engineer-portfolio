@@ -1,92 +1,111 @@
 ---
-import { readFileSync } from 'fs';
-import { resolve } from 'path';
-import ThemeToggle from '../composable/ThemeToggle.astro';
-import AnchorLists from '../composable/AnchorLists.astro';
+import { readFileSync } from "fs";
+import { resolve } from "path";
+import ThemeToggle from "../composable/ThemeToggle.astro";
+import AnchorLists from "../composable/AnchorLists.astro";
 
 interface MenuItem {
-    href: string;
-    text: string;
-    target?: "_blank" | "_self";
+  href: string;
+  text: string;
+  target?: "_blank" | "_self";
 }
 
-
-const logoPath = resolve('./src/assets/w-logo.svg');
-const logoSvg = readFileSync(logoPath, 'utf8');
+const logoPath = resolve("./src/assets/w-logo.svg");
+const logoSvg = readFileSync(logoPath, "utf8");
 
 /** Main menu items */
 const menuItems: MenuItem[] = [
-	{ text: 'Home', href: '/' },
-	{ text: 'Featured Works', href: '#featured-works-content' },
-	{ text: 'About', href: '#about-content' },
+  { text: "Home", href: "/" },
+  { text: "Featured Works", href: "#featured-works-content" },
+  { text: "About", href: "#about-content" },
 ];
 
 const contactItems: MenuItem[] = [
-	{ text: 'LinkedIn', href: 'https://www.linkedin.com/in/weihsin/' },
-	{ text: 'Download Resume', href: '/assets/Resume_Wei_Hsin_Chen.pdf', target: '_blank' },
-	{ text: 'Email Me', href: 'mailto:wei.design.engineer@gmail.com', target: '_blank' },
-	{ text: 'Schedule a call', href: 'https://calendar.app.google/dUoxuZs3eMKXjrVS8' },
-  { text: 'GitHub', href: 'https://github.com/thisIsTheWei' },
+  { text: "LinkedIn", href: "https://www.linkedin.com/in/weihsin/" },
+  {
+    text: "Download Resume",
+    href: "/assets/Resume_Wei_Hsin_Chen.pdf",
+    target: "_blank",
+  },
+  {
+    text: "Email Me",
+    href: "mailto:wei.design.engineer@gmail.com",
+    target: "_blank",
+  },
+  {
+    text: "Schedule a call",
+    href: "https://calendar.app.google/dUoxuZs3eMKXjrVS8",
+  },
+  { text: "GitHub", href: "https://github.com/thisIsTheWei" },
 ];
-
 ---
-<footer>
+
+<footer class="footer">
   <div>
-    <a href="/" class="logo" set:html={logoSvg} aria-label="Wei-Hsin Chen - Home"/>
+    <a
+      href="/"
+      class="logo"
+      set:html={logoSvg}
+      aria-label="Wei-Hsin Chen - Home"
+    />
   </div>
   <div>
-    <h3 class="title">Menu</h3>
+    <h3 class="footer__title">Menu</h3>
     <AnchorLists items={menuItems} />
   </div>
   <div>
-    <h3 class="title">Contact</h3>
+    <h3 class="footer__title">Contact</h3>
     <AnchorLists items={contactItems} />
   </div>
   <div>
     <ThemeToggle />
-    <p>Designed & Developed by Wei-Hsin Chen <br/>
-      © 2024 All right reserved</p>
-    <p class="body-s">Interested in how I built it? check out my GitHub <a href="https://github.com/thisIsTheWei/design-engineer-portfolio" target="_blank">Repo.</a>
+    <p>
+      Designed & Developed by Wei-Hsin Chen <br />
+      © 2024 All right reserved
+    </p>
+    <p class="body-s">
+      Interested in how I built it? check out my GitHub <a
+        href="https://github.com/thisIsTheWei/design-engineer-portfolio"
+        target="_blank">Repo.</a
+      >
+    </p>
   </div>
-</footer>
 
-<style lang="scss">
-  @use "../../styles/abstracts/" as *;
+  <style lang="scss">
+    @use "../../styles/abstracts/" as *;
 
-  footer {
-    align-items: flex-start;
-    border-top: var(--border-default, $border-default);
-    display: flex;
-    flex-direction: column;
-    gap: $size-4;
-    justify-content: start;
-    margin-inline: var(--_section-padding, $size-4);
-    padding-block-end: $size-11;
-    padding-block-start: $size-4;
-    padding-inline: 0;
-
-    @include mq(m) {
-      flex-direction: row;
-
-      & > * {
-        flex: 1;
-      }
-    }
-    > * {
+    footer {
+      align-items: flex-start;
+      border-top: var(--border-default, $border-default);
       display: flex;
       flex-direction: column;
-      gap: $size-2;
+      gap: $size-4;
+      justify-content: start;
+      margin-inline: var(--_section-padding, $size-4);
+      padding-block-end: $size-11;
+      padding-block-start: $size-4;
+      padding-inline: 0;
+
+      @include mq(m) {
+        flex-direction: row;
+
+        & > * {
+          flex: 1;
+        }
+      }
+      > * {
+        display: flex;
+        flex-direction: column;
+        gap: $size-2;
+      }
+
+      .logo {
+        display: flex;
+        width: 62px;
+      }
     }
-  }
-
-  .title {
-    font-size: $font-size-large;
-    font-weight: $font-weight-bold;
-  }
-
-  .logo {
-    display: flex;
-    width: 62px;
-  }
-
-</style>
+    .footer__title {
+      font-size: $font-size-large;
+    }
+  </style>
+</footer>

@@ -6,17 +6,17 @@ body {
 }
 
 body {
-  --_clr-bg: var(--clr-bg, var(--clr-background, $color-background-default));
+  --_clr-bg: var(--clr-bg, var(--clr-background, #{$color-background-default}));
   background-color: var(--_clr-bg);
 }
 
 body,
 p {
-  --_clr: var(--clr, var(--clr-ff-body, $body-text-color));
-  --_ff: var(--ff, var(--ff-body, $body-font-family));
-  --_ff-size: var(--ff-size, var(--body-font-size, $body-font-size));
-  --_ff-weight: var(--ff-weight, var(--ff-weight-body, $body-font-weight));
-  --_line-height: var(--line-height, var(--body-line-height, $body-line-height));
+  --_clr: var(--clr, var(--clr-ff-body, #{$body-text-color}));
+  --_ff: var(--ff, var(--ff-body, #{$body-font-family}));
+  --_ff-size: var(--ff-size, var(--body-font-size, #{$body-font-size}));
+  --_ff-weight: var(--ff-weight, var(--ff-weight-body, #{$body-font-weight}));
+  --_line-height: var(--line-height, var(--body-line-height, #{$body-line-height}));
 
   color: var(--_clr);
   font-family: var(--_ff);
@@ -32,18 +32,18 @@ h3,
 h4,
 h5,
 h6 {
-  --_clr: var(--clr, var(--clr-ff-headline, $heading-text-color));
-  --_ff: var(--ff, var(--ff-headline, $heading-font-family));
+  --_clr: var(--clr, var(--clr-ff-headline, #{$heading-text-color}));
+  --_ff: var(--ff, var(--ff-headline));
   --_ff-size: var(--ff-size, 1.5rem);
-  --_ff-weight: var(--ff-weight, var(--ff-weight-headline, $heading-font-weight));
-  --_line-height: var(--line-height, var(--headline-line-height, $heading-line-height));
+  --_ff-weight: var(--ff-weight, var(--ff-weight-headline, #{$heading-font-weight}));
+  --_line-height: var(--line-height, var(--headline-line-height, #{$heading-line-height}));
   --_letter-spacing: var(--letter-spacing, 0);
 
   color: var(--_clr);
   font-family: var(--_ff);
   font-size: var(--_ff-size);
   font-weight: var(--_ff-weight);
-  line-height: var(--_line-height, $heading-line-height);
+  line-height: var(--_line-height, #{$heading-line-height});
   letter-spacing: var(--_letter-spacing);
 }
 
@@ -51,7 +51,7 @@ h6 {
 .display2,
 .display3 {
   --ff-size: clamp(4.5rem, 11vw - 0.175rem, 9.6rem);
-  --letter-spacing: var(--letter-spacing-tight, $letter-spacing-tight);
+  --letter-spacing: var(--letter-spacing-tight, #{$letter-spacing-tight});
 }
 
 .display2 {
@@ -66,7 +66,7 @@ h6 {
 
 .h1 {
   --ff-size: clamp(2rem, 5vw + 1rem, 4rem);
-  letter-spacing: var(--letter-spacing-loose, $letter-spacing-loose);
+  letter-spacing: var(--letter-spacing-loose, #{$letter-spacing-loose});
 }
 
 .h2 {
@@ -90,21 +90,21 @@ h6 {
 }
 
 .body-l {
-  --ff-size: var(--body-font-size-large, $body-font-size-large);
+  --ff-size: var(--body-font-size-large, #{$body-font-size-large});
 }
 
 .body-s {
-  --ff-size: var(--body-font-size-small, $body-font-size-small);
+  --ff-size: var(--body-font-size-small, #{$body-font-size-small});
 }
 
 .body-xs {
-  --ff-size: var(--body-font-size-tiny, $body-font-size-tiny);
+  --ff-size: var(--body-font-size-tiny, #{$body-font-size-tiny});
 }
 
 .eyebrow {
-  --ff-size: var(--eyebrow-font-size, $eyebrow-font-size );
-  --ff-weight: var(--eyebrow-font-weight, $eyebrow-font-weight);
-  --line-height: var(--eyebrow-line-height, $eyebrow-line-height);
+  --ff-size: var(--eyebrow-font-size, #{$eyebrow-font-size});
+  --ff-weight: var(--eyebrow-font-weight, #{$eyebrow-font-weight});
+  --line-height: var(--eyebrow-line-height, #{$eyebrow-line-height});
   text-transform: uppercase;
 }
 
@@ -114,8 +114,7 @@ h6 {
   --_section-padding: var(--section-padding, #{$size-4});
 
   display: grid;
-  grid-template-columns:
-    minmax(var(--_padding), 1fr) min(var(--_max-width), 100% - (var(--_padding) * 2)) minmax(var(--_padding), 1fr);
+  grid-template-columns: minmax(var(--_padding), 1fr) min(var(--_max-width), 100% - (var(--_padding) * 2)) minmax(var(--_padding), 1fr);
 
   &>* {
     grid-column: 2/3;

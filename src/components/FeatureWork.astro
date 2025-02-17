@@ -15,7 +15,7 @@ interface Props {
         src: string;
         alt: string;
       };
-      urls: string[];
+      urls: (string | { label: string; url: string })[];
       keywords: string[];
       enable_case_study: boolean;
       theme: "primary" | "secondary" | "tertiary" | "quaternary";
@@ -96,11 +96,10 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
         )
       }
       {
-        urls && (
-          <Cta href={urls[0]} type="secondary">
+        urls &&
+          <Cta href={typeof urls[0] === 'object' && urls[0] !== null ? urls[0].url : urls[0]} type="secondary">
             See Live
           </Cta>
-        )
       }
     </div>
   </div>

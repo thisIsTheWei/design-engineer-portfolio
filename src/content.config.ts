@@ -29,7 +29,13 @@ const work = defineCollection({
       src: z.string(),
       alt: z.string(),
     }),
-    urls: z.array(z.string()),
+    urls: z.array(z.union([
+      z.string(), // single URL
+      z.object({
+        label: z.string(),
+        url: z.string(),
+      }), // labeled URL
+    ])),
     keywords: z.array(z.string()).optional(),
     theme: z.enum(["primary", "secondary", "tertiary", "quaternary"]),
     order: z.number(),

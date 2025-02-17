@@ -12,7 +12,7 @@ interface Props {
         src: string;
         alt: string;
       };
-      urls: string[];
+      urls: (string | { label: string; url: string })[];
       keywords: string[];
       theme: "primary" | "secondary" | "tertiary" | "quaternary";
       order: number;
@@ -66,11 +66,14 @@ const {
       <div class="case-study-hero__detail-buttons">
         {
           urls &&
-            urls.map((url, index) => (
-              <Cta href={url} type={index > 0 ? "secondary" : "primary"}>
-                See Live
-              </Cta>
-            ))
+            urls.map((url, index) => {
+              const href = typeof url === 'object' && url !== null ? url.url : url;
+              return (
+                  <Cta href={href} type={index > 0 ? "secondary" : "primary"}>
+                    See Live
+                  </Cta>
+              );
+            })
         }
       </div>
     </div>
