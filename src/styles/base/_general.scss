@@ -8,6 +8,7 @@ body {
 body {
   --_clr-bg: var(--clr-bg, var(--clr-background, #{$color-background-default}));
   background-color: var(--_clr-bg);
+  transition: background-color 300ms ease, color 300ms ease;
 }
 
 body,
@@ -155,8 +156,7 @@ a>svg {
 }
 
 a {
-  --clr: var(--clr-link-text, #{$color-link-text});
-  --_clr: var(--clr);
+  --_clr: var(--clr, var(--clr-link-text, #{$color-link-text}));
   color: var(--_clr);
 
   &:hover,

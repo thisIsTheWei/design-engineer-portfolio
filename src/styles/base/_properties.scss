@@ -1,0 +1,87 @@
+// --- Animation ---
+// inherits: false prevents --animation-delay set on a parent from
+// cascading into unrelated nested [data-animation-*] children.
+
+@property --animation-delay {
+  syntax: '<time>';
+  inherits: false;
+  initial-value: 0s;
+}
+
+@property --animation-duration {
+  syntax: '<time>';
+  inherits: false;
+  initial-value: 0s;
+}
+
+@property --fade-opacity {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
+
+// --- Layout ---
+// flow-space inherits so nested .flow components can override it
+// at any level of the tree.
+
+@property --flow-space {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 1rem;
+}
+
+@property --grid-gap {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+// --- Theme colors ---
+// Registered as <color> so that standard CSS properties referencing
+// them via var() can transition when the theme class toggles.
+
+@property --clr-background {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: transparent;
+}
+
+@property --clr-ff-body {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: transparent;
+}
+
+@property --clr-ff-headline {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: transparent;
+}
+
+@property --clr-link-text {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: transparent;
+}
+
+@property --clr-link-text-hover {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: transparent;
+}
+
+// --- Button colors ---
+// inherits: false — scoped to the button component, should not
+// bleed into nested elements.
+
+@property --clr-btn-bg {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: transparent;
+}
+
+@property --clr-btn-hover-bg {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: transparent;
+}

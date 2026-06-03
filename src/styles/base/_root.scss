@@ -32,7 +32,6 @@
   --border-default: #{$border-default};
 
   // links
-  --_clr-link: #{$color-link-text};
   --clr-link-hover: #{$color-link-text-hover};
   --clr-link-visited: #{$color-link-text-visited};
 
@@ -53,7 +52,6 @@
   --clr-button-primary-active: #{$color-button-primary-active};
   --clr-button-primary-text-active: #{$color-button-primary-text-active};
   --clr-button-primary-border-active: #{$color-button-primary-border-active};
-  --clr-button-primary-text-active: #{$color-button-primary-text-active};
 
   --clr-button-secondary: #{$color-button-secondary};
   --clr-button-secondary-text: #{$color-button-secondary-text};

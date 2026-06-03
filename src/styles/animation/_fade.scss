@@ -6,7 +6,7 @@
   opacity: var(--_fade-opacity);
   transform: var(--_direction);
   transition: opacity 0.5s ease-in, transform 0.5s ease-in;
-  transition-delay: var(--animation-delay);
+  transition-delay: var(--_animation-delay);
 }
 
 [data-animation-fade-in="from-bottom"] {

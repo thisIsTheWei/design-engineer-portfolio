@@ -9,14 +9,14 @@
   --_btn-hover-radius: 500px;
   --_btn-padding: var(--btn-padding, var(--button-padding));
   --_btn-padding-large: var(--btn-padding-large, var(--button-padding-large));
-  --_clr-btn_bg: var(--clr-btn_bg, var(--clr-button-background));
-  --_clr-btn-hover_bg: var(--clr-btn-hover_bg, var(--_clr-btn_bg));
+  --_clr-btn-bg: var(--clr-btn-bg, var(--clr-button-background));
+  --_clr-btn-hover-bg: var(--clr-btn-hover-bg, var(--_clr-btn-bg));
   --_clr-btn-txt: var(--clr-btn-txt, var(--clr-button-text));
-  --_clr: var(--clr, --_clr-btn-txt);
+  --_clr: var(--clr, var(--_clr-btn-txt));
   --icon-size: var(--button-icon-size);
 
   align-items: center;
-  background-color: var(--_clr-btn_bg);
+  background-color: var(--_clr-btn-bg);
   border: var(--_btn-border);
   border-radius: var(--_btn-border-radius);
   cursor: pointer;
@@ -43,7 +43,7 @@
   }
 
   &:before {
-    background-color: var(--_clr-btn-hover_bg);
+    background-color: var(--_clr-btn-hover-bg);
     border-radius: 50%;
     content: '';
     left: 0;
@@ -56,7 +56,7 @@
   }
 
   &:hover, &:focus-visible {
-    --clr-btn-hover_bg: var(--clr-button-background-hover);
+    --clr-btn-hover-bg: var(--clr-button-background-hover);
     --clr-link: var(--clr-button-text-hover);
 
     &:before {
@@ -66,14 +66,14 @@
   }
 
   &:active {
-    --clr-btn_bg: var(--clr-button-background-active);
+    --clr-btn-bg: var(--clr-button-background-active);
     --clr-link: var(--clr-button-text-active);
   }
 
   &[data-type="primary"] {
-    --clr-btn_bg: var(--clr-button-primary);
+    --clr-btn-bg: var(--clr-button-primary);
     --clr: var(--clr-button-primary-text);
-    --clr-btn-hover_bg: var(--clr-button-primary-hover);
+    --clr-btn-hover-bg: var(--clr-button-primary-hover);
 
     &:hover, &:focus-visible {
       --clr-link: var(--clr-button-primary-text-hover);
@@ -81,24 +81,24 @@
     }
 
     &:active {
-      --clr-btn_bg: var(--clr-button-primary-active);
+      --clr-btn-bg: var(--clr-button-primary-active);
       --clr-link: var(--clr-button-primary-text-active);
       --btn-border: 1px solid var(--clr-button-primary-border-active);
     }
   }
 
   &[data-type="secondary"] {
-    --clr-btn_bg: var(--clr-button-secondary);
+    --clr-btn-bg: var(--clr-button-secondary);
     --clr: var(--clr-button-secondary-text);
     --btn-border: 1px solid var(--clr-button-secondary-border);
-    --clr-btn-hover_bg: var(--clr-button-secondary-hover);
+    --clr-btn-hover-bg: var(--clr-button-secondary-hover);
 
     &:hover, &:focus-visible {
       --btn-border: 1px solid var(--clr-button-secondary-border);
     }
 
     &:active {
-      --clr-btn_bg: var(--clr-button-secondary-active);
+      --clr-btn-bg: var(--clr-button-secondary-active);
     }
   }
 
