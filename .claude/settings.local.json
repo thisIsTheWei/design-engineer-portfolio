@@ -8,7 +8,8 @@
       "Bash(cp -r '/Users/wei/Code/design-engineer-portfolio/src/scripts' '/Users/wei/Code/design-engineer-portfolio/_starter/src/')",
       "Bash(npx astro *)",
       "Read(//Users/wei/.claude/plugins/cache/claude-plugins-official/superpowers/5.1.0/skills/**)",
-      "Read(//Users/wei/.claude/skills/**)"
+      "Read(//Users/wei/.claude/skills/**)",
+      "Bash(npm run *)"
     ]
   }
 }
