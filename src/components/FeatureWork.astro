@@ -96,7 +96,7 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
         )
       }
       {
-        urls &&
+        urls && urls.length > 0 &&
           <Cta href={typeof urls[0] === 'object' && urls[0] !== null ? urls[0].url : urls[0]} type="secondary">
             See Live
           </Cta>

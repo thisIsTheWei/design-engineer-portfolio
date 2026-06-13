@@ -1,0 +1,132 @@
+---
+import type { IntersectionOptions } from '../scripts/types/intersections';
+import { getFadeInDataAttribute } from '../scripts/utils/intersection-observer/fadein-intersection-observer';
+
+interface Props {
+  filename: string;
+  code: string;
+  caption?: string;
+  fadeIn?: boolean | IntersectionOptions;
+}
+
+const { filename, code, caption, fadeIn = false } = Astro.props;
+const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
+const lines = code.trim().split('\n');
+
+const highlightLine = (line: string) => {
+  const h1 = line.replace(/^(#{1,3}) (.+)/, '<span class="tok-heading">$1 $2</span>');
+  const h2 = h1.replace(/^(- )(.+)/, '$1<span class="tok-item">$2</span>');
+  return h2.replace(/(`[^`]+`)/g, '<span class="tok-code">$1</span>');
+};
+---
+
+<section
+  class="code-showcase"
+  {...fadeInDataAttribute !== undefined ? { 'data-fade-in-intersect data-animation-fade-in="from-bottom"': fadeInDataAttribute } : {}}
+>
+  {caption && <p class="code-showcase__caption">{caption}</p>}
+  <div class="code-showcase__header">
+    <span class="code-showcase__dot" aria-hidden="true"></span>
+    <span class="code-showcase__dot" aria-hidden="true"></span>
+    <span class="code-showcase__dot" aria-hidden="true"></span>
+    <span class="code-showcase__filename">{filename}</span>
+  </div>
+  <pre class="code-showcase__pre"><code class="code-showcase__code">{lines.map((line, i) => (
+    <span class="code-showcase__line">
+      <span class="code-showcase__lineno" aria-hidden="true">{String(i + 1).padStart(2, ' ')}</span>
+      <span class="code-showcase__text" set:html={highlightLine(line)}></span>
+    </span>
+  ))}</code></pre>
+</section>
+
+<style lang="scss">
+  @use "../styles/abstracts/index" as *;
+
+  .code-showcase {
+    border-radius: $border-radius-2;
+    overflow: hidden;
+    font-family: 'ui-monospace', 'Menlo', 'Monaco', monospace;
+
+    &__caption {
+      font-size: $body-font-size-small;
+      color: rgba(255,255,255,0.5);
+      margin-block-end: $size-3;
+    }
+
+    &__header {
+      background: #1a1a24;
+      padding: $size-3 $size-6;
+      display: flex;
+      align-items: center;
+      gap: $size-2;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    &__dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+
+      &:nth-child(1) { background: #ff5f57; }
+      &:nth-child(2) { background: #febc2e; }
+      &:nth-child(3) { background: #28c840; }
+    }
+
+    &__filename {
+      font-size: $body-font-size-small;
+      color: rgba(255,255,255,0.45);
+      margin-inline-start: $size-3;
+      letter-spacing: 0.02em;
+    }
+
+    &__pre {
+      background: #0f0f14;
+      margin: 0;
+      padding: $size-6 0;
+      overflow-x: auto;
+    }
+
+    &__code {
+      display: block;
+    }
+
+    &__line {
+      display: flex;
+      gap: $size-5;
+      padding-inline: $size-6;
+      line-height: 1.7;
+
+      &:hover {
+        background: rgba(255,255,255,0.025);
+      }
+    }
+
+    &__lineno {
+      color: rgba(255,255,255,0.18);
+      user-select: none;
+      flex-shrink: 0;
+      font-size: $body-font-size-small;
+    }
+
+    &__text {
+      color: rgba(255,255,255,0.72);
+      font-size: $body-font-size-small;
+      white-space: pre;
+    }
+
+    :global(.tok-heading) {
+      color: #7ec8a4;
+      font-weight: 600;
+    }
+
+    :global(.tok-item) {
+      color: rgba(255,255,255,0.85);
+    }
+
+    :global(.tok-code) {
+      color: #ABA7D9;
+      font-style: italic;
+    }
+  }
+</style>

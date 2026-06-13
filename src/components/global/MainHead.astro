@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 import '../../styles/global.scss';
 
 interface Props {
@@ -41,15 +41,15 @@ const {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Paytone+One&display=swap"
-    rel="preload" onload="this.onload=null;this.rel='stylesheet'" as="style">
-  <ViewTransitions />
+    rel="stylesheet">
+  <ClientRouter />
   <script>
     import { initTheme } from "../../scripts/utils/theme";
     document.addEventListener('astro:page-load', initTheme);
   </script>
   <!-- Google tag (gtag.js) -->
   <script is:inline type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-3W70CS5FFJ"></script>
-  <script type="text/partytown">
+  <script is:inline type="text/partytown">
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());

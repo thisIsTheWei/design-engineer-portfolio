@@ -47,7 +47,11 @@ const { title, description, pubDate, updatedDate, heroImage, codepen } =
   <Contact fadeIn />
   {
     codepen && (
-      <script src="https://cpwebassets.codepen.io/assets/embed/ei.js" async />
+      <script
+        is:inline
+        src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+        async
+      />
     )
   }
 </BaseLayout>

@@ -1,0 +1,190 @@
+---
+import type { IntersectionOptions } from '../scripts/types/intersections';
+import { getFadeInDataAttribute } from '../scripts/utils/intersection-observer/fadein-intersection-observer';
+
+interface Layer {
+  label: string;
+  accentClass: 'primary' | 'secondary' | 'tertiary' | 'quaternary' | 'teal';
+  stat: string;
+  statLabel: string;
+  items: string[];
+  fileHint: string;
+}
+
+interface Props {
+  layers: Layer[];
+  fadeIn?: boolean | IntersectionOptions;
+}
+
+const { layers, fadeIn = false } = Astro.props;
+const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
+---
+
+<section
+  class="arch-diagram"
+  {...fadeInDataAttribute !== undefined ? { 'data-fade-in-intersect data-animation-fade-in="from-bottom"': fadeInDataAttribute } : {}}
+>
+  <div class="arch-diagram__flow">
+    {layers.map((layer, i) => (
+      <>
+        <div class={`arch-diagram__layer arch-diagram__layer--${layer.accentClass}`}>
+          <p class="arch-diagram__label eyebrow">{layer.label}</p>
+          <p class="arch-diagram__stat">{layer.stat}</p>
+          <p class="arch-diagram__stat-label">{layer.statLabel}</p>
+          <ul class="arch-diagram__items">
+            {layer.items.map(item => <li>{item}</li>)}
+          </ul>
+          <code class="arch-diagram__hint">{layer.fileHint}</code>
+        </div>
+        {i < layers.length - 1 && (
+          <div class="arch-diagram__arrow" aria-hidden="true">→</div>
+        )}
+      </>
+    ))}
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../styles/abstracts/index" as *;
+
+  .arch-diagram {
+    padding-block: $size-8;
+
+    @include mq(m) {
+      padding-block: $size-10;
+    }
+
+    &__flow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: $size-6;
+
+      @include mq(m) {
+        flex-direction: row;
+        align-items: stretch;
+        justify-content: center;
+        gap: $size-4;
+      }
+    }
+
+    &__arrow {
+      font-size: $size-8;
+      color: currentColor;
+      opacity: 0.2;
+      align-self: center;
+      display: none;
+
+      @include mq(m) {
+        display: block;
+      }
+    }
+
+    &__layer {
+      flex: 1;
+      max-width: 280px;
+      border-radius: $border-radius-2;
+      border: 1px solid;
+      padding: $size-8;
+      display: flex;
+      flex-direction: column;
+      gap: $size-3;
+
+      &--primary {
+        background-color: clr(primary, lightest);
+        border-color: clr(primary, light);
+        color: clr(primary, dark);
+
+        .arch-diagram__label { color: clr(primary, dark); }
+        .arch-diagram__stat  { color: clr(primary, base); }
+        .arch-diagram__hint  { color: clr(primary, light); }
+      }
+
+      &--teal {
+        background-color: #e6f7f4;
+        border-color: #4A8FBF40;
+        color: #1a5f6e;
+
+        .arch-diagram__label { color: #1a5f6e; }
+        .arch-diagram__stat  { color: #1a5f6e; }
+        .arch-diagram__hint  { color: #2d7a8a; }
+      }
+
+      &--tertiary {
+        background-color: clr(tertiary, lightest);
+        border-color: clr(tertiary, light);
+        color: clr(tertiary, dark);
+
+        .arch-diagram__label { color: clr(tertiary, dark); }
+        .arch-diagram__stat  { color: clr(tertiary, base); }
+        .arch-diagram__hint  { color: clr(tertiary, light); }
+      }
+    }
+
+    &__label {
+      font-size: $body-font-size-small;
+      letter-spacing: $letter-spacing-loose;
+      margin-block-end: $size-2;
+    }
+
+    &__stat {
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    &__stat-label {
+      font-size: $body-font-size-small;
+      opacity: 0.7;
+    }
+
+    &__items {
+      padding-inline-start: $size-5;
+      font-size: $body-font-size-small;
+      opacity: 0.75;
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    &__hint {
+      font-size: $body-font-size-tiny;
+      opacity: 0.55;
+      font-family: monospace;
+      word-break: break-all;
+    }
+  }
+
+  :root.theme-dark {
+    .arch-diagram__layer {
+      &--primary {
+        background-color: clr(primary, darker);
+        border-color: clr(primary, dark);
+        color: clr(primary, lightest);
+
+        .arch-diagram__label { color: clr(primary, lightest); }
+        .arch-diagram__stat  { color: clr(primary, lighter); }
+        .arch-diagram__hint  { color: clr(primary, light); }
+      }
+
+      &--teal {
+        background-color: #0d2e38;
+        border-color: #4A8FBF60;
+        color: #7ec8e8;
+
+        .arch-diagram__label { color: #7ec8e8; }
+        .arch-diagram__stat  { color: #7ec8e8; }
+        .arch-diagram__hint  { color: #4A8FBF; }
+      }
+
+      &--tertiary {
+        background-color: clr(tertiary, darker);
+        border-color: clr(tertiary, dark);
+        color: clr(tertiary, lightest);
+
+        .arch-diagram__label { color: clr(tertiary, lightest); }
+        .arch-diagram__stat  { color: clr(tertiary, lighter); }
+        .arch-diagram__hint  { color: clr(tertiary, light); }
+      }
+    }
+  }
+</style>

@@ -12,6 +12,8 @@ import DualFeatureImages from "../../components/image/DualFeatureImages.astro";
 import TwoColsTextContent from "../../components/TwoColsTextContent.astro";
 import InlineDemoVideo from "../../components/video/InlineDemoVideo.astro";
 import KeyMetrics from "../../components/KeyMetrics.astro";
+import ArchitectureDiagram from "../../components/ArchitectureDiagram.astro";
+import CodeShowcase from "../../components/CodeShowcase.astro";
 
 interface Props {
   entry: CollectionEntry<"work">;
@@ -44,6 +46,8 @@ const { meta_data, data } = entry.data;
         DualFeatureImages,
         InlineDemoVideo,
         KeyMetrics,
+        ArchitectureDiagram,
+        CodeShowcase,
       }}
       frontmatter={data}
     />

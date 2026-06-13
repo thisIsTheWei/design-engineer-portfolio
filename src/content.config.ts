@@ -1,5 +1,6 @@
 import { glob } from "astro/loaders";
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
 
 const blog = defineCollection({
   loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
@@ -40,7 +41,7 @@ const work = defineCollection({
     theme: z.enum(["primary", "secondary", "tertiary", "quaternary"]),
     order: z.number(),
     enable_case_study: z.boolean().optional(),
-    asset_folder: z.string().optional(),
+    assets_folder: z.string().optional(),
   }),
 })
 

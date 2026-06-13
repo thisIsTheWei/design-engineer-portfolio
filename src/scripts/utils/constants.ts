@@ -27,7 +27,7 @@ export const CASE_STUDY_NARRATIVE = {
 
 export const CASE_STUDY_SPEC = {
   ROLE: 'Role',
-  COMPANY: 'Agency / Client',
+  COMPANY: 'Company',
   TOOL: 'Design / Tech Tooling',
   YEAR: 'Year',
 } as const;

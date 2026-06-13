@@ -61,7 +61,6 @@ function startQuiz() {
 function askQuestion() {
     if (currentQuestion < 10) {
         currentStateNumber = Math.floor(Math.random() * 50) + 1;
-        const state = numberedStates[currentStateNumber];
         document.getElementById("question").textContent = `What is the name and postal code of state number ${currentStateNumber}?`;
         document.getElementById("answer-name").value = "";
         document.getElementById("answer-code").value = "";

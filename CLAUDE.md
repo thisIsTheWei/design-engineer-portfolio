@@ -85,7 +85,7 @@ The site uses two main content collections defined in `src/content.config.ts`:
 **Deployment** (`netlify.toml`):
 - Build command: `npm run build`
 - Publish directory: `dist`
-- 404 handling with redirect configuration
+- 404 handling via `dist/404.html` (auto-detected by Netlify — do NOT add a `[[redirects]]` catch-all in netlify.toml; it makes the dev server serve stale `dist/` output instead of live renders)
 
 ### Asset Management
 

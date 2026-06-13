@@ -1,0 +1,132 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e3]:
+    - generic "Announcement" [ref=e4]:
+      - paragraph [ref=e5]: New Drop Is Live! Free Shipping in the U.S. on Orders $88+
+    - banner [ref=e6]:
+      - generic [ref=e7]:
+        - link "Shine On home" [ref=e8] [cursor=pointer]:
+          - /url: /
+          - img "Shine On by K8C Studio" [ref=e9]
+        - navigation "Primary" [ref=e10]:
+          - list [ref=e11]:
+            - listitem [ref=e12]:
+              - link "Shop" [ref=e13] [cursor=pointer]:
+                - /url: /products
+            - listitem [ref=e14]:
+              - link "New Arrival" [ref=e15] [cursor=pointer]:
+                - /url: /products?collection=new-arrival
+            - listitem [ref=e16]:
+              - link "Collab" [ref=e17] [cursor=pointer]:
+                - /url: /products?collection=collab
+            - listitem [ref=e18]:
+              - link "Contact" [ref=e19] [cursor=pointer]:
+                - /url: /contact
+        - generic [ref=e20]:
+          - link "Log in" [ref=e21] [cursor=pointer]:
+            - /url: /account
+          - link "Cart" [ref=e22] [cursor=pointer]:
+            - /url: /cart
+  - main [ref=e23]:
+    - generic [ref=e26]:
+      - generic [ref=e27]:
+        - generic [ref=e28]:
+          - img
+        - heading "Art and design with a little shine" [level=1] [ref=e29]
+        - link "Shop All" [ref=e30] [cursor=pointer]:
+          - /url: /products
+          - generic [ref=e31]: Shop All
+      - generic [ref=e32]:
+        - img "Featured artwork print" [ref=e34]
+        - paragraph [ref=e35]: Sprinkling bits of joy, light, and whimsy, one artwork at a time.
+    - generic [ref=e43]:
+      - generic [ref=e44]:
+        - img
+      - heading "print greeting sticker" [level=2] [ref=e45]:
+        - text: print
+        - text: greeting
+        - text: sticker
+      - link "Explore New Arrivals" [ref=e46] [cursor=pointer]:
+        - /url: /products
+    - generic [ref=e49]:
+      - heading "News & Event" [level=2] [ref=e50]
+      - generic [ref=e51]:
+        - article [ref=e52] [cursor=pointer]:
+          - img "Tea on Piedmont" [ref=e54]
+          - generic [ref=e56]:
+            - generic [ref=e57]: Coming Up
+            - generic [ref=e58]:
+              - generic [ref=e59]: Mar 21. Sat 11-4
+              - heading "Tea on Piedmont" [level=3] [ref=e60]
+        - article [ref=e61] [cursor=pointer]:
+          - img "Shine alert!" [ref=e63]
+          - generic [ref=e65]:
+            - generic [ref=e66]: More
+            - heading "Shine alert!" [level=3] [ref=e68]
+        - article [ref=e69] [cursor=pointer]:
+          - img "Shine on x Nekosama" [ref=e71]
+          - generic [ref=e73]:
+            - generic [ref=e74]: New Collab
+            - heading "Shine on x Nekosama" [level=3] [ref=e76]
+  - contentinfo [ref=e78]:
+    - generic [ref=e79]:
+      - generic [ref=e80]:
+        - paragraph [ref=e81]:
+          - text: Shine On
+          - text: by K8C Studio
+        - paragraph [ref=e82]: Shine On Studio is an illustration brand creating warm, uplifting artwork and paper goods that bring a little light into everyday life.
+      - generic [ref=e83]:
+        - heading "Support" [level=2] [ref=e84]
+        - list [ref=e85]:
+          - listitem [ref=e86]:
+            - link "Sale" [ref=e87] [cursor=pointer]:
+              - /url: /products?collection=sale
+          - listitem [ref=e88]:
+            - link "Gift Cards" [ref=e89] [cursor=pointer]:
+              - /url: /products?collection=gift-cards
+          - listitem [ref=e90]:
+            - link "Shipping" [ref=e91] [cursor=pointer]:
+              - /url: /shipping
+          - listitem [ref=e92]:
+            - link "Returns" [ref=e93] [cursor=pointer]:
+              - /url: /returns
+          - listitem [ref=e94]:
+            - link "Orders" [ref=e95] [cursor=pointer]:
+              - /url: /faq
+      - generic [ref=e96]:
+        - heading "More" [level=2] [ref=e97]
+        - list [ref=e98]:
+          - listitem [ref=e99]:
+            - link "FAQs" [ref=e100] [cursor=pointer]:
+              - /url: /faq
+          - listitem [ref=e101]:
+            - link "Design and Materials" [ref=e102] [cursor=pointer]:
+              - /url: /faq
+          - listitem [ref=e103]:
+            - link "Collab With Us" [ref=e104] [cursor=pointer]:
+              - /url: /contact
+          - listitem [ref=e105]:
+            - link "Policies" [ref=e106] [cursor=pointer]:
+              - /url: /terms
+          - listitem [ref=e107]:
+            - link "Terms & Conditions" [ref=e108] [cursor=pointer]:
+              - /url: /terms
+      - generic [ref=e109]:
+        - heading "Sign Up for Shine Updates" [level=2] [ref=e110]
+        - generic [ref=e112]:
+          - generic [ref=e113]: email
+          - textbox "Email address" [ref=e114]:
+            - /placeholder: ""
+          - button "Subscribe" [ref=e115] [cursor=pointer]
+        - generic [ref=e116]:
+          - link "Instagram" [ref=e117] [cursor=pointer]:
+            - /url: https://instagram.com
+            - img
+          - link "LinkedIn" [ref=e118] [cursor=pointer]:
+            - /url: https://linkedin.com
+            - img
+          - link "YouTube" [ref=e119] [cursor=pointer]:
+            - /url: https://youtube.com
+            - img
+    - img "Shine On" [ref=e121]

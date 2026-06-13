@@ -1,0 +1,156 @@
+---
+eyebrow: "Roblox Marketing Web"
+meta_data:
+  title: "AI Workflow System — Roblox"
+  description: "A repo-native AI workflow system at Roblox that lets designers prototype production-quality pages from a brief, with design system compliance built in."
+title: "Building an <span>AI Workflow System</span> — Giving Designers a Coding Superpower"
+description: "Designed and built a three-layer AI workflow system embedded in the web monorepo. A content brief now becomes a near-production page proposal in a single AI session, with design system compliance enforced structurally — not by memory."
+featured: true
+feature_image:
+  src: "/assets/roblox-ai-workflow/featured-hero.svg"
+  alt: "Architecture diagram showing the three-layer AI workflow system: Rules (14 always-on AI rules), Skills (8 execution playbooks), and Agents (AGENTS.md context at three directory levels)."
+urls: []
+keywords:
+  - AI Workflow
+  - Internal Tooling
+  - Design System
+  - Rapid Prototyping
+  - Developer Experience
+  - Claude Code
+  - Cursor
+theme: primary
+enable_case_study: true
+order: 1
+assets_folder: "/assets/roblox-ai-workflow/"
+---
+
+<InfoTextColumns data={{
+    ROLE: "Senior Web Engineer",
+    COMPANY: "Roblox",
+    TOOL: "Claude Code, Cursor, TypeScript, React, SCSS, Anime.js",
+    YEAR: "2026",
+  }}
+/>
+
+<FullSizeFeatureImage
+  src="featured-hero.svg"
+  alt="Architecture diagram showing the three-layer AI workflow system: Rules, Skills, and Agents connected in sequence."
+  transitionName={`case-study-${frontmatter.order}-feature-image`}
+  assetFolder={frontmatter.assets_folder}
+  fadeIn
+/>
+
+<TwoColsTextContent
+  type="CHALLENGE"
+  description="Every new page moved through a long brief → build → design review loop. AI tools promised to shorten it, but without reliable context they produced code that drifted from the design system — adding review rounds instead of removing them, and slowing speed to market."
+  points={[
+    "Long design review cycles — each prototype needed multiple rounds of correction, stretching simple page requests to 1–2 sprints",
+    "AI tools lacked a single source of truth — output drifted from design system tokens and components, so it couldn't be trusted to shorten the loop",
+    "Quality depended on individual familiarity with conventions, not structural enforcement",
+  ]}
+  fadeIn
+  theme={frontmatter.theme}
+/>
+
+<TwoColsTextContent
+  type="APPROACH"
+  description="The insight was that AI tools aren't inherently unreliable — they're context-hungry. Given the right structure, they produce trustworthy output. I designed and built a three-layer system embedded directly in the monorepo — working closely with the design team to understand how they'd actually use it — built around Rules that always run, Skills that encode how to execute specific tasks, and Agents that adapt behavior automatically by working directory."
+  points={[
+    "Rules layer — constraints encoded at the file-glob level so the AI can't produce structurally wrong output, regardless of who's prompting or how",
+    "Skills layer — execution playbooks that encode how a senior engineer approaches recurring tasks: page scaffolding, scroll animation, component promotion, design system evaluation",
+    "Agents layer — AGENTS.md files at three directory levels that automatically shift AI behavior by working context, eliminating per-session setup overhead entirely",
+    "DESIGN.md — a machine-readable brand brief that loads into every AI session as a single source of truth for visual direction and token conventions",
+  ]}
+  fadeIn
+  theme={frontmatter.theme}
+/>
+
+<ArchitectureDiagram
+  layers={[
+    {
+      label: "Rules",
+      accentClass: "primary",
+      stat: "14",
+      statLabel: "always-on rules",
+      items: [
+        "Component architecture",
+        "SCSS token enforcement",
+        "Import patterns",
+        "Animation contracts",
+        "Bundle optimization",
+      ],
+      fileHint: "CLAUDE.md · AGENTS.md",
+    },
+    {
+      label: "Skills",
+      accentClass: "teal",
+      stat: "8",
+      statLabel: "execution playbooks",
+      items: [
+        "playground-page-generator",
+        "scroll-animation",
+        "design-system-taste",
+        "component-promotion",
+        "bug-fix",
+      ],
+      fileHint: "skills/",
+    },
+    {
+      label: "Agents",
+      accentClass: "tertiary",
+      stat: "3",
+      statLabel: "context levels, zero per-session setup",
+      items: [
+        "Monorepo root",
+        "Playground app",
+        "UI package",
+      ],
+      fileHint: "AGENTS.md (3 levels)",
+    },
+  ]}
+  fadeIn
+/>
+
+<KeyMetrics
+  description="A repo-native system that scales with the codebase — more components, more rules, stronger guarantees. Works across four AI tools without vendor lock-in."
+  metrics={[
+    { value: "4", desc: "AI tools supported — Claude Code, Gemini, Codex, Cursor" },
+    { value: "1", desc: "AI session to prototype a page from a content brief" },
+    { value: "Same day", desc: "Cycle time from brief to proposal — was 1–2 sprints" },
+  ]}
+  fadeIn
+/>
+
+<CodeShowcase
+  filename="DESIGN.md"
+  caption="DESIGN.md — the single source of truth for visual direction, loaded automatically into every AI session across all four tools. Content shown is representative, not the internal file."
+  code={`# Design brief (canonical)
+
+Single entry point for visual and brand-aligned UI work.
+Loaded by every agent that reads repository context.
+
+## 1. Visual theme and atmosphere
+
+- Mood: Bold, confident, structural — typography carries the visual weight.
+- Canvas: Default to dark marketing surfaces.
+- Layout: Full-bleed immersive sections, strong type hierarchy, purposeful asymmetry.
+
+## 2. Color palette and roles (tokens first)
+
+Authoritative values live in SCSS abstracts. Use semantic tokens in code.
+Do not hardcode hex or rgb when a token exists.`}
+  fadeIn
+/>
+
+<TwoColsTextContent
+  type="OUTCOME"
+  description="The system changed the default from 'AI produces inconsistent output that developers clean up' to 'AI proposes, team approves.' Design system compliance became structural — enforced at the rules layer, not dependent on who happens to know the conventions."
+  points={[
+    "I can take a content brief and produce near-production component composition in a single AI session — giving design something concrete to react to and adjust, rather than waiting for a full build",
+    "Developers shifted from building from scratch to reviewing and approving structured proposals — cycle time dropped from 1–2 sprints to same day",
+    "Standards travel with the work, not with the person — junior developers produce structurally equivalent output to senior developers who know conventions by memory",
+    "The system is actively growing — new agents and skills are being added as the team's workflow expands, and each addition makes the output more precise without resetting context",
+  ]}
+  fadeIn
+  theme={frontmatter.theme}
+/>
