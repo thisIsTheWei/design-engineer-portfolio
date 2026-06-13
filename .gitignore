@@ -26,3 +26,7 @@ pnpm-debug.log*
 .idea/
 
 .memsearch/
+.superpowers/
+
+# Claude Code local settings (machine-specific paths and permissions)
+.claude/settings.local.json
