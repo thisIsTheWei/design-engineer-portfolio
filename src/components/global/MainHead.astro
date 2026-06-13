@@ -5,11 +5,13 @@ import '../../styles/global.scss';
 interface Props {
     title?: string | undefined;
     description?: string | undefined;
+    canonicalUrl?: string | undefined;
 }
 
-const { 
+const {
     title = "Wei-Hsin Chen | Design Engineer & Engineering Leader",
-    description = "Design Engineer with 10+ years transforming complex challenges into intuitive digital solutions for Google and other industry leaders. Bridging design and technology to create extraordinary experiences."
+    description = "Design Engineer with 10+ years transforming complex challenges into intuitive digital solutions for Google and other industry leaders. Bridging design and technology to create extraordinary experiences.",
+    canonicalUrl = Astro.url.href,
 } = Astro.props;
 ---
 <head>
@@ -18,6 +20,7 @@ const {
   <title>{title}</title>
   <meta name="description" content={description}>
   <meta name="generator" content={Astro.generator}>
+  <link rel="canonical" href={canonicalUrl}>
 
   <!-- Facebook Meta Tags -->
   <meta property="og:url" content="https://weidesign.engineer/">
