@@ -3,6 +3,8 @@ import type { IntersectionOptions } from "../scripts/types/intersections";
 import Cta from "./composable/Cta.astro";
 import HighlightHeading from "./composable/HighlightHeading.astro";
 import { getFadeInDataAttribute } from "../scripts/utils/intersection-observer/fadein-intersection-observer";
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 
 interface Props {
   class?: string;
@@ -12,7 +14,7 @@ interface Props {
       title: string;
       description: string;
       feature_image: {
-        src: string;
+        src: ImageMetadata;
         alt: string;
       };
       urls: (string | { label: string; url: string })[];
@@ -54,9 +56,11 @@ const fadeInDataAttribute = getFadeInDataAttribute(fadeIn);
       class="featured-work__image"
       data-animation-block-slide="slide-out-right"
     >
-      <img
+      <Image
         src={feature_image.src}
         alt={feature_image.alt}
+        widths={[400, 800, 1280]}
+        sizes="(max-width: 768px) calc(100vw - 64px), (max-width: 1440px) 50vw, 700px"
         loading="lazy"
         decoding="async"
         transition:name={`case-study-${order}-feature-image`}

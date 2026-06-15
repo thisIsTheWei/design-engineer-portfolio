@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="AI Workflow System — 3-layer architecture: Rules, Skills, Agents">
+  <rect width="1200" height="675" fill="#0f0f14"/>
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff" stroke-width="0.3" opacity="0.04"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="675" fill="url(#grid)"/>
+  <text x="60" y="60" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#ffffff" opacity="0.3" letter-spacing="3">AI AGENT WORKFLOW — ARCHITECTURE</text>
+  <rect x="120" y="200" width="280" height="275" rx="16" ry="16" fill="#6C55A914" stroke="#6C55A9" stroke-width="1.5" opacity="0.9"/>
+  <text x="260" y="256" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#ABA7D9" letter-spacing="3" text-anchor="middle" font-weight="700">RULES</text>
+  <line x1="150" y1="268" x2="370" y2="268" stroke="#6C55A9" stroke-width="0.8" opacity="0.4"/>
+  <text x="260" y="325" font-family="system-ui, -apple-system, sans-serif" font-size="52" fill="#ABA7D9" text-anchor="middle" font-weight="700" opacity="0.9">14</text>
+  <text x="260" y="367" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle" opacity="0.5">always-on AI rules</text>
+  <text x="260" y="389" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#ffffff" text-anchor="middle" opacity="0.35">file-glob scoped</text>
+  <text x="260" y="408" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#ffffff" text-anchor="middle" opacity="0.35">enforce standards structurally</text>
+  <rect x="183" y="430" width="154" height="26" rx="13" fill="#6C55A920"/>
+  <text x="260" y="448" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#ABA7D9" text-anchor="middle" opacity="0.8">CLAUDE.md · AGENTS.md</text>
+  <line x1="410" y1="337" x2="455" y2="337" stroke="#ffffff" stroke-width="1.5" opacity="0.2"/>
+  <polygon points="455,330 468,337 455,344" fill="#ffffff" opacity="0.2"/>
+  <rect x="475" y="200" width="280" height="275" rx="16" ry="16" fill="#4A8FBF14" stroke="#4A8FBF" stroke-width="1.5" opacity="0.9"/>
+  <text x="615" y="256" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#7ec8e8" letter-spacing="3" text-anchor="middle" font-weight="700">SKILLS</text>
+  <line x1="505" y1="268" x2="725" y2="268" stroke="#4A8FBF" stroke-width="0.8" opacity="0.4"/>
+  <text x="615" y="325" font-family="system-ui, -apple-system, sans-serif" font-size="52" fill="#7ec8e8" text-anchor="middle" font-weight="700" opacity="0.9">8</text>
+  <text x="615" y="367" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle" opacity="0.5">execution playbooks</text>
+  <text x="615" y="389" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#ffffff" text-anchor="middle" opacity="0.35">step-by-step procedures</text>
+  <text x="615" y="408" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#ffffff" text-anchor="middle" opacity="0.35">encode expert knowledge</text>
+  <rect x="560" y="430" width="110" height="26" rx="13" fill="#4A8FBF20"/>
+  <text x="615" y="448" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#7ec8e8" text-anchor="middle" opacity="0.8">skills/</text>
+  <line x1="765" y1="337" x2="810" y2="337" stroke="#ffffff" stroke-width="1.5" opacity="0.2"/>
+  <polygon points="810,330 823,337 810,344" fill="#ffffff" opacity="0.2"/>
+  <rect x="830" y="200" width="280" height="275" rx="16" ry="16" fill="#2E8B6414" stroke="#2E8B64" stroke-width="2" opacity="1"/>
+  <text x="970" y="256" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#7ec8a4" letter-spacing="3" text-anchor="middle" font-weight="700">AGENTS</text>
+  <line x1="860" y1="268" x2="1080" y2="268" stroke="#2E8B64" stroke-width="0.8" opacity="0.4"/>
+  <text x="970" y="325" font-family="system-ui, -apple-system, sans-serif" font-size="52" fill="#7ec8a4" text-anchor="middle" font-weight="700" opacity="0.9">3</text>
+  <text x="970" y="367" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#7ec8a4" text-anchor="middle" opacity="0.85">Claude Code</text>
+  <text x="970" y="389" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#ffffff" text-anchor="middle" opacity="0.35">spawn sub-agents</text>
+  <text x="970" y="408" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#ffffff" text-anchor="middle" opacity="0.35">zero per-session setup</text>
+  <rect x="893" y="430" width="154" height="26" rx="13" fill="#2E8B6420"/>
+  <text x="970" y="448" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#7ec8a4" text-anchor="middle" opacity="0.8">AGENTS.md (3 levels)</text>
+  <rect x="120" y="536" width="990" height="1" fill="#ffffff" opacity="0.06"/>
+  <text x="260" y="572" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle" opacity="0.35">64 components</text>
+  <text x="615" y="572" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle" opacity="0.35">4 AI tools supported</text>
+  <text x="970" y="572" font-family="system-ui, -apple-system, sans-serif" font-size="12" text-anchor="middle"><tspan fill="#7ec8a4" opacity="0.65">Claude Code</tspan><tspan fill="#ffffff" opacity="0.25"> · Gemini · Codex · Cursor</tspan></text>
+  <text x="1140" y="630" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#ffffff" text-anchor="end" opacity="0.15">weidesign.engineer</text>
+</svg>
